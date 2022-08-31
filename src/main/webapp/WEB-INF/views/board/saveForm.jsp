@@ -2,6 +2,53 @@
 
 <%@ include file="../layout/header2.jsp"%>
 <style>
+
+	.cbox {
+	}
+	/*Checkboxes styles*/
+	input[type="checkbox"] { display: none; }
+
+	input[type="checkbox"] + label {
+		display: block;
+		position: relative;
+		padding-left: 35px;
+		margin-bottom: 20px;
+		font: 14px/20px 'Open Sans', Arial, sans-serif;
+		color: #333;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+
+	input[type="checkbox"] + label:last-child { margin-bottom: 0; }
+
+	input[type="checkbox"] + label:before {
+		content: '';
+		display: block;
+		width: 20px;
+		height: 20px;
+		border: 1px solid #6cc0e5;
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: .6;
+		-webkit-transition: all .12s, border-color .08s;
+		transition: all .12s, border-color .08s;
+	}
+
+	input[type="checkbox"]:checked + label:before {
+		width: 10px;
+		top: -5px;
+		left: 5px;
+		border-radius: 0;
+		opacity: 1;
+		border-top-color: transparent;
+		border-left-color: transparent;
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+	/*Checkboxes stylesEND*/
 /* ============================= TIP =========================== */
 .help-tip {
 	position: fixed;
@@ -75,22 +122,31 @@
 	</p>
 </div>
 
-<div style="margin-bottom: 700px;" class="container">
+
+
+
+
+<div style="margin-bottom: 300px;" class="container">
+
 
 	<form action="" method="post">
-	
+<c:if test="${'ADMIN' eq principal.user.USER_ROLE}">
+		<div class="d-flex justify-content-end mb-4">
+
+			<input type="checkbox" id="check" value="1">
+
+			<label for="check">
+				공지글
+			</label>
+		</div>
+</c:if>
 	<c:if test="${'admin' ne principal.user.username}">
     	<div class="row d-flex justify-content-center mb-2">
-			<input style="width: 1110px" type="text" class="form-control" placeholder="Enter title" id="title"> 
+			<input style="margin-left:13px; margin-right:13px;" type="text" class="form-control" placeholder="Enter title" id="title">
 		</div>
 	</c:if>
 	
-	<c:if test="${'admin' eq principal.user.username}">
-		<div class="row d-flex justify-content-center mb-2">
-			<input style="width: 1045px" type="text" class="form-control" placeholder="Enter title" id="title"> 
-			<input style="width: 40px" type="checkbox" class="form-control ml-4 d-flex justify-content-end" value="1" id="type">
-		</div>
-	</c:if>
+
 		<div class="form-group">
 		- 작성자 -<input type="text" class="form-control" value="${principal.user.username}" id="username">
 		</div>
@@ -99,9 +155,7 @@
 			<textarea class="form-control summernote" rows="5" id="content"></textarea>
 		</div>
 	</form>
-	<button id="btn-save" class="btn btn-primary mb-2">글쓰기 완료</button>
-
-
+	<button id="btn-save" class="btn btn-primary mb-2" onclick="this.disabled=true">글쓰기 완료</button>
 
 
 
@@ -125,7 +179,6 @@
 			});
 </script>
 <script src="/js/board.js"></script>
-<%@ include file="../layout/footer.jsp"%>
 
 
 

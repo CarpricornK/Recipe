@@ -12,5 +12,6 @@ public interface IMongoMapper {
      * @return 저장 결과
      */
     int insertData(MongoDTO pDTO, String colNm) throws Exception;
+
 }
 

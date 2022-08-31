@@ -49,14 +49,14 @@ public class UserController {
 
 	@GetMapping("/auth/joinForm")
 	public String joinForm(Model model) {
-		model.addAttribute("Users",userService.회원목록());
+		model.addAttribute("Users",userService.muserlist());
 		return "user/joinForm";
 	}
 
 
 	@GetMapping({ "", "/auth/PW_FIND" })
 	public String PW_FIND(Model model) {
-		model.addAttribute("Users",userService.회원목록());
+		model.addAttribute("Users",userService.muserlist());
 
 		return "PW_FIND";
 	}
@@ -93,7 +93,7 @@ public class UserController {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 		params.add("grant_type", "authorization_code");
 		params.add("client_id", "80132b34d6a4672223b8ee7f2be81ba7");
-		params.add("redirect_uri", "http://localhost:8000/auth/kakao/callback");
+		params.add("redirect_uri", "http://a.recipekyj.link:8000/auth/kakao/callback");
 		params.add("code", code);
 
 		// HttpHeader와 HttpBody를 하나의 오브젝트에 담기
@@ -127,7 +127,7 @@ public class UserController {
 
 		ResponseEntity<String> response2 = rt2.exchange("https://kapi.kakao.com/v2/user/me", HttpMethod.POST,
 				kakaoProfileRequest2, String.class);
-		System.out.println(response2.getBody());
+		System.out.println("response2.getBody() : " + response2.getBody());
 
 		ObjectMapper objectMapper2 = new ObjectMapper();
 		KakaoProfile KakaoProfile = null;
@@ -144,13 +144,15 @@ public class UserController {
 		System.out.println("카카오 이메일 : " + KakaoProfile.getKakao_account().getEmail());
 
 		System.out.println("카카오 유저네임 : " + KakaoProfile.getKakao_account().getEmail() + "_" + KakaoProfile.getId());
+		System.out.println("카카오 유저네임2 : " + KakaoProfile.getKakao_account().profile.getNickname());
+
 		System.out.println("블로그서버 이메일 : " + KakaoProfile.getKakao_account().getEmail());
 		// UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
 		// UUID garbagePassword = UUID.randomUUID();
 		System.out.println("블로그서버 패스워드 : " + cosKey);
 
 		User kakaouser = User.builder()
-				.username(KakaoProfile.getKakao_account().getEmail() + "_" + KakaoProfile.getId())
+				.username(KakaoProfile.getKakao_account().profile.getNickname()+"K")
 				.USER_PASSWORD(cosKey)
 				.USER_EMAIL(KakaoProfile.getKakao_account().getEmail())
 				.USER_OAUTH("kakao")
@@ -175,7 +177,7 @@ public class UserController {
 
 	@GetMapping("/user/updateForm")
 	public String updateForm(Model model) {
-		model.addAttribute("Users",userService.회원목록());
+		model.addAttribute("Users",userService.muserlist());
 		return "user/updateForm";
 	}
 }

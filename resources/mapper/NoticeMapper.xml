@@ -8,4 +8,35 @@
         SELECT *
           FROM Favorites
 	</select>
+
+	<select id="getNoticeList" resultType="Board">
+		SELECT *
+		FROM Board
+        WHERE BOARDTYPE = 1
+		ORDER BY ID DESC;
+	</select>
+
+	<select id="ReplyList" resultType="Reply">
+		SELECT *
+		FROM Reply
+		WHERE REPLY_TYPE = 1
+		ORDER BY ID DESC;
+	</select>
+
+	<select id="ReplyList2" resultType="Reply">
+		SELECT *
+		FROM Reply
+        WHERE REPLY_TYPE = 2
+		ORDER BY ID DESC;
+	</select>
+
+	<select id="ReplyList3" resultType="Reply">
+		SELECT *
+		FROM Reply
+		WHERE REPLY_TYPE = 3
+		ORDER BY ID DESC;
+	</select>
+
+
+
 </mapper>

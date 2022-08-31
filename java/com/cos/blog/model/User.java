@@ -48,6 +48,10 @@ public class User {
 	@Column(nullable = false, length=100)
 	private String USER_PASSWORD;
 
+	 @JsonProperty(value="USER_PASSWORD2")
+	 @Column(nullable = false, length=100)
+	 private String USER_PASSWORD2;
+
 	@JsonProperty(value="USER_EMAIL")
 	@Column(nullable = false, length=50)
 	private String USER_EMAIL;

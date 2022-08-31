@@ -18,6 +18,12 @@ let index = {
 			$("#btn-Mail").on("click", ()=>{ // function(){} , ()=>{} this를 바인딩하기 위해서!!
 				this.Mail();
 			});
+			$("#btn-delete").on("click", ()=>{ // function(){} , ()=>{} this를 바인딩하기 위해서!!
+				this.userdelete();
+			});
+			$("#btn-delete2").on("click", ()=>{ // function(){} , ()=>{} this를 바인딩하기 위해서!!
+				this.userdelete2();
+			});
 
 
 
@@ -33,11 +39,11 @@ let index = {
 			let password = $("#password").val();
 			let passwordre = $("#passwordre").val();
 			//console.log(data);
-			
+
 			// ajax호출시 default가 비동기 호출
 			// ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청!!
 			// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환해주네요.
-			if(passwordre == password) {
+			if(passwordre == password && data.USER_EMAIL.indexOf('@') != -1 && data.USER_EMAIL.indexOf('.com') != -1 && data.username.length >= 4 && data.USER_PASSWORD.length >= 4 ) {
 				$.ajax({
 					type: "POST",
 					url: "/auth/joinProc",
@@ -54,9 +60,18 @@ let index = {
 				}).fail(function (error) {
 					alert(JSON.stringify(error));
 				});
-			} else {
+			} else if(passwordre != password){
 				alert("회원가입이 실패했습니다. (비밀번호 확인)");
+			} else if(data.USER_EMAIL.indexOf('@') == -1){
+				alert("이메일 형식이 아닙니다 @가 없습니다");
+			} else if(data.USER_EMAIL.indexOf('.com') == -1){
+				alert("이메일 형식이 아닙니다 .com 으로 끝나야합니다");
+			} else if(data.username.length < 4){
+				alert("이름은 4자리 이상이여야 합니다");
+			} else if(data.USER_PASSWORD.length < 4){
+				alert("비밀번호는 4자리 이상이여야 합니다");
 			}
+
 			
 		},
 		
@@ -184,7 +199,7 @@ let index = {
 		};
 		//console.log(data);
 			$.ajax({
-				type: "PUT",
+				type: "POST",
 				url: "/user/updateForm",
 				data: JSON.stringify(data), // http body데이터
 				contentType: "application/json; charset=utf-8",// body데이터가 어떤 타입인지(MIME)
@@ -196,8 +211,95 @@ let index = {
 			}).fail(function(error){
 				alert(JSON.stringify(error));
 			});
+		},
+
+
+	userdelete: function(){
+		//alert('user의 save함수 호출됨');
+		let data = {
+			username: $("#username2").val(),
+			USER_PASSWORD: $("#password2").val(),
+			EMAILCHECK: $("#check").val(),
+			REPASSWORD: $("#repassword2").val(),
+			CKPASSWORD: $("#ckpassword2").val()
+
+		};
+		let switch1 = $("input:checkbox[name='switch1']:checked").val();
+		let switch2 = $("input:checkbox[name='switch2']:checked").val();
+		let userid = $("#userid").val();
+		//console.log(data);
+
+		// ajax호출시 default가 비동기 호출
+		// ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청!!
+		// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환해주네요.
+		if(data.USER_PASSWORD == data.REPASSWORD && data.USER_PASSWORD == data.CKPASSWORD && switch1 == 1 && switch2 == 1 && data.EMAILCHECK != "N") {
+			$.ajax({
+				type: "DELETE",
+				url: "/user/userdelete/"+userid,
+				data: JSON.stringify(data), // http body데이터
+				contentType: "application/json; charset=utf-8",// body데이터가 어떤 타입인지(MIME)
+				dataType: "json" // 요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경
+			}).done(function (resp) {
+				if (resp.status === 500) {
+				} else {
+					alert("회원탈퇴완료");
+					location.href = "/logout";
+				}
+
+			}).fail(function (error) {
+				alert("회원탈퇴 실패.");
+			});
+		} else if (data.EMAILCHECK == "N"){
+			alert("이메일인증을 해주세요");
+		} else if (data.USER_PASSWORD != data.REPASSWORD){
+			alert("비밀번호 확인 불일치");
+		} else if (data.USER_PASSWORD != data.CKPASSWORD){
+			alert("비밀번호 DB 불일치");
+		} else if (switch1 != 1 || switch2 != 1){
+			alert("동의필수");
 		}
 
+	},
+
+	userdelete2: function(){
+		//alert('user의 save함수 호출됨');
+		let data = {
+			username: $("#username2").val(),
+			USER_PASSWORD: $("#password2").val(),
+			EMAILCHECK: $("#check").val(),
+			REPASSWORD: $("#repassword2").val()
+
+		};
+		let switch1 = $("input:checkbox[name='switch1']:checked").val();
+		let switch2 = $("input:checkbox[name='switch2']:checked").val();
+		let userid = $("#userid").val();
+		//console.log(data);
+
+		// ajax호출시 default가 비동기 호출
+		// ajax 통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청!!
+		// ajax가 통신을 성공하고 서버가 json을 리턴해주면 자동으로 자바 오브젝트로 변환해주네요.
+		if(data.USER_PASSWORD == data.REPASSWORD && switch1 == 1 && switch2 == 1 && data.EMAILCHECK != "N") {
+			$.ajax({
+				type: "DELETE",
+				url: "/user/userdelete/"+userid,
+				data: JSON.stringify(data), // http body데이터
+				contentType: "application/json; charset=utf-8",// body데이터가 어떤 타입인지(MIME)
+				dataType: "json" // 요청을 서버로해서 응답이 왔을 때 기본적으로 모든 것이 문자열 (생긴게 json이라면) => javascript오브젝트로 변경
+			}).done(function (resp) {
+				if (resp.status === 500) {
+				} else {
+					alert("회원탈퇴");
+					location.href = "/logout";
+				}
+
+			}).fail(function (error) {
+				alert("회원탈퇴 실패.");
+			});
+		} else {
+			alert("회원탈퇴");
+		}
+
+	},
 
 }
 

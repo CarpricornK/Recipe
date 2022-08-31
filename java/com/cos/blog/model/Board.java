@@ -40,24 +40,24 @@ public class Board {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 db의 넘버링 전략을 따라감
 	private int ID; // auto_increment
 
-	@JsonProperty(value="BOARD_TITLE")
+	@JsonProperty(value="BOARDTITLE")
 	@Column(nullable = false, length = 100)
-	private String BOARD_TITLE;
+	private String BOARDTITLE;
 
-	@JsonProperty(value="BOARD_USERNAME")
+	@JsonProperty(value="BOARDUSERNAME")
 	@Column(nullable = false, length = 100)
-	private String BOARD_USERNAME; // 아이디
+	private String BOARDUSERNAME; // 아이디
 
-	@JsonProperty(value="BOARD_TYPE")
-	@Column(length = 10)
-	private String BOARD_TYPE; // 공지여부
+	@JsonProperty(value="BOARDTYPE")
+	private Boolean BOARDTYPE; // 공지여부
 
-	@JsonProperty(value="BOARD_CONTENT")
+	@JsonProperty(value="BOARDCONTENT")
 	@Lob // 대용량 데이터
-	private String BOARD_CONTENT;// 섬머노트 라이브러리 <html>태그가 섞여서 디자인됨
+	private String BOARDCONTENT;// 섬머노트 라이브러리 <html>태그가 섞여서 디자인됨
 
-	@JsonProperty(value="BOARD_COUNT")
-	private int BOARD_COUNT; // 조회수
+	@JsonProperty(value="BOARDCOUNT")
+	@ColumnDefault("0") //default 0
+	private Integer BOARDCOUNT; // 조회수
 
 	@ManyToOne(fetch = FetchType.EAGER) // Many=board, User=One
 	@JoinColumn(name = "USERID")
@@ -72,6 +72,6 @@ public class Board {
 
 
 	@CreationTimestamp
-	private Timestamp BOARD_CDATE;
+	private Timestamp BOARDCDATE;
 
 }

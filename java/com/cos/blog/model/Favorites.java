@@ -24,7 +24,7 @@ public class Favorites {
 	private int ID; // auto_increment
 
 	@JsonProperty(value="FAVORITE_TITLE")
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false, length = 100, unique = true)
 	private String FAVORTIE_TITLE;
 
 	@ManyToOne(fetch = FetchType.EAGER) // Many=board, User=One
@@ -37,6 +37,8 @@ public class Favorites {
 
 	private int FAVORITE_VALUE;
 
+	@JsonProperty(value="FAVORITE_ID")
+	private int FAVORITE_ID;
 
 	@CreationTimestamp
 	private Timestamp BOARD_CDATE;

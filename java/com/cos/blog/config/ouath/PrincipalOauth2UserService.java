@@ -5,18 +5,14 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +23,6 @@ import com.cos.blog.config.ouath.provider.GoogleUserInfo;
 import com.cos.blog.config.ouath.provider.NaverUserInfo2;
 import com.cos.blog.config.ouath.provider.OAuth2UserInfo;
 import com.cos.blog.controller.UserController;
-import com.cos.blog.model.Board;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
 import com.cos.blog.service.BoardService;
@@ -41,15 +36,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
 	@Autowired
 	private UserService userService;
-
-	@Autowired
-	private BoardService boardService;
-
-	@Autowired
-	private UserController userController;
-
-	@Autowired
-	private UserRepository userRepository;
 
 	@Value("${cos.key}")
 	private String cosKey;

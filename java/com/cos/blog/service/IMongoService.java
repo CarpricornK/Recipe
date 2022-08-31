@@ -7,5 +7,7 @@ public interface IMongoService {
      */
     void mongoTest() throws Exception;
 
+    void mongoTest2() throws  Exception;
+
 }
 

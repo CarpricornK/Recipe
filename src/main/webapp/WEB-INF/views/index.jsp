@@ -1,289 +1,270 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="layout/header2.jsp"%>
+<%@ include file="layout/header.jsp"%>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Armata&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700'>
 
 <link rel="stylesheet" href="/css/index.css">
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+	.imgbox1 > p > img{
+		width: 0px!important;
+		height: 0px!important;
+	}
 
-* {
-	box-sizing: border-box;
-	font-weight: normal;
-}
 
-.flip {
-	position: relative;
-	opacity: 0.9;
-}
-
-.flip>.front, .flip>.back {
-	display: block;
-	transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-	transition-duration: 0.5s;
-	transition-property: transform, opacity;
-}
-
-.flip>.front {
-	transform: rotateY(0deg);
-}
-
-.flip>.back {
-	position: absolute;
-	opacity: 0;
-	top: 0px;
-	left: 0px;
-	width: 100%;
-	height: 100%;
-	transform: rotateY(-180deg);
-}
-
-.flip:hover>.front {
-	transform: rotateY(180deg);
-}
-
-.flip:hover>.back {
-	opacity: 1;
-	transform: rotateY(0deg);
-}
-
-.flip.flip-vertical>.back {
-	transform: rotateX(-180deg);
-}
-
-.flip.flip-vertical:hover>.front {
-	transform: rotateX(180deg);
-}
-
-.flip.flip-vertical:hover>.back {
-	transform: rotateX(0deg);
-}
-
-.flip {
-	position: relative;
-	display: inline-block;
-	margin-right: 2px;
-	margin-bottom: 1em;
-	width: 400px;
-}
-
-.flip>.front, .flip>.back {
-	display: block;
-	color: white;
-	width: inherit;
-	background-size: cover !important;
-	background-position: center !important;
-	height: 220px;
-	padding: 1em 2em;
-	background: #313131;
-	border-radius: 10px;
-}
-
-.flip>.front p, .flip>.back p {
-	font-size: 0.9125rem;
-	line-height: 160%;
-	color: #999;
-}
-
-.text-shadow {
-	text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04),
-		3px 3px rgba(0, 0, 0, 0.04), 4px 4px rgba(0, 0, 0, 0.04), 0.125rem
-		0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04), 7px 7px
-		rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px
-		rgba(0, 0, 0, 0.04), 0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px
-		11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04), 13px 13px
-		rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem
-		rgba(0, 0, 0, 0.04), 16px 16px rgba(0, 0, 0, 0.04), 17px 17px
-		rgba(0, 0, 0, 0.04), 18px 18px rgba(0, 0, 0, 0.04), 19px 19px
-		rgba(0, 0, 0, 0.04), 1.25rem 1.25rem rgba(0, 0, 0, 0.04);
-}
-/* ================================ HEADER ============================= */
-#remote {
-	position: sticky;
-	top: 10px;
-	left: 92%;
-	transition: 0.5s; /*서서히 나타내기*/
-	z-index: 2;
-}
-
-#remoteb:hover {
-	color: #BDBDBD;
-	transition: 0.35s; /*서서히 나타내기*/
-}
-
-button, button::after {
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
-}
-
-button {
-	width: 180px;
-	height: 44px;
-	background: none;
-	border: 2px solid #1c3b58;
-	border-radius: 5px;
-	color: rgb(32, 32, 32, 0.7);
-	display: block;
-	font-size: 0.9em;
-	font-weight: bold;
-	padding: 0.5em 1em;
-	position: relative;
-	text-transform: uppercase;
-	font-family: 'Nanum Gothic', sans-serif;
-}
-
-button::before, button::after {
-	background: #1c3b58;
-	border-radius: 5px;
-	content: '';
-	position: absolute;
-	z-index: -1;
-}
-
-button:hover {
-	color: #FFFFFF;
-}
-
-.title1 {
-	animation: fadeInUp;
-	animation-duration: 4s;
-	animation-delay:;
-	color: red;
-}
-
-.title2 {
-	animation: fadeInUp;
-	animation-duration: 4.5s;
-	animation-delay:;
-}
-
-.title3 {
-	animation: fadeInUp;
-	animation-duration: 5s;
-	animation-delay:;
-}
-
-.title4 {
-	animation: fadeInUp;
-	animation-duration: 5s;
-	animation-delay:;
-}
-
-#sa {
-	display: inline-block;
-	margin: 0;
-	font-size: 2.0ex;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-family: 'Josefin Sans', sans-serif;
-}
 </style>
 
 
 
+<%--https://codepen.io/jasonleewilson/pen/gPrxwX--%>
 
 
 
+<div class="container animation1 mt-5" style="max-width:1300px;">
+	<div class="d-flex justify-content-between">
+		<a class="" style="color:#151823; font-family: 'Source Code Pro'; margin-right: -35px; font-size:28px;">
+			MENU
+		</a>
+		<a href="/" style="color:#1a1a1a; font-family: 'Readex Pro', sans-serif; margin-right: -35px; margin-top: 15px">
+			MORE+
+		</a>
+	</div>
+<div class="tarkikComandSlider p-4 border text-center" style="font-size:30px;">
+<c:forEach var="i" begin="0" end="5">
+	<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 1000) %></c:set>
+	<c:set var="totalstar1" value="0" />
+	<c:set var="totalstar2" value="0" />
+	<c:forEach var="reply1" items="${reply}" varStatus="status">
+		<c:if test="${null ne reply1.REPLY_NUM1 && reply1.REPLY_TYPE2 == api2[ran].id2}">
+			<c:set var="totalstar1" value="${totalstar1 + 1}" />
+			<c:set var="totalstar2" value="${totalstar2 + reply1.REPLY_NUM1/2}" />
+		</c:if>
+	</c:forEach>
+	<article class="comandSlider__item text-center">
 
+		<img class="comandSlider__item_name ml-4" style="height:250px; width:250px; border-radius: 3px;" src="${api2[ran].att_FILE_NO_MK}" />
 
+		<p class="comandSlider__item_name mt-2" style="margin-bottom: -3px; margin-top: -10px; font-family: 'Gowun Dodum', sans-serif;"><a style="color:#333; font-size:16px;" href="/board/APIForm/${api2[ran].ID}">${api2[ran].rcp_NM}<small style="color:#f74e3b">(${totalstar1})</small> <c:if test="${0 != totalstar2}"><fmt:formatNumber value="${(totalstar2/totalstar1)}" pattern=".00"/></c:if> </a></p>
 
+		<div class="comandSlider__item_contact" style="font-size:10px; word-break: break-all">
+			나트륨:${api2[ran].info_NA}(g),
+			열량:${api2[ran].info_ENG}(cal),
+			지방:${api2[ran].info_FAT}(g),
+			칼륨:${api2[ran].info_CAR}(kcal),
 
+		</div>
+	</article>
+</c:forEach>
 
+</div>
+</div>
 
-
-
-
-	<div class="container mt-4">
-
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th class="text-center">NUMBER</th>
-					<th class="text-center">TITLE</th>
-					<th class="text-right">USERNAME&nbsp;</th>
-				</tr>
-			</thead>
-
-			<tbody>
-				<c:forEach var="board" items="${boards.content}">
-
-						<tr>
-							<td class="text-center">${board.ID}</td>
-							<td class="text-center"><a href="/board/${board.ID}" style="color: rgba(23, 23, 23, 0.99);">${board.BOARD_TITLE}</a></td>
-							<td class="text-right">${board.BOARD_USERNAME}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-						</tr>
-
-				</c:forEach>
-			</tbody>
-		</table>
-
+<div class="container animation2" style="max-width:1300px;">
+	<div class="d-flex justify-content-between">
+		<a style="color:#1a1a1a; font-family: 'Source Code Pro'; margin-right: -35px; font-size:28px;">
+			R.BOARD
+		</a>
+		<a href="/board?ROLE=&board=0" style="color:#1a1a1a; font-family: 'Readex Pro', sans-serif; margin-right: -35px; margin-top: 15px">
+			MORE+
+		</a>
 	</div>
 
-<!-- ========================== 리모컨 type.1 ========================== -->
+	<div class="tarkikComandSlider p-4 border text-center" style="font-size:30px;">
+		<c:forEach var="i" begin="0" end="5">
+			<c:set var="totalstar1" value="0" />
+			<c:set var="totalstar2" value="0" />
+			<c:forEach var="reply1" items="${reply}" varStatus="status">
+				<c:if test="${null ne reply1.REPLY_NUM1 && reply1.REPLY_TYPE2 == rboards.content[i].ID}">
+					<c:set var="totalstar1" value="${totalstar1 + 1}" />
+					<c:set var="totalstar2" value="${totalstar2 + reply1.REPLY_NUM1/2}" />
+				</c:if>
+			</c:forEach>
+			<article class="comandSlider__item text-center">
 
+				<div class="comandSlider__item_name ml-4" style="height:250px; width:250px; border-radius: 3px;" >${rboards.content[i].RBOARDIMG01}<c:if test="${rboards.content[i].RBOARDIMG01 == ''}"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20190827162820"/></c:if></div>
 
-<!-- ========================== 리모컨 type.2 ========================== -->
+				<p class="comandSlider__item_name mt-2" style="margin-bottom: -3px; margin-top: -10px; font-family: 'Gowun Dodum', sans-serif;"><a style="color:#333; font-size:16px;" href="/Rboard/${rboards.content[i].ID}">${rboards.content[i].RBOARDTITLE}<small>(${totalstar1})</small> <c:if test="${0 != totalstar2}"><fmt:formatNumber value="${(totalstar2/totalstar1)}" pattern=".00"/></c:if> </a></p>
 
-<c:if test="${boards.totalPages<=boards.number}">
-	<span class="d-flex justify-content-center mt-1"> <a style="color: red; font-size: 14px;" href="?page=${boards.totalPages-1}">이페이지는 아직 공지사항이 게시되어있지 않습니다(누르면 마지막 페이지로 돌아갑니다)</a>
-	</span>
-</c:if>
-<!-- justify-content-center 부트스트랩 flex 정렬할때 문법 -->
-
-
-<ul class="pagination justify-content-center mt-5">
-
-	<c:choose>
-		<c:when test="${boards.first}">
-			<li class="page-item disabled"><a class="page-link" href="?page=${boards.number-1}">Previous</a></li>
-		</c:when>
-		<c:otherwise>
-			<li class="page-item"><a style="color: #FE7348" class="page-link" href="?page=${boards.number-1}">Previous</a></li>
-		</c:otherwise>
-	</c:choose>
-
-	<c:if test="${boards.number<9}">
-		<c:forEach var="i" begin="0" end="9">
-
-
-			<c:if test="${null ne param.stype }">
-				<li class="page-item"><a style="color: #F79E5F" id="moveMove" class="page-link" href="?page=${i}&stype=${param.stype}"> ${i+1}</a></li>
-			</c:if>
-			<c:if test="${null eq param.stype }">
-				<li class="page-item"><a style="color: #F79E5F" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
-			</c:if>
+				<div class="comandSlider__item_contact imgbox1 P-3" style="font-size:10px; word-break:break-all; text-overflow: ellipsis;">
+					${rboards.content[i].RBOARDCONTENT}
+				</div>
+			</article>
 		</c:forEach>
-	</c:if>
 
-	<c:if test="${boards.number>=9}">
-		<c:forEach var="i" begin="${boards.number-5}" end="${(boards.number+5)}">
-			<li class="page-item"><a style="color: #F79E5F" class="page-link" href="?page=${i}"> ${i+1} </a></li>
+	</div>
+</div>
+
+<div class="container animation3" style="max-width:1300px;">
+	<div class="d-flex justify-content-between">
+		<a style="color:#1a1a1a; font-family: 'Source Code Pro'; margin-right: -35px; font-size:28px;">
+			NOTICE
+		</a>
+		<a href="/board?ROLE=&board=1" style="color:#1a1a1a; font-family: 'Readex Pro', sans-serif; margin-right: -35px; margin-top: 15px">
+			MORE+
+		</a>
+	</div>
+	<div class="tarkikComandSlider p-4 border text-center" style="font-size:30px;">
+		<c:forEach var="notice" items="${notice}">
+			<c:set var="totalstar1" value="0" />
+			<c:set var="totalstar2" value="0" />
+			<c:forEach var="reply1" items="${reply}" varStatus="status">
+				<c:if test="${null ne reply1.REPLY_NUM1 && reply1.REPLY_TYPE2 == api.content[i].id2}">
+					<c:set var="totalstar1" value="${totalstar1 + 1}" />
+					<c:set var="totalstar2" value="${totalstar2 + reply1.REPLY_NUM1/2}" />
+				</c:if>
+			</c:forEach>
+
+			<article class="comandSlider__item text-center">
+
+				<div class="comandSlider__item_name ml-4" style="height:250px; width:250px; border-radius: 3px;" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20190827162820"/></div>
+
+				<p class="comandSlider__item_name mt-2" style="margin-bottom: -3px; margin-top: -10px; font-family: 'Gowun Dodum', sans-serif;"><a style="color:#333; font-size:16px;" href="/board/${notice.ID}">${notice.BOARDTITLE}<small>(${totalstar1})</small> <c:if test="${0 != totalstar2}"><fmt:formatNumber value="${(totalstar2/totalstar1)}" pattern=".00"/></c:if> </a></p>
+
+				<div class="comandSlider__item_contact imgbox1" style="font-size:10px;">
+						${notice.BOARDCONTENT}
+				</div>
+			</article>
 		</c:forEach>
-	</c:if>
+
+	</div>
+</div>
+
+<div class="container animation4" style="max-width:1300px;">
+	<div class="d-flex justify-content-between">
+		<a style="color:#333; font-family: 'Readex Pro', sans-serif; margin-right: -35px; font-size:28px;">
+			My FAVORITE
+		</a>
+		<a href="/user/Favorite" style="color:#1a1a1a; font-family: 'Readex Pro', sans-serif; margin-right: -35px; margin-top: 15px">
+			MORE+
+		</a>
+	</div>
+	<div class="tarkikComandSlider p-4 border text-center" style="font-size:30px;">
+		<c:forEach var="favorite" items="${favorites.content}">
+
+			<c:set var="totalstar1" value="0" />
+			<c:set var="totalstar2" value="0" />
+			<c:forEach var="reply1" items="${reply}" varStatus="status">
+				<c:if test="${null ne reply1.REPLY_NUM1 && reply1.REPLY_TYPE2 == api.content[i].id2}">
+					<c:set var="totalstar1" value="${totalstar1 + 1}" />
+					<c:set var="totalstar2" value="${totalstar2 + reply1.REPLY_NUM1/2}" />
+				</c:if>
+			</c:forEach>
+				<c:if test="${principal.user.username eq favorite.FAVORTIE_NAME}">
+
+				<article class="comandSlider__item text-center">
+
+				<img class="comandSlider__item_name ml-4" style="height:250px; width:250px; border-radius: 3px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png?20190827162820" />
+
+				<p class="comandSlider__item_name mt-2" style="margin-bottom: -3px; margin-top: -10px; font-family: 'Gowun Dodum', sans-serif;"><a style="color:#333; font-size:16px;" href="/user/Favorite">${favorite.FAVORTIE_TITLE}<small>(${totalstar1})</small> <c:if test="${0 != totalstar2}"><fmt:formatNumber value="${(totalstar2/totalstar1)}" pattern=".00"/></c:if> </a></p>
+
+				<div class="comandSlider__item_contact" style="font-size:10px;">
+					<span style="font-size: 12px!important;">
+							${favorite.BOARD_CDATE}
+
+			<c:forEach var="i" begin="0" end="30">
+			</c:forEach>
+					</span>
+				</div>
+			</article>
+				</c:if>
+			</c:forEach>
+
+
+	</div>
+</div>
 
 
 
 
-	<c:choose>
-		<c:when test="${boards.last}">
-			<li class="page-item disabled"><a class="page-link" href="?page=${boards.number+1}">Next</a></li>
-		</c:when>
 
-		<c:otherwise>
-			<li class="page-item"><a style="color: #FE7348" class="page-link" href="?page=${boards.number+1}">Next</a></li>
-		</c:otherwise>
-	</c:choose>
 
-</ul>
-<div style="padding-bottom: 300px;"></div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+<div style="padding-bottom: 150px;"></div>
+
+
+
+
+
+<script>
+	// autoplay: true, dots: true,
+
+	$(document).ready(function() {
+		$('.tarkikComandSlider').slick({
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			autoplaySpeed: 5000,
+			autoplay: true,
+			arrows: true,
+		});
+	});
+</script>
+
+<script>
+	let mainText1 = document.querySelector(".animation1");
+	let mainText2 = document.querySelector(".animation2");
+	let mainText3= document.querySelector(".animation3");
+	let mainText4 = document.querySelector(".animation4");
+	let mainText5 = document.querySelector(".backgroundimg");
+	let mainText6 = document.querySelector(".hero-section");
+
+	window.addEventListener('scroll',function (){
+		let value = window.scrollY
+		console.log("scrollY", value);
+
+		 if (value>450) {
+			 mainText1.style.animation='disappear 1.45s ease-out forwards';
+			 mainText6.style.animation='disappear2 1s ease-out forwards';
+		 } else {
+			 mainText6.style.animation='disappear 1s ease-out forwards';
+		 }
+		 if (value>650) {
+			mainText2.style.animation='disappear 1.45s ease-out forwards';
+		} else {
+
+		 }
+		 if (value>1150) {
+			mainText3.style.animation='disappear 1.45s ease-out forwards';
+		} else {
+
+		 }
+		 if (value>1650) {
+			mainText4.style.animation='disappear 1.45s ease-out forwards';
+		} else {
+
+		 }
+	});
+</script>
+
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
-<%@ include file="layout/footer.jsp"%>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<%--<%@ include file="layout/footer.jsp"%>--%>

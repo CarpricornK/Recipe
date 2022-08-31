@@ -14,10 +14,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.cos.blog.config.auth.PrincipalDetail;
 import com.cos.blog.dto.ResponseDto;
@@ -43,7 +40,7 @@ public class UserApiController {
 
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) { // username,password,email
-		System.out.println("UserApiController : save 호출됨");
+//		System.out.println("UserApiController : save 호출됨");
 		// 실제로 DB에 insert를 하고 아래에서 return이 되면 됨
 		userService.회원가입(user);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
@@ -91,7 +88,6 @@ public class UserApiController {
 	public ResponseDto<Integer> PW_FIND2(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principal,
 									   HttpSession session) { /* @RequestBody json 받고싶으면 이거적으면됨 */
 		userService.회원수정2(user);
-
 		// 세션 등록
 		String encPassword = encoder.encode(user.getUSER_PASSWORD());
 
@@ -102,18 +98,19 @@ public class UserApiController {
 	}
 
 
+	@PostMapping("/user/updateForm")
+	public ResponseDto<Integer> Mail(@RequestBody User user) { // username,password,email
+//		System.out.println("UserApiController : save 호출됨");
+		// 실제로 DB에 insert를 하고 아래에서 return이 되면 됨
+		userService.인증메일재전송(user);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
 
-	@PutMapping("/user/updateForm")
-	public ResponseDto<Integer> Mail(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principal,
-										 HttpSession session) { /* @RequestBody json 받고싶으면 이거적으면됨 */
-		userService.인증메일전송2(user);
 
-		// 세션 등록
-		String encPassword = encoder.encode(user.getUSER_PASSWORD());
 
-		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(user.getUsername(), user.getUSER_PASSWORD()));
-		SecurityContextHolder.getContext().setAuthentication(authentication);
-
+	@DeleteMapping("/user/userdelete/{userid}")
+	public ResponseDto<Integer> userdelete(@PathVariable int userid){
+		userService.유저삭제(userid);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 

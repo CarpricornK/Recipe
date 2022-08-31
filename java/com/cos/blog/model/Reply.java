@@ -45,6 +45,10 @@ public class Reply {
 	@Column(length = 10)
 	private String REPLY_NUM1;
 
+	@JsonProperty(value="REPLY_TYPE2")
+	@Column(length = 10)
+	private String REPLY_TYPE2;
+
 	@JsonProperty(value="BOARDID")
 	@ManyToOne
 	@JoinColumn(name="BOARDID")
