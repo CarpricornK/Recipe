@@ -75,6 +75,23 @@ let index = {
 
     },
 
+
+    reportT: function(reportId, reportType) {
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/board/reports/"+reportId+"/Tval/"+reportType,
+            dataType: "json",
+        }).done(function(resp) {
+            alert("문의완료.");
+            // +ID4+"-"+ID5+"USERNAME :"+USERNAME+"TITLE:"+TITLE
+            history.go(0);
+        }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+
+    },
+
 }
 
 index.init();

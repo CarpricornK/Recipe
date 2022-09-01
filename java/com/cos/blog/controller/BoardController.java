@@ -76,15 +76,25 @@ public class BoardController {
 
 	@GetMapping("/board/report")
 	public String report(Model model,
-			@PageableDefault(size = 11, sort = "ID", direction = Sort.Direction.DESC) Pageable pageable
+			@PageableDefault(size = 9, sort = "ID", direction = Sort.Direction.DESC) Pageable pageable
 			, @RequestParam(required = false, defaultValue = "0") Integer page) {
 		//신고
-		Page<Declaration> declaration1=boardService.dhvalsearch(1,pageable);
-		//문의
-		Page<Declaration> declaration2=boardService.dhvalsearch(2,pageable);
+		Page<Declaration> declaration5=boardService.declarationlist(pageable);
+
+//		Page<Declaration> declaration1=boardService.dhvalsearch(1,pageable);
+//
+//		Page<Declaration> declaration2=boardService.dhvalsearch(2,pageable);
+
+		Page<Declaration> declaration1=boardService.dhvalsearch2(1, 1, pageable);
+		Page<Declaration> declaration2=boardService.dhvalsearch2(2, 1, pageable);
+		Page<Declaration> declaration3=boardService.dhvalsearch2(1, 2, pageable);
+		Page<Declaration> declaration4=boardService.dhvalsearch2(2, 2, pageable);
 
 		model.addAttribute("declaration1", declaration1);
 		model.addAttribute("declaration2", declaration2);
+		model.addAttribute("declaration3", declaration3);
+		model.addAttribute("declaration4", declaration4);
+		model.addAttribute("declaration5", declaration5);
 
 
 		return "board/report";

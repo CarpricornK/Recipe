@@ -15,9 +15,169 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 
 <style>
+	/*운동상자*/
+	@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+	@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+	/* fontawesome */
+	[class*="fontawesome-"]:before {
+		font-family: 'FontAwesome', sans-serif;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	/*------ utiltity classes -----*/
+	.fl{ float:left; }
+	.fr{ float: right; }
+	/*its also known as clearfix*/
+	.group:before,
+	.group:after {
+		content: "";
+		display: table;
+	}
+	.group:after {
+		clear: both;
+	}
+	.group {
+		zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
+	}
+
+	body {
+		font-family: 'Droid Sans', sans-serif;
+		line-height: 1;
+	}
+	.wrapper {
+	}
+	.pricing-table {
+		width: 100%;
+		text-align: center;
+		padding: 10px;
+		padding-right: 0;
+	}
+	.pricing-table .heading{
+		color: #9C9E9F;
+		text-transform: uppercase;
+		font-size: 1.3rem;
+		margin-bottom: 4rem;
+	}
+	.block{
+		width: 30%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		/*    border: 1px solid red;*/
+	}
+	/*Shared properties*/
+	.title{
+		color: #FEFEFE;
+		text-transform: capitalize;
+		line-height: 2.5;
+		position: relative;
+	}
+	.content{
+		position: relative;
+		color: #FEFEFE;
+		padding: 20px 0 10px 0;
+	}
+	/*arrow creation*/
+	.content:after, .content:before{
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.content:after{
+		border-color: rgba(136, 183, 213, 0);
+		border-width: 5px;
+		margin-left: -5px;
+	}
+	/*/arrow creation*/
+	.price{
+		position: relative;
+		display: inline-block;
+		margin-bottom: 0.625rem;
+	}
+	.price span{
+		font-size: 6rem;
+		letter-spacing: 8px;
+		font-weight: bold;
+	}
+	.price sup{
+		font-size: 1.5rem;
+		position: absolute;
+		top: 12px;
+		left: -12px;
+	}
+	.hint{
+		font-style: italic;
+		font-size: 0.9rem;
+	}
+	.features{
+		list-style-type: none;
+		background: #FFFFFF;
+		text-align: left;
+		color: #9C9C9C;
+		padding:30px 22%;
+		font-size: 0.9rem;
+	}
+	.features li{
+		padding:15px 0;
+		width: 100%;
+	}
+	.features li span{
+		padding-right: 0.4rem;
+	}
+
+	/*PERSONAL*/
+	.personal .title{
+		background: #78CFBF;
+	}
+	.personal .content,.personal{
+		background: #82DACA;
+	}
+	.personal .content:after{
+		border-top-color: #82DACA;
+	}
+	.personal{
+		border-top-color: #FFFFFF;
+	}
+	/*PROFESSIONAL*/
+	.professional .title{
+		background: #3EC6E0;
+	}
+	.professional .content,.professional{
+		background: #53CFE9;
+	}
+
+	/*BUSINESS*/
+	.business .title{
+		background: #E3536C;
+	}
+	.business .content,.business{
+		background: #EB6379;
+	}
+	.business .content:after{
+		border-top-color: #EB6379;
+	}
+	/*운동상자*/
 	img {
 		width: 392px !important;
 		height: 260px;
@@ -634,6 +794,72 @@
 		</div>
 
 	</div>
+<hr/>
+<%--운동상자--%>
+	<div class="wrapper d-flex justify-content-center animate__animated animate__fadeIn">
+		<!-- PRICING-TABLE CONTAINER -->
+		<div class="pricing-table group">
+			<h1 class="heading">
+				Exercise
+			</h1>
+			<!-- PERSONAL -->
+			<div class="block personal fl">
+				<h2 class="title">personal</h2>
+				<!-- CONTENT -->
+				<div class="content">
+					<p class="price">
+						<sup>.</sup>
+						<span>29</span>
+						<sub>/kcal.</sub>
+					</p>
+					<p class="hint">Run</p>
+				</div>
+				<!-- /CONTENT -->
+				<!-- FEATURES -->
+
+				<!-- /FEATURES -->
+
+			</div>
+			<!-- /PERSONAL -->
+			<!-- PROFESSIONAL -->
+			<div class="block professional fl">
+				<h2 class="title">Professional</h2>
+				<!-- CONTENT -->
+				<div class="content">
+					<p class="price">
+						<sup>$</sup>
+						<span>99</span>
+						<sub>/mo.</sub>
+					</p>
+					<p class="hint">Suitable for startups</p>
+				</div>
+				<!-- /CONTENT -->
+
+
+			</div>
+			<!-- /PROFESSIONAL -->
+			<!-- BUSINESS -->
+			<div class="block business fl">
+				<h2 class="title">Business</h2>
+				<!-- CONTENT -->
+				<div class="content">
+					<p class="price">
+						<sup>$</sup>
+						<span>249</span>
+						<sub>/mo.</sub>
+					</p>
+					<p class="hint">For established business</p>
+				</div>
+				<!-- /CONTENT -->
+
+
+
+			</div>
+			<!-- /BUSINESS -->
+		</div>
+		<!-- /PRICING-TABLE -->
+	</div>
+
 <hr/>
 	<div class="container p-2" style="min-width:1000px; background-color:rgba(231, 233, 235, 1); border-radius:5px; word-break: break-all; min-height: 300px; max-height: 500px; overflow: auto">
 		<div id="accordion">

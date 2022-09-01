@@ -11,4 +11,7 @@ public interface DeclarationRepository extends JpaRepository<Declaration, Intege
 
     Page<Declaration> findAll(Pageable pageable);
     Page<Declaration> findByHVALContains(Integer hval, Pageable pageable);
+
+    Page<Declaration> findByHVALContainsAndTYPEContains(Integer val, Integer val2, Pageable pageable);
+
 }

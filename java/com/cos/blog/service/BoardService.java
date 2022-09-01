@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.annotation.Resource;
 
@@ -128,6 +129,19 @@ public class BoardService implements IBoardService {
 //		System.out.println("TITLE :"+TITLE +"저장완료");
 		favoriteRepository.save(favorites);
 	}
+// 신고 문의 해결
+	@Transactional
+	public void reportsend1(int reportId, int reportType, Declaration declaration) {
+		Declaration declaration1 = declarationRepository.findById(reportId).orElseThrow(() -> {
+			return new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을 수 없습니다.");
+		}); // 영속화 완료
+		declaration1.setTYPE(Integer.toString(reportType));
+		System.out.println("reportId:"+reportId);
+		System.out.println("reportTvalue:"+reportType);
+//		System.out.println("TITLE :"+TITLE +"저장완료");
+		declarationRepository.save(declaration1);
+	}
+
 //	글목록
 	@Transactional(readOnly = true)
 	public Page<Board> boardlist(Pageable pageable) {
@@ -154,6 +168,12 @@ public class BoardService implements IBoardService {
 	public Page<Declaration> dhvalsearch(Integer hval, Pageable pageable) {
 
 		return declarationRepository.findByHVALContains(hval, pageable);
+	}
+	//	신고 문의 분류2(문의중 & 해결)
+	@Transactional(readOnly = true)
+	public Page<Declaration> dhvalsearch2(Integer val, Integer val2, Pageable pageable) {
+
+		return declarationRepository.findByHVALContainsAndTYPEContains(val, val2, pageable);
 	}
 
 //	글목록인기

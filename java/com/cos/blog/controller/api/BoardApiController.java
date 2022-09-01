@@ -112,11 +112,20 @@ public class BoardApiController {
 //		System.out.println("iD :"+boardId3);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+//                 "/api/board/favorites/"+ID4+"/fsave/"+ID5+/USERNAME/+USERNAME+/TITLE/+TITLE
 	@PutMapping("/api/board/favorites/{ID4}/fsave/{ID5}/USERNAME/{USERNAME}/TITLE/{TITLE}")
 	public ResponseDto<Integer> favorites(@PathVariable int ID4, @PathVariable int ID5, @PathVariable String USERNAME, @PathVariable String TITLE, Favorites favorites) {
 		boardService.favoritesend2(ID5, USERNAME, TITLE, favorites);
 //		System.out.println("name :");
 //		System.out.println("Id :"+ID5);
+//		System.out.println("USERNAME :"+USERNAME);
+//		System.out.println("TITLE :"+TITLE);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+//문의완료          "/api/board/reports/"+reportId+"/Tval/"+reportType
+	@PutMapping("/api/board/reports/{reportId}/Tval/{reportType}")
+	public ResponseDto<Integer> reportT(@PathVariable int reportId, @PathVariable int reportType, Declaration declaration) {
+		boardService.reportsend1(reportId, reportType, declaration);
 //		System.out.println("USERNAME :"+USERNAME);
 //		System.out.println("TITLE :"+TITLE);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
