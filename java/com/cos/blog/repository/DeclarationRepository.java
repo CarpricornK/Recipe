@@ -6,6 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 
 public interface DeclarationRepository extends JpaRepository<Declaration, Integer>{
 
@@ -14,4 +16,5 @@ public interface DeclarationRepository extends JpaRepository<Declaration, Intege
 
     Page<Declaration> findByHVALContainsAndTYPEContains(Integer val, Integer val2, Pageable pageable);
 
+    List<Declaration> findByHVALContainsAndTYPEContains(Integer val, Integer val2);
 }

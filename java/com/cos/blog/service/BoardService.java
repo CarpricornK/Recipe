@@ -149,7 +149,7 @@ public class BoardService implements IBoardService {
 		return boardRepository.findAll(pageable);
 	}
 
-	//	글목록
+	//	신고&문의 페이지 리스트
 	@Transactional(readOnly = true)
 	public Page<Declaration> declarationlist(Pageable pageable) {
 
@@ -219,6 +219,11 @@ public class BoardService implements IBoardService {
 
 		return apiRepository.findByRcpNMContains(search, pageable);
 	}
+
+
+
+
+
 //	API목록2
 	public List<MongoDTO> APIlist2(){ return apiRepository.findAll(); }
 
@@ -233,6 +238,17 @@ public class BoardService implements IBoardService {
 	public List<Favorites> favoritelist2() {
 
 		return favoriteRepository.findAll();
+	}
+// 신고&문의 리스트 찾기 전체불러오기
+	public List<Declaration> dhvalsearch3(Integer val, Integer val2) {
+
+		return declarationRepository.findByHVALContainsAndTYPEContains(val, val2);
+	}
+
+	//	신고&문의 페이지 리스트 전체불러오기
+	public List<Declaration> declarationlist2() {
+
+		return declarationRepository.findAll();
 	}
 	
 	public List<Board> boardlist2(){

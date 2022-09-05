@@ -1,0 +1,522 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Carpricorn
+  Date: 2022-08-31
+  Time: 오후 3:51
+  To change this template use File | Settings | File Templates.
+
+  https://codepen.io/codetimeio/pen/RYMEJe
+
+  테일윈드 사용법
+  https://v1.tailwindcss.com/docs/padding
+
+   관리자만 볼수있는 페이지!
+
+   문의완료 문의완료 취소만 남았음
+
+   페이징 4개 받은것중 제일큰거
+   c:if test = "
+   declaration1.last > declaration2.last && declaration1.last > declaration3.last
+   && declaration1.last > declaration4.last
+   "
+
+--%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.6.5/tailwind.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+    <style>
+        /*신고 통계*/
+        .logo-brand {
+            width: 250px;
+            height: 60px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 0;
+            text-align: center;
+            background: #242A34;
+            color: #fff;
+        }
+
+        .logo-brand a {
+            color: #fff;
+            font-size: 40px;
+            text-decoration: none;
+        }
+
+        .col-lg-3 {
+            padding: 7px;
+        }
+
+        .col-lg-7 {
+            padding: 7px;
+        }
+
+        .col-lg-5 {
+            padding: 7px;
+        }
+
+        .card {
+            color: #e8eaf6;
+            height: 100px;
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .26);
+        }
+
+        .chart-card {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .26);
+        }
+
+        .chart-card .content {
+            padding: 5px;
+            overflow: hidden;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, .1);
+        }
+
+        .chart-card .chart-heading {
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        .orders-card h4 {
+            margin: 0;
+        }
+
+        .orders-card .row {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .card>i {
+            position: absolute;
+            font-size: 2.5rem;
+            right: 0;
+            bottom: 0rem;
+        }
+
+        .card .count {
+            position: relative;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+        .card .name {
+            position: relative;
+            font-size: 16px;
+            line-height: 14px;
+        }
+
+        .card1 {
+            background-color: #9575cd;
+            border-color: #9575cd;
+        }
+
+        .card2 {
+            background-color: #7986cb;
+            border-color: #7986cb;
+        }
+
+        .card3 {
+            background-color: #4db6ac;
+            border-color: #4db6ac;
+        }
+
+        .card4 {
+            background-color: #64B5F6;
+            border-color: #64B5F6;
+        }
+
+
+        .wrapper {
+            font-family: 'Lato', Calibri, Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            background: #E8E9EE;
+            height: 115px;
+            position: relative;
+        }
+        /*신고 통계*/
+        .fakeimg {
+            height: 200px;
+            width: 50%;
+            background: #aaa;
+            font-family: Rockwell;
+        }
+
+        .fakeimg2 {
+            height: 250px;
+            width: 500px;
+            background: #aaa;
+        }
+
+        .chart__container {
+            padding-top: 20px;
+            box-shadow: 0px 5px 12px rgba(0,0,0,0.2);
+            background-color: #273241;
+            border-radius: 8px;
+        }
+
+        .nav2{
+            width:150px;
+            background-color:none;
+            margin-top:30px;
+            padding-bottom: 100%;
+            border-right: 1px solid #848484;
+        }
+
+        .card-title:hover{
+            background-color:#EF8719;
+        }
+
+        .box-title:hover{
+            background-color:#EFECEC;
+        }
+
+        .box {
+            padding-left:25px;
+            padding-right:10px;
+        }
+        .jumbotron{
+            background: url("https://picsum.photos/1600/?random") center no-repeat;
+            background-color: #0005;
+            background-blend-mode: darken;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="jumbotron text-center" style="margin-bottom:0; color:white;">
+    <h1>My First Bootstrap 4 Page</h1>
+    <p>Resize this responsive page to see the effect!</p>
+</div>
+<c:set var = "d1count" value = "0" />
+<c:forEach var="dlists1" items="${declaration1}">
+            <c:set var="d1count" value="${d1count + 1}" />
+</c:forEach>
+<c:set var = "d2count" value = "0" />
+<c:forEach var="dlists2" items="${declaration2}">
+    <c:set var="d2count" value="${d2count + 1}" />
+</c:forEach>
+<c:set var = "d3count" value = "0" />
+<c:forEach var="dlists3" items="${declaration3}">
+    <c:set var="d3count" value="${d3count + 1}" />
+</c:forEach>
+<c:set var = "d4count" value = "0" />
+<c:forEach var="dlists4" items="${declaration2}">
+    <c:set var="d4count" value="${d4count + 4}" />
+</c:forEach>
+
+<div class="row">
+
+
+
+    <div class="nav2">
+
+        <a class="" style="color:black; text-decoration: none;" href="/">
+        <div class="box border-right-0 border-left-0 border-white">
+            <div class="border-0 text-center">
+                <h4 class="box-title rounded p-4">
+                    <i class='fas fa-door-open' style='font-size:24px'></i>
+                    <p class="" style="font-size:4px;"><small>EXIT</small></p>
+                </h4>
+            </div>
+        </div>
+        </a>
+
+        <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class='fa fa-id-card' style='font-size:24px'></i>
+                        <p class="" style="font-size:4px;"><small>Profile</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
+
+        <a class="" style="color:black; text-decoration: none;" href="/board">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class='fa fa-list' style='font-size:24px'></i>
+                        <p class="" style="font-size:4px;"><small>Board</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
+
+        <a class="" style="color:black; text-decoration: none;" href="/user/Admin">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class='fa fa-lock' style='font-size:24px'></i>
+                        <p style="font-size:4px;"><small>Admin</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
+
+        <a class="" style="color:black; text-decoration: none;" href="/user/My">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class='fab fa-medium-m' style='font-size:24px'></i>
+                        <p style="font-size:4px;"><small>My Page</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
+
+
+
+
+    </div>
+
+
+
+    <div class="container " style="margin-top:30px">
+        <div class="row ml-3">
+            <div class="col-sm-6 ">
+                <h2>About Me</h2>
+                <h5>Photo of me:</h5>
+
+                <div class="fakeimg2">
+
+                    <div class="chart__container">
+                        <canvas id="chart" width="600" height="300"></canvas>
+                    </div>
+
+                </div>
+
+
+                <hr class="d-sm-none">
+            </div>
+
+            <div class="col-sm-6">
+                <h2>About Me</h2>
+                <h5>Photo of me:</h5>
+
+                <div class="fakeimg2">
+
+                    <div class="chart__container">
+                        <canvas id="chart_0" width="600" height="300"></canvas>
+                    </div>
+
+                </div>
+
+
+                <hr class="d-sm-none">
+            </div>
+        </div>
+
+
+        <div class="wrapper mt-5">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-sm-6" ng-controller="WebsocketCtrl as ws">
+                        <div class="card card1">
+                            <i class="fa fa-truck"></i>
+                            <span class="count">${d1count}</span>
+                            <div class="name">신고 처리중</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card card2">
+                            <i class="fa fa-binoculars "></i>
+                            <span class="count">${d2count}</span>
+                            <div class="name">문의 처리중</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card card3">
+                            <i class="fa fa-ban"></i>
+                            <span class="count">${d3count}</span>
+                            <div class="name">Veículos sem documento fiscal</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card card4">
+                            <i class="fa fa-ban"></i>
+                            <span class="count">${d4count}</span>
+                            <div class="name">Veículos com restrição no RN</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        신고활성화 : ${d1count}
+        문의활성화 : ${d2count}
+        신고비활성화 : ${d3count}
+        문의비활성화 : ${d4count}
+    </div>
+</div>
+
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+
+<%--chart1--%>
+<script>
+    let ctx = document.getElementById("chart").getContext('2d');
+
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, "#ff6c00");
+    gradientStroke.addColorStop(1, "#ff3b74");
+
+    var gradientBkgrd = ctx.createLinearGradient(0, 100, 0, 400);
+    gradientBkgrd.addColorStop(0, "rgba(244,94,132,0.2)");
+    gradientBkgrd.addColorStop(1, "rgba(249,135,94,0)");
+
+    let draw = Chart.controllers.line.prototype.draw;
+    Chart.controllers.line = Chart.controllers.line.extend({
+        draw: function() {
+            draw.apply(this, arguments);
+            let ctx = this.chart.chart.ctx;
+            let _stroke = ctx.stroke;
+            ctx.stroke = function() {
+                ctx.save();
+                //ctx.shadowColor = 'rgba(244,94,132,0.8)';
+                ctx.shadowBlur = 8;
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 6;
+                _stroke.apply(this, arguments)
+                ctx.restore();
+            }
+        }
+    });
+
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+
+        // The data for our dataset
+        data: {
+            labels: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+            datasets: [{
+                label: "Income",
+                backgroundColor: gradientBkgrd,
+                borderColor: gradientStroke,
+                data: [5500, 2500, 10000, 6000, 14000, 1500, 7000,20000],
+                pointBorderColor: "rgba(255,255,255,0)",
+                pointBackgroundColor: "rgba(255,255,255,0)",
+                pointBorderWidth: 0,
+                pointHoverRadius: 8,
+                pointHoverBackgroundColor: gradientStroke,
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointHoverBorderWidth: 4,
+                pointRadius: 1,
+                borderWidth: 5,
+                pointHitRadius: 16,
+            }]
+        },
+
+        // Configuration options go here
+        options: {
+            tooltips: {
+                backgroundColor:'#fff',
+                displayColors:false,
+                titleFontColor: '#000',
+                bodyFontColor: '#000'
+
+            },
+            legend: {
+                display: false
+            },
+            scales: {
+                xAxes: [{
+                    gridLines: {
+                        display:false
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        // Include a dollar sign in the ticks
+                        callback: function(value, index, values) {
+                            return (value / 1000) + 'K';
+                        }
+                    }
+                }],
+            }
+        }
+    });
+</script>
+
+<%--chart2--%>
+<script>
+    var data = {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        datasets: [{
+            label: "Dataset #1",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: [65, 59, 20, 81, 56, 55, 40],
+        }]
+    };
+
+    var option = {
+        scales: {
+            yAxes: [{
+                stacked: true,
+                gridLines: {
+                    display: true,
+                    color: "rgba(255,99,132,0.2)"
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false
+                }
+            }]
+        }
+    };
+
+    Chart.Bar('chart_0', {
+        options: option,
+        data: data
+    });
+
+</script>
+
+</body>
+</html>
+

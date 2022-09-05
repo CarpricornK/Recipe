@@ -100,6 +100,31 @@ public class BoardController {
 		return "board/report";
 	}
 
+	@GetMapping("/board/AdminChart")
+	public String AdminChart(Model model) {
+		List<Declaration> declaration5=boardService.declarationlist2();
+
+
+//		신고 처리중
+		List<Declaration> declaration1=boardService.dhvalsearch3(1, 1);
+//		문의 처리중
+		List<Declaration> declaration2=boardService.dhvalsearch3(2, 1);
+		List<Declaration> declaration3=boardService.dhvalsearch3(1, 2);
+		List<Declaration> declaration4=boardService.dhvalsearch3(2, 2);
+
+		model.addAttribute("declaration1", declaration1);
+		model.addAttribute("declaration2", declaration2);
+		model.addAttribute("declaration3", declaration3);
+		model.addAttribute("declaration4", declaration4);
+		model.addAttribute("declaration5", declaration5);
+
+		model.addAttribute("Users",userService.muserlist());
+		model.addAttribute("boards2", boardService.boardlist2());
+		model.addAttribute("rboards2", boardService.recipelist2());
+		model.addAttribute("favorite", boardService.favoritelist2());
+		return "/board/AdminChart";
+	}
+
 
 
 	@GetMapping("/board")
@@ -205,6 +230,7 @@ public class BoardController {
 		model.addAttribute("favorite", boardService.favoritelist2());
 		return "board/APIForm";
 	}
+
 
 //	API상세보기
 	@GetMapping("/board/APIForm/{ID}")
@@ -316,6 +342,7 @@ public class BoardController {
 //    public String Favorite() {
 //	  return "user/Favorite";
 //}
+
 
 
 
