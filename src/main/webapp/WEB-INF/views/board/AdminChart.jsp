@@ -221,6 +221,8 @@
     <h1>My First Bootstrap 4 Page</h1>
     <p>Resize this responsive page to see the effect!</p>
 </div>
+
+<%--신고문의--%>
 <c:set var = "d1count" value = "0" />
 <c:forEach var="dlists1" items="${declaration1}">
             <c:set var="d1count" value="${d1count + 1}" />
@@ -236,6 +238,100 @@
 <c:set var = "d4count" value = "0" />
 <c:forEach var="dlists4" items="${declaration2}">
     <c:set var="d4count" value="${d4count + 4}" />
+</c:forEach>
+
+<%--날짜별 회원--%>
+
+<c:set var = "month01" value = "0" /><c:set var = "month02" value = "0" />
+<c:set var = "month03" value = "0" /><c:set var = "month04  " value = "0" />
+<c:set var = "month05" value = "0" /><c:set var = "month06" value = "0" />
+<c:set var = "month07" value = "0" /><c:set var = "month08" value = "0" />
+<c:set var = "month09" value = "0" /><c:set var = "month10" value = "0" />
+<c:set var = "month11" value = "0" /><c:set var = "month12" value = "0" />
+
+<c:forEach var="ulists1" items="${Users}">
+    <fmt:formatDate value="${ulists1.USER_CDATE}" var="MDate" pattern="MM"/>
+    <c:if test="${MDate == '01'}">
+        <c:set var="month01" value="${month01 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '02'}">
+        <c:set var="month02" value="${month02 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '03'}">
+        <c:set var="month03" value="${month03 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '04'}">
+        <c:set var="month04" value="${month04 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '05'}">
+        <c:set var="month05" value="${month05 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '06'}">
+        <c:set var="month06" value="${month06 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '07'}">
+        <c:set var="month07" value="${month07 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '08'}">
+        <c:set var="month08" value="${month08 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '09'}">
+        <c:set var="month09" value="${month09 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '10'}">
+        <c:set var="month10" value="${month10 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '11'}">
+        <c:set var="month11" value="${month11 + 1}" />
+    </c:if>
+    <c:if test="${MDate == '12'}">
+        <c:set var="month12" value="${month12 + 1}" />
+    </c:if>
+</c:forEach>
+
+<%--게시판 분류별 수--%>
+<c:set var = "Type1" value = "0" /><c:set var = "Type2" value = "0" />
+<c:set var = "Type3" value = "0" /><c:set var = "Type4  " value = "0" />
+<c:set var = "Type5" value = "0" /><c:set var = "Type6" value = "0" />
+<c:set var = "Type7" value = "0" /><c:set var = "Type8" value = "0" />
+<c:set var = "Type9" value = "0" /><c:set var = "Type10" value = "0" />
+<c:set var = "Type11" value = "0" /><c:set var = "Type12" value = "0" />
+
+<c:forEach var="rboardv" items="${rboards2}">
+
+    <c:if test="${rboardv.RBOARDFTYPE == '밥'}">
+        <c:set var="Type1" value="${Type1 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '후식'}">
+        <c:set var="Type2" value="${Type2 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '국'}">
+        <c:set var="Type3" value="${Type3 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '과일'}">
+        <c:set var="Type4" value="${Type4 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '빵'}">
+        <c:set var="Type5" value="${Type5 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '과자'}">
+        <c:set var="Type6" value="${Type6 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '조림'}">
+        <c:set var="Type7" value="${Type7 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '찜'}">
+        <c:set var="Type8" value="${Type8 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '무침'}">
+        <c:set var="Type9" value="${Type9 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '해물'}">
+        <c:set var="Type10" value="${Type10 + 1}" />
+    </c:if>
+    <c:if test="${rboardv.RBOARDFTYPE == '볶음'}">
+        <c:set var="Type11" value="${Type11 + 1}" />
+    </c:if>
 </c:forEach>
 
 <div class="row">
@@ -366,14 +462,14 @@
                         <div class="card card3">
                             <i class="fa fa-ban"></i>
                             <span class="count">${d3count}</span>
-                            <div class="name">Veículos sem documento fiscal</div>
+                            <div class="name">신고 처리완료</div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-sm-6">
                         <div class="card card4">
                             <i class="fa fa-ban"></i>
                             <span class="count">${d4count}</span>
-                            <div class="name">Veículos com restrição no RN</div>
+                            <div class="name">문의 처리완료</div>
                         </div>
                     </div>
                 </div>
@@ -385,6 +481,21 @@
         문의활성화 : ${d2count}
         신고비활성화 : ${d3count}
         문의비활성화 : ${d4count}
+
+        -${month01}- -${Type1}- <br/>
+        -${month02}- -${Type2}- <br/>
+        -${month03}- -${Type3}- <br/>
+        -${month04}- -${Type4}- <br/>
+        -${month05}- -${Type5}- <br/>
+        -${month06}- -${Type6}- <br/>
+        -${month08}- -${Type7}- <br/>
+        -${month09}- -${Type8}- <br/>
+        -${month10}- -${Type10}-<br/>
+        -${month11}- -${Type11}-<br/>
+
+
+
+
     </div>
 </div>
 
@@ -394,6 +505,9 @@
 
 <%--chart1--%>
 <script>
+
+
+
     let ctx = document.getElementById("chart").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
@@ -428,12 +542,12 @@
 
         // The data for our dataset
         data: {
-            labels: ["Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [{
                 label: "Income",
                 backgroundColor: gradientBkgrd,
                 borderColor: gradientStroke,
-                data: [5500, 2500, 10000, 6000, 14000, 1500, 7000,20000],
+                data: [${month01}, ${month02}, ${month03}, ${month04}, ${month05}, ${month06}, ${month07},${month08} ,${month09} ,${month10} ,${month11} ,${month12}],
                 pointBorderColor: "rgba(255,255,255,0)",
                 pointBackgroundColor: "rgba(255,255,255,0)",
                 pointBorderWidth: 0,
@@ -481,7 +595,7 @@
 <%--chart2--%>
 <script>
     var data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        labels: ["밥", "후식", "국", "과일", "빵", "과자", "조림", "찜", "무침", "해물", "볶음"],
         datasets: [{
             label: "Dataset #1",
             backgroundColor: "rgba(255,99,132,0.2)",
@@ -489,7 +603,7 @@
             borderWidth: 2,
             hoverBackgroundColor: "rgba(255,99,132,0.4)",
             hoverBorderColor: "rgba(255,99,132,1)",
-            data: [65, 59, 20, 81, 56, 55, 40],
+            data: [${Type1}, ${Type2}, ${Type3}, ${Type4}, ${Type5}, ${Type6}, ${Type7}, ${Type8}, ${Type9}, ${Type10}, ${Type11}],
         }]
     };
 

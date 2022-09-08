@@ -799,20 +799,23 @@
 	<div class="wrapper d-flex justify-content-center animate__animated animate__fadeIn">
 		<!-- PRICING-TABLE CONTAINER -->
 		<div class="pricing-table group">
-			<h1 class="heading">
-				Exercise
-			</h1>
+			<h4 style="color: #1a1a1a">
+				소모활동 (${api3.info_ENG}<span style="font-family: 'Berlin Sans FB Demi';">Kcal</span>)
+			</h4>
+			<br/>
 			<!-- PERSONAL -->
 			<div class="block personal fl">
-				<h2 class="title">personal</h2>
+				<h2 class="title">걷기</h2>
 				<!-- CONTENT -->
 				<div class="content">
 					<p class="price">
-						<sup>.</sup>
-						<span>29</span>
-						<sub>/kcal.</sub>
+						<sup style="font-size: 20px; width: 100%; text-align: center">50~90m/<small style="font-size: 13px">Minute</small></sup>
+						<br/>
+			     		<br/>
+						<span style="font-size: 80px;"><fmt:formatNumber value="${api3.info_ENG/1}" maxFractionDigits="0" pattern=""/></span>
+						<sub>/Minute.</sub>
 					</p>
-					<p class="hint">Run</p>
+					<p class="hint">Walking</p>
 				</div>
 				<!-- /CONTENT -->
 				<!-- FEATURES -->
@@ -823,15 +826,17 @@
 			<!-- /PERSONAL -->
 			<!-- PROFESSIONAL -->
 			<div class="block professional fl">
-				<h2 class="title">Professional</h2>
+				<h2 class="title">조깅</h2>
 				<!-- CONTENT -->
 				<div class="content">
 					<p class="price">
-						<sup>$</sup>
-						<span>99</span>
-						<sub>/mo.</sub>
+						<sup style="font-size: 20px; width: 100%; text-align: center">120~140m/<small style="font-size: 13px">Minute</small></sup>
+						<br/>
+						<br/>
+						<span style="font-size: 80px;"><fmt:formatNumber value="${api3.info_ENG/1.8}" maxFractionDigits="0" pattern=""/></span>
+						<sub>/Minute.</sub>
 					</p>
-					<p class="hint">Suitable for startups</p>
+					<p class="hint">Jogging</p>
 				</div>
 				<!-- /CONTENT -->
 
@@ -840,15 +845,17 @@
 			<!-- /PROFESSIONAL -->
 			<!-- BUSINESS -->
 			<div class="block business fl">
-				<h2 class="title">Business</h2>
+				<h2 class="title">달리기</h2>
 				<!-- CONTENT -->
 				<div class="content">
 					<p class="price">
-						<sup>$</sup>
-						<span>249</span>
-						<sub>/mo.</sub>
+						<sup style="font-size: 20px; width: 100%; text-align: center">180~220m/<small style="font-size: 13px">Minute</small></sup>
+						<br/>
+						<br/>
+						<span style="font-size: 80px;"><fmt:formatNumber value="${api3.info_ENG/7.3}" maxFractionDigits="0" pattern=""/></span>
+						<sub>/Minute.</sub>
 					</p>
-					<p class="hint">For established business</p>
+					<p class="hint">Running</p>
 				</div>
 				<!-- /CONTENT -->
 
