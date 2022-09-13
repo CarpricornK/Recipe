@@ -41,7 +41,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://211.58.164.28:8800/PJ
+    url: jdbc:mariadb://211.58.164.136:8800/PJ
     username: TEST
     password: TEST
 

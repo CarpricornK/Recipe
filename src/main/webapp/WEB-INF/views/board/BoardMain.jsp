@@ -226,13 +226,13 @@
 
 
 
-<div class="container">
+<div class="container mt-4">
 	<div class="ml-4">
 	<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-filter" viewBox="0 0 16 16">
 		<path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
 	</svg>
-	<span class="linkc">&nbsp;FILTER</span>
-	<div class="row mb-3 linkc" style="width: 100%; border:1px solid; border-color:#000 white white white;">
+	<span class="linkc2">&nbsp;FILTER</span>
+	<div class="row mb-3 linkc2" style="width: 100%; border:1px solid; border-color:#000 white white white;">
 		<form method="get" action="/board">
 			<input style="width: 50px;" type="hidden" name="field" value="${param.field}" />
 			<input style="width: 50px;" type="hidden" name="word" value="${param.word}" />
@@ -261,7 +261,7 @@
 			</c:forEach>
 			<c:if test="${'searchr' ne param.field}">
 				&nbsp;&nbsp;
-				<button class="m-1 linkc"
+				<button class="m-1 linkc2"
 						style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 						name="NOTICE" type="submit" value="1">
 					NOTICE
@@ -269,57 +269,57 @@
 			</c:if>
 			<c:if test="${'searchr' eq param.field}">
 				&nbsp;
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="밥">
 				Rice
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="후식">
 				Dessert
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="국">
 				Soup
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="과일">
 				Fruit
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="빵">
 				Bread
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="과자">
 				Pastry
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="조림">
 				Stewed
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="찜">
 				Steamed
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 						style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 						name="CF" type="submit" value="무침">
 				Seasonned
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="해물">
 				Seafood
 			</button>
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="CF" type="submit" value="볶음">
 				Stir-fry
@@ -327,12 +327,12 @@
 			</c:if>
 
 			<c:if test="${'searchf' eq param.field}">
-			<button class="m-1 linkc"
+			<button class="m-1 linkc2"
 					style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 					name="count" type="submit" value="<fmt:formatNumber value="${tcount2/tcount}" pattern="0"/>">
 				HOT
 			</button>
-			<a class="m-1 linkc"
+			<a class="m-1 linkc2"
 				style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 			    href="/board?ROLE=&field=searchf">
 				ALL
@@ -340,12 +340,12 @@
 			</c:if>
 
 			<c:if test="${'searchr' eq param.field}">
-				<button class="m-1 linkc"
+				<button class="m-1 linkc2"
 						style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 						name="count" type="submit" value="<fmt:formatNumber value="${tcount4/tcount3}" pattern="0"/>">
 					HOT
 				</button>
-				<a class="m-1 linkc"
+				<a class="m-1 linkc2"
 				   style="border: none; background: none; outline: none; margin-left: -3px; background-color: #FFFFFF;"
 				   href="/board?ROLE=&field=searchr">
 					ALL

@@ -49,6 +49,9 @@ public class BoardService implements IBoardService {
 	private DeclarationRepository declarationRepository;
 
 	@Autowired
+	private MealplanRepository mealplanRepository;
+
+	@Autowired
 	private ReplyRepository replyRepository;
 
 	@Autowired
@@ -111,6 +114,14 @@ public class BoardService implements IBoardService {
 
 		declarationRepository.save(declaration);
 	}
+
+	//	식단짜기등록
+	@Transactional
+	public void MPlan(Mealplan mealplan){ // title, content
+
+		mealplanRepository.save(mealplan);
+	}
+
 //	즐겨찾기등록
 	@Transactional
 	public void favoritesend(Favorites favorites){ // title, content

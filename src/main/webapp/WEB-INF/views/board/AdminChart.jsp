@@ -29,7 +29,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap 4 Website Example</title>
+    <title>Admin page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.6.5/tailwind.min.css'>
@@ -218,7 +218,7 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0; color:white;">
-    <h1>My First Bootstrap 4 Page</h1>
+    <h1>Admin page</h1>
     <p>Resize this responsive page to see the effect!</p>
 </div>
 
@@ -405,7 +405,7 @@
     <div class="container " style="margin-top:30px">
         <div class="row ml-3">
             <div class="col-sm-6 ">
-                <h2>About Me</h2>
+                <h3>회원가입</h3>
                 <h5>Photo of me:</h5>
 
                 <div class="fakeimg2">
@@ -421,7 +421,7 @@
             </div>
 
             <div class="col-sm-6">
-                <h2>About Me</h2>
+                <h3>분류별 게시글</h3>
                 <h5>Photo of me:</h5>
 
                 <div class="fakeimg2">

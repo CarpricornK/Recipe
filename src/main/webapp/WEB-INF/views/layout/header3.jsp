@@ -89,10 +89,10 @@ select {
 }
 
 .jumbotron{
-	background: url("https://picsum.photos/1600/?random") center no-repeat;
 	background-color: #0005;
 	background-blend-mode: darken;
 }
+
 
 li{ list-style: none; }
 </style>

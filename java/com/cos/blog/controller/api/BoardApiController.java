@@ -30,6 +30,12 @@ public class BoardApiController {
 		boardService.declaration(declaration);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+	//식단짜기
+	@PostMapping("/api/MPlan")
+	public ResponseDto<Integer> MPlan(@RequestBody Mealplan mealplan) {
+		boardService.MPlan(mealplan);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
 
 	@PostMapping("/api/Rboard")
 	public ResponseDto<Integer> rsave(@RequestBody RBoard Rboard) {
