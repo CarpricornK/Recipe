@@ -98,6 +98,7 @@ public class BoardApiController {
     	boardService.replydelete(replyid);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 }
+	// "/api/rboard/"+boardId2+"/delete/"+boardtype,
 	@DeleteMapping("/api/rboard/{boardId2}/delete/{boardtype}")
 	public ResponseDto<Integer> Delete(@PathVariable int boardId2, @PathVariable int boardtype) {
 		if (boardtype == 0) {
@@ -109,6 +110,20 @@ public class BoardApiController {
 		}
 //		System.out.println("iD :"+boardId2);
 //		System.out.println("타입 :"+boardtype);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+
+//	식단삭제
+	// "/api/Mplan/"+date+"/delete",
+	@DeleteMapping("/api/Mplan/{date}/delete")
+	public ResponseDto<Integer> MDelete(@PathVariable String date) {
+
+//		System.out.println("MDelete Controller 실행 :" + date);
+
+		boardService.DeleteMplans(date);
+
+//		System.out.println("DeleteMplan 실행후 :" + date);
+
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 

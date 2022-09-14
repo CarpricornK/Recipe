@@ -238,7 +238,14 @@ public class BoardService implements IBoardService {
 //	API목록2
 	public List<MongoDTO> APIlist2(){ return apiRepository.findAll(); }
 
-//	즐겨찾기목록
+	public List<Mealplan> mPList(){
+
+		return mealplanRepository.findAll();
+
+	}
+
+
+	//	즐겨찾기목록
 	@Transactional(readOnly = true)
 	public Page<Favorites> favoritelist(Pageable pageable) {
 
@@ -449,6 +456,13 @@ public class BoardService implements IBoardService {
 	public void adminboarddelete2(int boardId2) {
 		boardRepository.deleteById(boardId2);
 		System.out.println("ASD"+boardId2);
+	}
+
+	@Transactional
+	public void DeleteMplans(String date) {
+
+		mealplanRepository.DeleteMplan(date);
+
 	}
 
 

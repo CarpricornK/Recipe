@@ -28,6 +28,10 @@ public class Mealplan {
 	@Column(nullable = false, length = 100)
 	private String PlanTITLE;
 
+	@JsonProperty(value="PlanTYPE")
+	@Column(nullable = false, length = 50)
+	private String PlanTYPE;
+
 	@JsonProperty(value="PlanUSERNAME")
 	@Column(nullable = false, length = 100)
 	private String PlanUSERNAME; // 아이디

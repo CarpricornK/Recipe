@@ -2,6 +2,7 @@ package com.cos.blog.controller;
 
 import java.util.UUID;
 
+import com.cos.blog.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
@@ -46,6 +47,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	private BoardService boardService;
 
 	@GetMapping("/auth/joinForm")
 	public String joinForm(Model model) {
@@ -180,6 +184,7 @@ public class UserController {
 	@GetMapping("/user/updateForm")
 	public String updateForm(Model model) {
 		model.addAttribute("Users",userService.muserlist());
+		model.addAttribute("MpList",boardService.mPList());
 		return "user/updateForm";
 	}
 }

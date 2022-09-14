@@ -21,7 +21,9 @@ let index2 = {
             PlanKcal: $("#Calorie").val(),
             PlanNa: $("#Nat").val(),
             PlanPro: $("#Protein").val(),
-            PlanCarb: $("#Carbohydrate").val()
+            PlanCarb: $("#Carbohydrate").val(),
+            PlanTYPE: $("#type").val()
+
         };
 
         $.ajax({
@@ -118,6 +120,24 @@ let index2 = {
             // +ID4+"-"+ID5+"USERNAME :"+USERNAME+"TITLE:"+TITLE
             history.go(0);
         }).fail(function(error) {
+            alert(JSON.stringify(error));
+        });
+
+    },
+
+    // "/api/rboard/"+boardId2+"/delete/"+boardtype,
+
+    MDelete: function(year, month, i) {
+        let date = year+'-'+month+'-'+i;
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/Mplan/"+date+"/delete",
+            dataType: "json"
+        }).done(function(resp){
+            alert("식단삭제"+date);
+            history.go(0);
+        }).fail(function(error){
             alert(JSON.stringify(error));
         });
 

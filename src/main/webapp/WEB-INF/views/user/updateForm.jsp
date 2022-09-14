@@ -1,3 +1,5 @@
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header2.jsp"%>
@@ -152,6 +154,30 @@ select::-ms-expand {
 		padding-right:10px;
 	}
 </style>
+<%
+	Calendar cal = Calendar.getInstance();
+	String format = "dd";
+	SimpleDateFormat sdf = new SimpleDateFormat(format);
+	cal.add(cal.DATE, +1); //날짜를 하루 더한다.
+	String date = sdf.format(cal.getTime());
+
+	Calendar cal2 = Calendar.getInstance();
+	cal2.set(Calendar.DAY_OF_MONTH, cal2.getActualMaximum(Calendar.DAY_OF_MONTH));
+	SimpleDateFormat sdf2 = new SimpleDateFormat("dd");
+	String datelast = sdf2.format(cal2.getTime());
+
+%>
+<c:set var="today" value="<%=new java.util.Date()%>" />
+<!-- 현재날짜 -->
+<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd hh:mm:ss" /></c:set>
+<!-- 현재년도 -->
+<c:set var="year"><fmt:formatDate value="${today}" pattern="yyyy" /></c:set>
+<!-- 현재월 -->
+<c:set var="month"><fmt:formatDate value="${today}" pattern="MM" /></c:set>
+
+<c:set var="day"><fmt:formatDate value="${today}" pattern="dd" /></c:set>
+
+
 
 
 <div class="row">
@@ -410,12 +436,175 @@ select::-ms-expand {
 	<input id="Pusername" type="hidden" value="${principal.user.username}">
 
 </form>
-
+<div class="d-flex justify-content-end" style="width:100%">
 	<button id="btn-plan1" class="btn btn-outline-danger mr-5 ml-5 mb-3">식단 기록</button>
+</div>
 
 
 
+	${MpList[0]}
+	<div class="container p-5 wrap-vertical"
+		 style="border-radius: 5px; background-color: #363435; max-width: 1110px;">
+		<a style="color: white">- 회원목록 -</a>
+		<br/>
 
+		<div class="divTable">
+			<div class="divTableHeading">
+				<div class="divTableRow">
+					<div class="divTableHead">Date</div>
+					<div class="divTableHead">아침</div>
+					<%--				<div class="divTableHead">Password</div>--%>
+					<div class="divTableHead">점심</div>
+					<div class="divTableHead">저녁</div>
+					<div class="divTableHead">영양성분?</div>
+					<div class="divTableHead">Delte</div>
+				</div>
+			</div>
+			<c:set var="sysDate"><%= datelast %></c:set>
+
+
+<%--			<!-- 데이터 뿌릴때 -->--%>
+<%--			<c:out value="${date}" />--%>
+<%--			<c:out value="${year}" />--%>
+<%--			<c:out value="${month}" />--%>
+
+			<c:forEach var="i" begin="1" end="${sysDate}">
+
+				<c:if test="${i < 10}">
+				<div class="divTableBody">
+					<div class="divTableRow">
+						<div class="divTableCell">${year+='-'+=month+='-'+='0'+=i}</div>
+
+						<div class="divTableCell">
+				          <c:forEach var="z" begin="1" end="30">
+							<c:if test="${fn:contains(MpList[z].planTYPE, 'breakfast') && MpList[z].planDate eq year+='-'+=month+='-'+='0'+=i}">
+								${MpList[z].planTITLE}
+							</c:if>
+						  </c:forEach>
+						</div>
+							<%--				<div class="divTableCell"><c:if test="${'cos1234' eq User.USER_PASSWORD2}">연동 로그인</c:if><c:if test="${'cos1234' ne User.USER_PASSWORD2}">${User.USER_PASSWORD2}</c:if></div>--%>
+						<div class="divTableCell">
+							<c:forEach var="l" begin="1" end="30">
+								<c:if test="${fn:contains(MpList[l].planTYPE, 'lunch') && MpList[l].planDate eq year+='-'+=month+='-'+='0'+=i}">
+									${MpList[l].planTITLE}
+								</c:if>
+							</c:forEach>
+						</div>
+
+						<div class="divTableCell">
+							<c:forEach var="d" begin="1" end="30">
+								<c:if test="${fn:contains(MpList[d].planTYPE, 'dinner') && MpList[d].planDate eq year+='-'+=month+='-'+='0'+=i}">
+									${MpList[d].planTITLE}
+								</c:if>
+							</c:forEach>
+						</div>
+
+						<div class="divTableCell">
+							<c:set var="planCarb" value="0" />
+							<c:set var="planKcal" value="0" />
+							<c:set var="planNa" value="0" />
+							<c:set var="planPro" value="0" />
+				         <c:forEach var="k" begin="1" end="30">
+
+							<c:if test="${MpList[k].planDate eq year+='-'+=month+='-'+='0'+=i}">
+								<c:set var="planCarb" value="${planCarb + MpList[k].planCarb}" />
+								<c:set var="planKcal" value="${planKcal + MpList[k].planKcal}" />
+								<c:set var="planNa" value="${planNa + MpList[k].planNa}" />
+								<c:set var="planPro" value="${planPro + MpList[k].planPro}" />
+
+							</c:if>
+
+				         </c:forEach>
+
+							<c:if test="${planCarb != 0 && planKcal != 0 && planNa != 0 && planPro != 0}">
+							Carb - ${planCarb}
+							Kcal - ${planKcal}
+							Na - ${planNa}
+							Pro - ${planPro}
+							</c:if>
+						</div>
+
+						<div class="divTableCell">
+
+
+							<button onClick="index2.MDelete('${year}', '${month}', '0${i}')">
+								<i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+							</button>
+
+						</div>
+					</div>
+				</div>
+				</c:if>
+
+				<c:if test="${i >= 10}">
+					<div class="divTableBody">
+						<div class="divTableRow">
+							<div class="divTableCell">${year+='-'+=month+='-'+=i}</div>
+
+							<div class="divTableCell">
+								<c:forEach var="z" begin="1" end="30">
+									<c:if test="${fn:contains(MpList[z].planTYPE, 'breakfast') && MpList[z].planDate eq year+='-'+=month+='-'+=i}">
+										${MpList[z].planTITLE}
+									</c:if>
+								</c:forEach>
+							</div>
+								<%--				<div class="divTableCell"><c:if test="${'cos1234' eq User.USER_PASSWORD2}">연동 로그인</c:if><c:if test="${'cos1234' ne User.USER_PASSWORD2}">${User.USER_PASSWORD2}</c:if></div>--%>
+							<div class="divTableCell">
+								<c:forEach var="l" begin="1" end="30">
+									<c:if test="${fn:contains(MpList[l].planTYPE, 'lunch') && MpList[l].planDate eq year+='-'+=month+='-'+=i}">
+										${MpList[l].planTITLE}
+									</c:if>
+								</c:forEach>
+							</div>
+
+							<div class="divTableCell">
+								<c:forEach var="d" begin="1" end="30">
+									<c:if test="${fn:contains(MpList[d].planTYPE, 'dinner') && MpList[d].planDate eq year+='-'+=month+='-'+=i}">
+										${MpList[d].planTITLE}
+									</c:if>
+								</c:forEach>
+							</div>
+
+							<div class="divTableCell">
+								<c:set var="planCarb" value="0" />
+								<c:set var="planKcal" value="0" />
+								<c:set var="planNa" value="0" />
+								<c:set var="planPro" value="0" />
+								<c:forEach var="k" begin="1" end="30">
+
+									<c:if test="${MpList[k].planDate eq year+='-'+=month+='-'+=i}">
+										<c:set var="planCarb" value="${planCarb + MpList[k].planCarb}" />
+										<c:set var="planKcal" value="${planKcal + MpList[k].planKcal}" />
+										<c:set var="planNa" value="${planNa + MpList[k].planNa}" />
+										<c:set var="planPro" value="${planPro + MpList[k].planPro}" />
+
+									</c:if>
+
+								</c:forEach>
+
+								<c:if test="${planCarb != 0 && planKcal != 0 && planNa != 0 && planPro != 0}">
+									Carb - ${planCarb}
+									Kcal - ${planKcal}
+									Na - ${planNa}
+									Pro - ${planPro}
+								</c:if>
+							</div>
+
+							<div class="divTableCell">
+
+
+								<button onClick="index2.MDelete('${year}', '${month}', '${i}')">
+									<i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+								</button>
+
+							</div>
+						</div>
+					</div>
+				</c:if>
+			</c:forEach>
+		</div>
+
+	</div>
 
 
 
