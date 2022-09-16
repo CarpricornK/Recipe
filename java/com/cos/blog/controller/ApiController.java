@@ -25,9 +25,10 @@ public class ApiController {
         try {
             NaverService crawler = new NaverService();
             String url2 = URLEncoder.encode(url, "UTF-8");
-//            String response = crawler.search(id, secret, url2);
+            String response = crawler.search(id, secret, url2);
             String repsonse2 = crawler.crolling(url2);
-            System.out.println(repsonse2);
+            System.out.println("response :" + response);
+            System.out.println("repsonse2 :" + repsonse2);
         } catch (Exception e) {
             e.printStackTrace();
         }

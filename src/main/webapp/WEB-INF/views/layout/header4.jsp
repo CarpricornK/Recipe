@@ -33,13 +33,6 @@
 
 <style>
 
-
-	.ahover1:hover {
-		color: #1a1a1a!important;
-		transition: all .5s!important;
-		text-decoration:none!important;
-	}
-
 	img {
 		width:250px !important;
 		height: 250px !important;
@@ -65,7 +58,6 @@
 
 	.animation1{
 		opacity: 0;
-		animation: disappear 1.45s ease-out forwards
 	}
 	.animation2{
 		opacity: 0;
@@ -77,9 +69,7 @@
 		opacity: 0;
 	}
 	.card{
-		background-color: rgba(242, 242, 242, 0);
-		border: 1px solid rgba(242, 242, 242, 0);
-		height:150px;
+		height:300px;
 	}
 
 	body {
@@ -192,7 +182,7 @@
 		/*-moz-box-shadow: 6px 6px 22px -9px rgba(0, 0, 0, 0.68);*/
 		/*box-shadow: 6px 6px 22px -9px rgba(0, 0, 0, 0.68);*/
 		text-align: center;
-		color: black;
+		color: #FFFFFF;
 	}
 	.wrap-time .row {
 		margin: 0 auto 0;
@@ -205,9 +195,8 @@
 	}
 
 	.timer {
-		margin-top: 35px;
-		font-size: 2.5em;
-		color: black;
+		font-size: 3.5em;
+		color: #FFFFFF;
 		cursor: pointer;
 	}
 
@@ -237,7 +226,7 @@
 		font: small-caps lighter 38px/120% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 		text-align:left;
 		width: 70%;
-		color:black;
+		color:#FFFFFF;
 		padding: 25px;
 	}
 
@@ -263,8 +252,7 @@
 
 	.nava {
 		color: floralwhite !important;
-		font-family: sans-serif;
-		font-size: 14px;
+		font-family: 'Jua', sans-serif;
 	}
 
 	input::placeholder {
@@ -297,8 +285,7 @@
 
 	.card-grid{
 		display: grid;
-		background-color: #0005;
-		background-blend-mode: darken;
+		background-color: rgba(242, 242, 242, 1);
 		grid-template-columns: repeat(1, 1fr);
 		grid-column-gap: var(--spacing-l);
 		grid-row-gap: var(--spacing-l);
@@ -319,10 +306,17 @@
 	}
 
 	.card{
+		background-color: rgba(242, 242, 242, 1);
 		list-style: none;
 		position: relative;
 	}
 
+	.card:before{
+		content: '';
+		display: block;
+		padding-bottom: 150%;
+		width: 100%;
+	}
 
 	.card__background{
 		background-size: cover;
@@ -358,8 +352,9 @@
 
 	.card__category{
 		color: var(--text-light);
-		font-size: 12px;
-		font-family: sans-serif;
+		font-size: 0.9rem;
+		margin-bottom: var(--spacing-s);
+		text-transform: uppercase;
 	}
 
 	.card__heading{
@@ -367,7 +362,7 @@
 		font-size: 1.9rem;
 		text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
 		line-height: 1.4;
-		font-family: sans-serif;
+		word-spacing: 100vw;
 	}
 
 
@@ -526,10 +521,109 @@
 		background: #252b37;
 		background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
 		width: 100%;
-		height:100%;
+		height:100vh;
 
 
 	}
+
+	.circles{
+		position: absolute;
+		top: 0px;
+		margin-top: 20px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.circles li{
+		position: absolute;
+		display: block;
+		list-style: none;
+		width: 20px;
+		height: 20px;
+		background: rgba(255, 255, 255, 0.2);
+		animation: animate 25s linear infinite;
+		bottom: -150px;
+
+	}
+
+	.circles li:nth-child(1){
+		left: 25%;
+		width: 80px;
+		height: 80px;
+		animation-delay: 0s;
+	}
+
+
+	.circles li:nth-child(2){
+		left: 10%;
+		width: 20px;
+		height: 20px;
+		animation-delay: 2s;
+		animation-duration: 12s;
+	}
+
+	.circles li:nth-child(3){
+		left: 70%;
+		width: 20px;
+		height: 20px;
+		animation-delay: 4s;
+	}
+
+	.circles li:nth-child(4){
+		left: 40%;
+		width: 60px;
+		height: 60px;
+		animation-delay: 0s;
+		animation-duration: 18s;
+	}
+
+	.circles li:nth-child(5){
+		left: 65%;
+		width: 20px;
+		height: 20px;
+		animation-delay: 0s;
+	}
+
+	.circles li:nth-child(6){
+		left: 75%;
+		width: 110px;
+		height: 110px;
+		animation-delay: 3s;
+	}
+
+	.circles li:nth-child(7){
+		left: 35%;
+		width: 150px;
+		height: 150px;
+		animation-delay: 7s;
+	}
+
+	.circles li:nth-child(8){
+		left: 50%;
+		width: 25px;
+		height: 25px;
+		animation-delay: 15s;
+		animation-duration: 45s;
+	}
+
+	.circles li:nth-child(9){
+		left: 20%;
+		width: 15px;
+		height: 15px;
+		animation-delay: 2s;
+		animation-duration: 35s;
+	}
+
+	.circles li:nth-child(10){
+		left: 85%;
+		width: 150px;
+		height: 150px;
+		animation-delay: 0s;
+		animation-duration: 11s;
+	}
+
 
 
 	@keyframes animate {
@@ -613,24 +707,19 @@
 		border-radius: 50%;
 	}
 
-/*애니메이션 배경*/
-	.bgBlur{
-		background-color: #0005;
-		background-blend-mode: darken;
-	}
-
 </style>
 
 <body>
-<div class="d-flex justify-content-between p-1" style="background-color: #0005;  background-blend-mode: darken;">
+<div class="d-flex justify-content-between p-1">
 	<div class="ml-2">
 	<c:if test="${'ADMIN' eq principal.user.USER_ROLE}">
-		<a class="mr-3 ahover1" style="color: azure; font-size: 14px; position:relative; " href="/user/Admin">
+		<a class="mr-3" style="color: azure; font-size: 18px; position:relative; " href="/user/Admin">
 			ADMIN
 		</a>
 	</c:if>
 
-	<a class="mr-3 ahover1" style="color: azure; font-size: 14px; position:relative; " href="/">
+
+	<a class="mr-3" style="color: azure; font-size: 18px; position:relative; " href="/">
 		MAIN
 	</a>
 
@@ -640,16 +729,16 @@
 
 		<c:choose>
 			<c:when test="${empty principal}">
-				<a class="nava ahover1 mr-3" style="margin-right:31px!important; color: azure; font-size: 14px;" href="/auth/loginForm">로그인</a>
-				<a class="nava ahover1 mr-3" style="color: azure; font-size: 14px;" href="/auth/joinForm">회원가입</a>
+				<a class="nava mr-3" style="margin-right:31px!important; color: azure; font-size: 14px;" href="/auth/loginForm">로그인</a>
+				<a class="nava mr-3" style="color: azure; font-size: 14px;" href="/auth/joinForm">회원가입</a>
 
 			</c:when>
 			<c:otherwise>
-				<a class="nava ahover1 mr-3" style="color: azure; font-size: 14px;" href="/auth/joinForm">회원가입</a>
-				<a class="nava ahover1 mr-3" style="color: azure; font-size: 14px;" href="/logout">로그아웃</a>
+				<a class="nava mr-3" style="color: azure; font-size: 14px;" href="/auth/joinForm">회원가입</a>
+				<a class="nava mr-3" style="color: azure; font-size: 14px;" href="/logout">로그아웃</a>
 
-				<button type="button" class="btn nava ahover1" style="color: azure; font-size: 14px;" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">신고하기</button>
-				<button type="button" class="btn nava ahover1" style="color: azure; font-size: 14px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">문의하기</button>
+				<button type="button" class="btn nava" style="color: azure; font-size: 14px;" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">신고하기</button>
+				<button type="button" class="btn nava" style="color: azure; font-size: 14px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">문의하기</button>
 
 
 				<div class="modal" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -680,8 +769,7 @@
 									</div>
 									<div class="form-group">
 										<label for="message-text" class="col-form-label">user:</label>
-<%--										신고자 이름--%>
-										<input type="hidden" class="form-control" value="${principal.user.username}" id="username" readonly/>
+										<input type="text" class="form-control" value="${principal.user.username}" id="username" readonly/>
 									</div>
 								</form>
 							</div>
@@ -738,8 +826,233 @@
 	</div>
 </div>
 
+<div class="container-fluid bgBlur area d-flex justify-content-cetner" style="height: 880px;  background-size: cover; background-repeat: no-repeat; background-position: center; background-color:#777575; background-attachment:fixed; transition: all .1s ease 0s;">
 
-<div style="background-color: #0005; background-blend-mode: darken; height: 45px; color:azure;" class="p-2 d-flex justify-content-end">
+		<ul class="circles">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+	<section class="hero-section align-self-end" style="background-color: rgba(51,51,51,0); width: 1200px;">
+
+<%--		<div id="calendar">--%>
+<%--			<div id="calendar_header">--%>
+<%--				<i style="cursor: pointer;" class="icon-chevron-left">--%>
+<%--					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">--%>
+<%--						<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>--%>
+<%--					</svg>--%>
+<%--				</i>--%>
+
+<%--				<h1></h1>--%>
+<%--				<i style="cursor: pointer;" class="icon-chevron-right">--%>
+<%--					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">--%>
+<%--						<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>--%>
+<%--					</svg>--%>
+<%--				</i>--%>
+<%--			</div>--%>
+<%--			<div id="calendar_weekdays"></div>--%>
+<%--			<div id="calendar_content"></div>--%>
+<%--		</div>--%>
+
+	<div class="container d-flex justify-content-center" style="margin-bottom: 75px;">
+
+
+
+
+
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.74 78.25">
+			<defs>
+				<style>
+					.cls-1 {
+						fill: none;
+						stroke: none;
+						stroke-miterlimit: 3;
+						stroke-width: 34px;
+					}
+
+					.cls-2 {
+						stroke: #f74e3b;
+						animation: path var(--duration) ease forwards;
+						animation-delay: var(--delay);
+						stroke-width: 2.5px;
+					}
+
+					.cls-3 {
+					}
+					svg {
+						fill: none;
+						height: 100px;
+						stroke-width: 53px;
+					}
+
+					path {
+						stroke-dasharray: var(--length);
+						stroke-dashoffset: var(--length);
+					}
+
+					.svg-bg > path {
+						animation: path var(--duration) ease forwards;
+						animation-delay: var(--delay);
+					}
+
+					.svg-main > path {
+						stroke: #ffffff;
+						animation: path var(--duration) ease-in forwards;
+						animation-delay: var(--delay);
+						stroke-width: 3px;
+					}
+
+					@keyframes path {
+						100% { stroke-dashoffset: 0; }
+					}
+				</style>
+			</defs>
+				<text/>
+				<g class="svg-bg">
+					<path class="cls-2" d="M9.13,7.2c-.54,.32-7.65,4.75-7.02,12.29,.58,6.95,7.2,10.21,7.9,10.54,6.89,3.25,13.47-.69,14.49-1.32,1.43-.89,6.76-4.2,7.02-10.1,.26-5.67-4.37-9.38-5.27-10.1-4.51-3.62-11.55-4.66-17.12-1.32Z"/>
+					<path class="cls-2" d="M42.06,36.32c.2-10.24,.39-20.49,.59-30.73"/>
+					<path class="cls-2" d="M42.35,20.83c3.02,0,6.05-.01,9.07-.02"/>
+					<path class="cls-2" d="M25.08,36.32c1.17,4.98,2.34,9.95,3.51,14.93"/>
+					<path class="cls-2" d="M28.59,51.25c7.41-1.17,14.83-2.34,22.24-3.51"/>
+					<path class="cls-2" d="M66.93,8.22c1.07,7.12,2.15,14.24,3.22,21.37"/>
+					<path class="cls-2" d="M70.15,29.59c9.56-1.17,19.12-2.34,28.68-3.51"/>
+					<path class="cls-2" d="M88.88,9.1c6.34,.39,12.68,.78,19.02,1.17"/>
+					<path class="cls-2" d="M90.35,19.05l15.8,.59"/>
+					<path class="cls-2" d="M108.2,5.3c-.88,10.05-1.76,20.1-2.63,30.15"/>
+					<path class="cls-2" d="M105.57,35.44c1.53,.52,4.48,1.51,5.85,4.39,1.57,3.29-.03,6.72-.59,7.9-1.8,3.84-5.19,5.44-6.15,5.85-.97,.41-5.78,2.48-10.24-.29-.4-.25-4.32-2.78-4.68-7.61-.35-4.68,2.92-7.73,3.8-8.49,4.75-4.07,10.99-2.1,12-1.76Z"/>
+					<path class="cls-2" d="M141.86,7.05c2.34,2.63,4.68,5.27,7.02,7.9"/>
+					<path class="cls-2" d="M128.98,13.49c7.51,.29,15.02,.59,22.54,.88"/>
+					<path class="cls-2" d="M146.54,17.3c2.47,.22,5.49,.5,7.9,2.93,3.52,3.55,2.71,8.64,2.63,9.07-.82,4.65-4.53,7.05-5.85,7.9-.61,.39-8.3,5.19-14.63,.88-3.07-2.09-5.16-5.87-4.98-9.95,.22-4.73,3.4-7.6,4.1-8.2,3.82-3.27,8.46-2.85,10.83-2.63Z"/>
+					<path class="cls-2" d="M168.79,9.98c-.39,10.54-.78,21.07-1.17,31.61"/>
+					<path class="cls-2" d="M168.21,25.53c2.92,.09,5.85,.17,8.77,.26"/>
+					<path class="cls-2" d="M201.86,10.57l-9.66,28.98"/>
+					<path class="cls-2" d="M197.65,23.21c6.28,4.37,12.57,8.74,18.85,13.11"/>
+					<path class="cls-2" d="M215.62,23.15l14.05,.29"/>
+					<path class="cls-2" d="M229.37,10.27v31.61"/>
+					<path class="cls-2" d="M239.62,11.15c-.49,9.66-.98,19.32-1.46,28.98"/>
+					<path class="cls-2" d="M277.66,2.96c-1.04,.07-7.5,.54-11.12,6.15-2.49,3.86-3.06,9.26-.59,13.46,1.84,3.13,4.71,4.46,5.85,4.98,4.91,2.2,9.6,.8,12.29,0,3.15-.94,6.07-1.81,8.2-4.68,2.43-3.28,2.92-7.98,1.17-11.71-1.61-3.43-4.61-4.93-7.02-6.15-1.59-.8-4.67-2.34-8.78-2.05Z"/>
+					<path class="cls-2" d="M270.24,26.74c.04,5.14,.07,10.29,.11,15.43"/>
+					<path class="cls-2" d="M286.4,26.82c.21,4.73,.42,9.46,.63,14.18"/>
+					<path class="cls-2" d="M255.71,42.18c15.32-.39,30.63-.78,45.95-1.17"/>
+					<path class="cls-2" d="M318.64,45.4c-.9,.01-1.59,.75-1.57,1.57,.03,.78,.71,1.38,1.43,1.43,.91,.06,1.79-.77,1.68-1.68-.08-.69-.73-1.28-1.54-1.32Z"/>
+
+				</g>
+			<g class="svg-main" data-name="svg-bg">
+				<path class="cls-1" d="M9.13,7.2c-.54,.32-7.65,4.75-7.02,12.29,.58,6.95,7.2,10.21,7.9,10.54,6.89,3.25,13.47-.69,14.49-1.32,1.43-.89,6.76-4.2,7.02-10.1,.26-5.67-4.37-9.38-5.27-10.1-4.51-3.62-11.55-4.66-17.12-1.32Z"/>
+				<path class="cls-1" d="M42.06,36.32c.2-10.24,.39-20.49,.59-30.73"/>
+				<path class="cls-1" d="M42.35,20.83c3.02,0,6.05-.01,9.07-.02"/>
+				<path class="cls-1" d="M25.08,36.32c1.17,4.98,2.34,9.95,3.51,14.93"/>
+				<path class="cls-1" d="M28.59,51.25c7.41-1.17,14.83-2.34,22.24-3.51"/>
+				<path class="cls-1" d="M66.93,8.22c1.07,7.12,2.15,14.24,3.22,21.37"/>
+				<path class="cls-1" d="M70.15,29.59c9.56-1.17,19.12-2.34,28.68-3.51"/>
+				<path class="cls-1" d="M88.88,9.1c6.34,.39,12.68,.78,19.02,1.17"/>
+				<path class="cls-1" d="M90.35,19.05l15.8,.59"/>
+				<path class="cls-1" d="M108.2,5.3c-.88,10.05-1.76,20.1-2.63,30.15"/>
+				<path class="cls-1" d="M105.57,35.44c1.53,.52,4.48,1.51,5.85,4.39,1.57,3.29-.03,6.72-.59,7.9-1.8,3.84-5.19,5.44-6.15,5.85-.97,.41-5.78,2.48-10.24-.29-.4-.25-4.32-2.78-4.68-7.61-.35-4.68,2.92-7.73,3.8-8.49,4.75-4.07,10.99-2.1,12-1.76Z"/>
+				<path class="cls-1" d="M141.86,7.05c2.34,2.63,4.68,5.27,7.02,7.9"/>
+				<path class="cls-1" d="M128.98,13.49c7.51,.29,15.02,.59,22.54,.88"/>
+				<path class="cls-1" d="M146.54,17.3c2.47,.22,5.49,.5,7.9,2.93,3.52,3.55,2.71,8.64,2.63,9.07-.82,4.65-4.53,7.05-5.85,7.9-.61,.39-8.3,5.19-14.63,.88-3.07-2.09-5.16-5.87-4.98-9.95,.22-4.73,3.4-7.6,4.1-8.2,3.82-3.27,8.46-2.85,10.83-2.63Z"/>
+				<path class="cls-1" d="M168.79,9.98c-.39,10.54-.78,21.07-1.17,31.61"/>
+				<path class="cls-1" d="M168.21,25.53c2.92,.09,5.85,.17,8.77,.26"/>
+				<path class="cls-1" d="M201.86,10.57l-9.66,28.98"/>
+				<path class="cls-1" d="M197.65,23.21c6.28,4.37,12.57,8.74,18.85,13.11"/>
+				<path class="cls-1" d="M215.62,23.15l14.05,.29"/>
+				<path class="cls-1" d="M229.37,10.27v31.61"/>
+				<path class="cls-1" d="M239.62,11.15c-.49,9.66-.98,19.32-1.46,28.98"/>
+				<path class="cls-1" d="M277.66,2.96c-1.04,.07-7.5,.54-11.12,6.15-2.49,3.86-3.06,9.26-.59,13.46,1.84,3.13,4.71,4.46,5.85,4.98,4.91,2.2,9.6,.8,12.29,0,3.15-.94,6.07-1.81,8.2-4.68,2.43-3.28,2.92-7.98,1.17-11.71-1.61-3.43-4.61-4.93-7.02-6.15-1.59-.8-4.67-2.34-8.78-2.05Z"/>
+				<path class="cls-1" d="M270.24,26.74c.04,5.14,.07,10.29,.11,15.43"/>
+				<path class="cls-1" d="M286.4,26.82c.21,4.73,.42,9.46,.63,14.18"/>
+				<path class="cls-1" d="M255.71,42.18c15.32-.39,30.63-.78,45.95-1.17"/>
+				<path class="cls-1" d="M318.64,45.4c-.9,.01-1.59,.75-1.57,1.57,.03,.78,.71,1.38,1.43,1.43,.91,.06,1.79-.77,1.68-1.68-.08-.69-.73-1.28-1.54-1.32Z"/>
+			</g>
+		</svg>
+
+
+
+	</div>
+
+
+		<div class="d-flex justify-content-center">
+
+				<div id="timedate" style="height:200px; width:330px; margin-top: 50px;">
+					<a id="mon">January</a>
+					<a id="d">1</a>,
+					<a id="y">0</a><br/>
+					<a id="h">12</a> :
+					<a id="m">00</a>:
+					<a id="s">00</a>:
+					<a id="mi">000</a>
+				</div>
+
+				<div class="wrap-time text-center" style="margin-left: 100px;">
+					<div class="timer">
+						<span class="minutes">20</span>:<span class="seconds">00</span>
+					</div>
+					<div class="row">
+						<div class="col col-xs-4">
+							<span class="col-span">BREAK:</span><br/>
+							<span class="col-span operatorB">+</span><br/>
+							<span class="col-span breakT">5</span><br/>
+							<span class="col-span operatorB">-</span>
+						</div>
+						<div class="col col-xs-4"><div class="start-btn">START</div><div class="reset-btn">RESET</div></div>
+						<div class="col col-xs-4">
+							<span class="col-span">WORK:</span><br/>
+							<span class="col-span operatorW">+</span><br/>
+							<span class="col-span workT">20</span><br/>
+							<span class="col-span operatorW">-</span>
+						</div>
+					</div>
+				</div>
+		</div>
+
+		<div class="card-grid mb-1" style="background-color: rgba(51,51,51,0)">
+			<a class="card" style="border: none; background-color: rgba(51,51,51,0)" href="/user/My">
+				<div class="card__background" style="background-color: rgba(51,51,51,0.7)"></div>
+				<div class="card__content">
+					<p class="card__category">My Page</p>
+					<h3 class="card__heading">MyPage!</h3>
+				</div>
+			</a>
+			<a class="card" style="border: none; background-color: rgba(51,51,51,0)" href="/board">
+				<div class="card__background" style="background-color: rgba(81,31,1,0.7)"></div>
+				<div class="card__content">
+					<p class="card__category">Gallery</p>
+					<h3 class="card__heading">Gallery!</h3>
+				</div>
+			</a>
+			<a class="card" style="border: none; background-color: rgba(51,51,51,0)" href="/board/APIForm?style=2">
+				<div class="card__background" style="background-color: rgba(185, 199, 187, 0.5)"></div>
+				<div class="card__content">
+					<p class="card__category">Recipe</p>
+					<h3 class="card__heading">Recipe!</h3>
+				</div>
+			</a>
+			<a class="card" style="border: none; background-color: rgba(51,51,51,0)" href="/user/updateForm">
+				<div class="card__background" style="background-color: rgba(185, 51, 29, 0.6)"></div>
+				<div class="card__content">
+					<p class="card__category">Profile</p>
+					<h3 class="card__heading">Profile!</h3>
+				</div>
+			</a>
+			<div>
+	</section>
+
+
+
+
+
+</div>
+
+<div style="background-color:#252b37; height: 45px; color:azure;" class="p-2 d-flex justify-content-end">
 	<svg style="margin-top: 3px;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-chat-right-dots-fill" viewBox="0 0 16 16">
 		<path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
 	</svg>
@@ -757,7 +1070,7 @@
 
 </div>
 
-<nav style="top:-1px!important; width:100%; height:50px; background-color: #0005; background-blend-mode: darken; opacity: 1;" class="navbar navbar-expand-sm navbar-dark sticky-top">
+<nav style="top:-1px!important; width:100%; height:50px; background-color: #252b37; opacity: 0;" class="navbar navbar-expand-sm navbar-dark sticky-top">
 	<ul class="navbar-nav">
 		<c:choose>
 			<c:when test="${empty principal}">
@@ -765,24 +1078,24 @@
 				<li class="nav-item"><a class="nava nav-link" href="/auth/loginForm">로그인</a></li>
 				<li class="nav-item"><a class="nava nav-link" href="/auth/joinForm">회원가입</a></li>
 				<li class="nav-item" style="margin-top: 1px;">
-					<button type="button" class="btn nava" style="color: azure; width:80px; margin-left: -5px;" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">신고</button>
-					<button type="button" class="btn nava" style="color: azure; width:80px; margin-left: -9px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">문의</button>
+					<button type="button" class="btn nava" style="color: azure; width:80px; margin-left: -5px;" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">신고하기</button>
+					<button type="button" class="btn nava" style="color: azure; width:80px; margin-left: -9px;" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">문의하기</button>
 				</li>
 			</c:when>
 
 			<c:otherwise>
-				<li class="nav-item"><a class="nava nav-link ahover1"></a></li>
-				<li class="nav-item"><a class="nava nav-link ahover1" href="/">메인</a></li>
-				<li class="nav-item"><a class="nava nav-link active ahover1" href="/board/APIForm?style=2">API</a></li>
-				<li class="nav-item"><a class="nava nav-link ahover1" href="/user/updateForm">회원정보</a></li>
-				<li class="nav-item"><a class="nava nav-link ahover1" href="/user/My">내정보</a></li>
-				<li class="nav-item"><a class="nava nav-link ahover1" href="/logout">로그아웃</a></li>
-				<li class="nav-item"><a class="nava nav-link ahover1" href="/board">사용자 게시판</a></li>
+				<li class="nav-item"><a class="nava nav-link"></a></li>
+				<li class="nav-item"><a class="nava nav-link" href="/">메인</a></li>
+				<li class="nav-item"><a class="nava nav-link active" href="/board/APIForm?style=2">API</a></li>
+				<li class="nav-item"><a class="nava nav-link" href="/user/updateForm">회원정보</a></li>
+				<li class="nav-item"><a class="nava nav-link" href="/user/My">내정보</a></li>
+				<li class="nav-item"><a class="nava nav-link" href="/logout">로그아웃</a></li>
+				<li class="nav-item"><a class="nava nav-link" href="/board">사용자 게시판</a></li>
 				<li class="nav-item dropdown">
-					<a class="nava nav-link dropdown-toggle ahover1" data-toggle="dropdown" href="#">글쓰기</a>
+					<a class="nava nav-link dropdown-toggle" data-toggle="dropdown" href="#">글쓰기</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item ahover1" href="/board/saveForm">글쓰기</a>
-						<a class="dropdown-item ahover1" href="/board/RsaveForm">레시피 글쓰기</a>
+						<a class="dropdown-item" href="/board/saveForm">글쓰기</a>
+						<a class="dropdown-item" href="/board/RsaveForm">레시피 글쓰기</a>
 						<c:if test="${pricipal.user.USER_ROLE eq 'ADMIN'}">
 							<a style="color: blue; " class="dropdown-item linkc" href="/board/AsaveForm">공지 글쓰기</a>
 						</c:if>
@@ -795,217 +1108,8 @@
 </nav>
 
 
-<div class="container-fluid bgBlur area d-flex justify-content-cetner" style="height: 200px;  background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment:fixed; transition: all .1s ease 0s;">
 
 
-
-	<section class="hero-section align-self-end" style="background-color: rgba(51,51,51,0); width: 1200px;">
-
-		<%--		<div id="calendar">--%>
-		<%--			<div id="calendar_header">--%>
-		<%--				<i style="cursor: pointer;" class="icon-chevron-left">--%>
-		<%--					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16">--%>
-		<%--						<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>--%>
-		<%--					</svg>--%>
-		<%--				</i>--%>
-
-		<%--				<h1></h1>--%>
-		<%--				<i style="cursor: pointer;" class="icon-chevron-right">--%>
-		<%--					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-right-square" viewBox="0 0 16 16">--%>
-		<%--						<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4.5 5.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>--%>
-		<%--					</svg>--%>
-		<%--				</i>--%>
-		<%--			</div>--%>
-		<%--			<div id="calendar_weekdays"></div>--%>
-		<%--			<div id="calendar_content"></div>--%>
-		<%--		</div>--%>
-
-		<div class="container d-flex justify-content-center" style="">
-
-
-
-
-			<%--안녕하세요 애니메이션 수정중--%>
-			<%--
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 322.74 78.25">
-                        <defs>
-                            <style>
-                                .cls-1 {
-                                    fill: none;
-                                    stroke: none;
-                                    stroke-miterlimit: 3;
-                                    stroke-width: 34px;
-                                }
-
-                                .cls-2 {
-                                    stroke: #f74e3b;
-                                    animation: path var(--duration) ease forwards;
-                                    animation-delay: var(--delay);
-                                    stroke-width: 2.5px;
-                                }
-
-                                .cls-3 {
-                                }
-                                svg {
-                                    fill: none;
-                                    height: 100px;
-                                    stroke-width: 53px;
-                                }
-
-                                path {
-                                    stroke-dasharray: var(--length);
-                                    stroke-dashoffset: var(--length);
-                                }
-
-                                .svg-bg > path {
-                                    animation: path var(--duration) ease forwards;
-                                    animation-delay: var(--delay);
-                                }
-
-                                .svg-main > path {
-                                    stroke: #ffffff;
-                                    animation: path var(--duration) ease-in forwards;
-                                    animation-delay: var(--delay);
-                                    stroke-width: 3px;
-                                }
-
-                                @keyframes path {
-                                    100% { stroke-dashoffset: 0; }
-                                }
-                            </style>
-                        </defs>
-                            <text/>
-                            <g class="svg-bg">
-                                <path class="cls-2" d="M9.13,7.2c-.54,.32-7.65,4.75-7.02,12.29,.58,6.95,7.2,10.21,7.9,10.54,6.89,3.25,13.47-.69,14.49-1.32,1.43-.89,6.76-4.2,7.02-10.1,.26-5.67-4.37-9.38-5.27-10.1-4.51-3.62-11.55-4.66-17.12-1.32Z"/>
-                                <path class="cls-2" d="M42.06,36.32c.2-10.24,.39-20.49,.59-30.73"/>
-                                <path class="cls-2" d="M42.35,20.83c3.02,0,6.05-.01,9.07-.02"/>
-                                <path class="cls-2" d="M25.08,36.32c1.17,4.98,2.34,9.95,3.51,14.93"/>
-                                <path class="cls-2" d="M28.59,51.25c7.41-1.17,14.83-2.34,22.24-3.51"/>
-                                <path class="cls-2" d="M66.93,8.22c1.07,7.12,2.15,14.24,3.22,21.37"/>
-                                <path class="cls-2" d="M70.15,29.59c9.56-1.17,19.12-2.34,28.68-3.51"/>
-                                <path class="cls-2" d="M88.88,9.1c6.34,.39,12.68,.78,19.02,1.17"/>
-                                <path class="cls-2" d="M90.35,19.05l15.8,.59"/>
-                                <path class="cls-2" d="M108.2,5.3c-.88,10.05-1.76,20.1-2.63,30.15"/>
-                                <path class="cls-2" d="M105.57,35.44c1.53,.52,4.48,1.51,5.85,4.39,1.57,3.29-.03,6.72-.59,7.9-1.8,3.84-5.19,5.44-6.15,5.85-.97,.41-5.78,2.48-10.24-.29-.4-.25-4.32-2.78-4.68-7.61-.35-4.68,2.92-7.73,3.8-8.49,4.75-4.07,10.99-2.1,12-1.76Z"/>
-                                <path class="cls-2" d="M141.86,7.05c2.34,2.63,4.68,5.27,7.02,7.9"/>
-                                <path class="cls-2" d="M128.98,13.49c7.51,.29,15.02,.59,22.54,.88"/>
-                                <path class="cls-2" d="M146.54,17.3c2.47,.22,5.49,.5,7.9,2.93,3.52,3.55,2.71,8.64,2.63,9.07-.82,4.65-4.53,7.05-5.85,7.9-.61,.39-8.3,5.19-14.63,.88-3.07-2.09-5.16-5.87-4.98-9.95,.22-4.73,3.4-7.6,4.1-8.2,3.82-3.27,8.46-2.85,10.83-2.63Z"/>
-                                <path class="cls-2" d="M168.79,9.98c-.39,10.54-.78,21.07-1.17,31.61"/>
-                                <path class="cls-2" d="M168.21,25.53c2.92,.09,5.85,.17,8.77,.26"/>
-                                <path class="cls-2" d="M201.86,10.57l-9.66,28.98"/>
-                                <path class="cls-2" d="M197.65,23.21c6.28,4.37,12.57,8.74,18.85,13.11"/>
-                                <path class="cls-2" d="M215.62,23.15l14.05,.29"/>
-                                <path class="cls-2" d="M229.37,10.27v31.61"/>
-                                <path class="cls-2" d="M239.62,11.15c-.49,9.66-.98,19.32-1.46,28.98"/>
-                                <path class="cls-2" d="M277.66,2.96c-1.04,.07-7.5,.54-11.12,6.15-2.49,3.86-3.06,9.26-.59,13.46,1.84,3.13,4.71,4.46,5.85,4.98,4.91,2.2,9.6,.8,12.29,0,3.15-.94,6.07-1.81,8.2-4.68,2.43-3.28,2.92-7.98,1.17-11.71-1.61-3.43-4.61-4.93-7.02-6.15-1.59-.8-4.67-2.34-8.78-2.05Z"/>
-                                <path class="cls-2" d="M270.24,26.74c.04,5.14,.07,10.29,.11,15.43"/>
-                                <path class="cls-2" d="M286.4,26.82c.21,4.73,.42,9.46,.63,14.18"/>
-                                <path class="cls-2" d="M255.71,42.18c15.32-.39,30.63-.78,45.95-1.17"/>
-                                <path class="cls-2" d="M318.64,45.4c-.9,.01-1.59,.75-1.57,1.57,.03,.78,.71,1.38,1.43,1.43,.91,.06,1.79-.77,1.68-1.68-.08-.69-.73-1.28-1.54-1.32Z"/>
-
-                            </g>
-                        <g class="svg-main" data-name="svg-bg">
-                            <path class="cls-1" d="M9.13,7.2c-.54,.32-7.65,4.75-7.02,12.29,.58,6.95,7.2,10.21,7.9,10.54,6.89,3.25,13.47-.69,14.49-1.32,1.43-.89,6.76-4.2,7.02-10.1,.26-5.67-4.37-9.38-5.27-10.1-4.51-3.62-11.55-4.66-17.12-1.32Z"/>
-                            <path class="cls-1" d="M42.06,36.32c.2-10.24,.39-20.49,.59-30.73"/>
-                            <path class="cls-1" d="M42.35,20.83c3.02,0,6.05-.01,9.07-.02"/>
-                            <path class="cls-1" d="M25.08,36.32c1.17,4.98,2.34,9.95,3.51,14.93"/>
-                            <path class="cls-1" d="M28.59,51.25c7.41-1.17,14.83-2.34,22.24-3.51"/>
-                            <path class="cls-1" d="M66.93,8.22c1.07,7.12,2.15,14.24,3.22,21.37"/>
-                            <path class="cls-1" d="M70.15,29.59c9.56-1.17,19.12-2.34,28.68-3.51"/>
-                            <path class="cls-1" d="M88.88,9.1c6.34,.39,12.68,.78,19.02,1.17"/>
-                            <path class="cls-1" d="M90.35,19.05l15.8,.59"/>
-                            <path class="cls-1" d="M108.2,5.3c-.88,10.05-1.76,20.1-2.63,30.15"/>
-                            <path class="cls-1" d="M105.57,35.44c1.53,.52,4.48,1.51,5.85,4.39,1.57,3.29-.03,6.72-.59,7.9-1.8,3.84-5.19,5.44-6.15,5.85-.97,.41-5.78,2.48-10.24-.29-.4-.25-4.32-2.78-4.68-7.61-.35-4.68,2.92-7.73,3.8-8.49,4.75-4.07,10.99-2.1,12-1.76Z"/>
-                            <path class="cls-1" d="M141.86,7.05c2.34,2.63,4.68,5.27,7.02,7.9"/>
-                            <path class="cls-1" d="M128.98,13.49c7.51,.29,15.02,.59,22.54,.88"/>
-                            <path class="cls-1" d="M146.54,17.3c2.47,.22,5.49,.5,7.9,2.93,3.52,3.55,2.71,8.64,2.63,9.07-.82,4.65-4.53,7.05-5.85,7.9-.61,.39-8.3,5.19-14.63,.88-3.07-2.09-5.16-5.87-4.98-9.95,.22-4.73,3.4-7.6,4.1-8.2,3.82-3.27,8.46-2.85,10.83-2.63Z"/>
-                            <path class="cls-1" d="M168.79,9.98c-.39,10.54-.78,21.07-1.17,31.61"/>
-                            <path class="cls-1" d="M168.21,25.53c2.92,.09,5.85,.17,8.77,.26"/>
-                            <path class="cls-1" d="M201.86,10.57l-9.66,28.98"/>
-                            <path class="cls-1" d="M197.65,23.21c6.28,4.37,12.57,8.74,18.85,13.11"/>
-                            <path class="cls-1" d="M215.62,23.15l14.05,.29"/>
-                            <path class="cls-1" d="M229.37,10.27v31.61"/>
-                            <path class="cls-1" d="M239.62,11.15c-.49,9.66-.98,19.32-1.46,28.98"/>
-                            <path class="cls-1" d="M277.66,2.96c-1.04,.07-7.5,.54-11.12,6.15-2.49,3.86-3.06,9.26-.59,13.46,1.84,3.13,4.71,4.46,5.85,4.98,4.91,2.2,9.6,.8,12.29,0,3.15-.94,6.07-1.81,8.2-4.68,2.43-3.28,2.92-7.98,1.17-11.71-1.61-3.43-4.61-4.93-7.02-6.15-1.59-.8-4.67-2.34-8.78-2.05Z"/>
-                            <path class="cls-1" d="M270.24,26.74c.04,5.14,.07,10.29,.11,15.43"/>
-                            <path class="cls-1" d="M286.4,26.82c.21,4.73,.42,9.46,.63,14.18"/>
-                            <path class="cls-1" d="M255.71,42.18c15.32-.39,30.63-.78,45.95-1.17"/>
-                            <path class="cls-1" d="M318.64,45.4c-.9,.01-1.59,.75-1.57,1.57,.03,.78,.71,1.38,1.43,1.43,.91,.06,1.79-.77,1.68-1.68-.08-.69-.73-1.28-1.54-1.32Z"/>
-                        </g>
-                    </svg>
-            --%>
-
-
-
-		</div>
-
-
-		<div class="ml-5 card-grid mb-1" style="background-color: rgba(51,51,51,0)">
-			<a class="card" href="/user/My">
-				<div class="card__background"></div>
-				<div class="card__content">
-					<p class="card__category ahover1">My Page</p>
-					<h3 class="card__heading ahover1">MyPage!</h3>
-				</div>
-			</a>
-			<a class="card" href="/board">
-				<div class="card__background" ></div>
-				<div class="card__content">
-					<p class="card__category ahover1">Gallery</p>
-					<h3 class="card__heading ahover1">Gallery!</h3>
-				</div>
-			</a>
-			<a class="card" href="/board/APIForm?style=2">
-				<div class="card__background" ></div>
-				<div class="card__content">
-					<p class="card__category ahover1">Recipe</p>
-					<h3 class="card__heading ahover1">Recipe!</h3>
-				</div>
-			</a>
-			<a class="card" href="/user/updateForm">
-				<div class="card__background" ></div>
-				<div class="card__content">
-					<p class="card__category ahover1">Profile</p>
-					<h3 class="card__heading ahover1">Profile!</h3>
-				</div>
-			</a>
-			<div>
-	</section>
-</div>
-
-<div class="d-flex justify-content-center">
-
-	<div id="timedate" style="height:200px; width:330px; margin-top: 50px;">
-		<a id="mon">January</a>
-		<a id="d">1</a>,
-		<a id="y">0</a><br/>
-		<a id="h">12</a> :
-		<a id="m">00</a>:
-		<a id="s">00</a>:
-		<a id="mi">000</a>
-	</div>
-
-	<div class="wrap-time text-center" style="margin-left: 100px;">
-		<div class="timer">
-			<span class="minutes">20</span>:<span class="seconds">00</span>
-		</div>
-		<div class="row">
-			<div class="col col-xs-4">
-				<span class="col-span">BREAK:</span><br/>
-				<span class="col-span operatorB">+</span><br/>
-				<span class="col-span breakT">5</span><br/>
-				<span class="col-span operatorB">-</span>
-			</div>
-			<div class="col col-xs-4"><div class="start-btn">START</div><div class="reset-btn">RESET</div></div>
-			<div class="col col-xs-4">
-				<span class="col-span">WORK:</span><br/>
-				<span class="col-span operatorW">+</span><br/>
-				<span class="col-span workT">20</span><br/>
-				<span class="col-span operatorW">-</span>
-			</div>
-		</div>
-	</div>
-</div>
 
 
 	</div>
@@ -1015,6 +1119,26 @@
 <body onLoad="initClock()">
 </body>
 
+<script>
+	let navopacity = document.querySelector(".navbar");
+
+	window.addEventListener('scroll',function (){
+		let value = window.scrollY
+		console.log("scrollY", value);
+
+
+
+		if (value>880) {
+			navopacity.style.animation='opacity3 .5s ease-out forwards';
+		} else {
+			navopacity.style.animation='slide 1.5s ease-out'
+		}
+
+
+
+
+	});
+</script>
 <%--select--%>
 <script>
 	/*

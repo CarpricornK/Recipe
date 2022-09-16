@@ -442,7 +442,6 @@ select::-ms-expand {
 
 
 
-	${MpList[0]}
 	<div class="container p-5 wrap-vertical"
 		 style="border-radius: 5px; background-color: #363435; max-width: 1110px;">
 		<a style="color: white">- 회원목록 -</a>

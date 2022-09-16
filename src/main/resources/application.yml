@@ -26,14 +26,20 @@ spring:
     mongodb:
       host: 127.0.0.1:27017
       port: 27017
-      database: MyDB
-  #    mongodb:
-  #      host: 52.8.7.54
-  #      port: 27017
-  #      database: MyDB
-  #      username: TEST
-  #      password: TEST
-  #     local
+      database: test
+
+  #      mongodb:
+  #        host: 52.8.7.54
+  #        port: 27017
+  #        database: MyDB
+  #        username: TEST
+  #        password: TEST
+  #       local
+
+  #  host: 127.0.0.1:27017
+  #  port: 27017
+  #  database: MyDB
+
   #    mongodb:
   #      host: 127.0.0.1:27017
   #      port: 27017
@@ -41,7 +47,7 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://211.58.164.136:8800/PJ
+    url: jdbc:mariadb://192.168.48.128:3306/myDBA
     username: TEST
     password: TEST
 
@@ -51,7 +57,10 @@ spring:
   #    username: poly
   #    password: Poly01!
 
-
+  #    driver-class-name: org.mariadb.jdbc.Driver
+  #    url: jdbc:mariadb://211.58.164.136:8800/PJ
+  #    username: TEST
+  #    password: TEST
 
   #
   #    local

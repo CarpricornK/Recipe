@@ -86,24 +86,25 @@ public class NaverService {
 
 
 
-        public String crolling(String url) throws IOException {
+    public String crolling(String url) throws IOException {
 
 
 
 
 
-            String burl ="https:\\/\\/terms.naver.com\\/entry.naver?docId=1170898&cid=40942&categoryId=32581";
-            String aurl = burl.replaceAll("\\\\","");
-            System.out.println("url변환:"+aurl);
+        String burl ="https://terms.naver.com//entry.naver?docId=4368455&cid=42776&categoryId=59916";
+        String aurl = burl.replaceAll("\\\\","");
+        System.out.println("url변환:"+aurl);
 
-            String url2 = "https://namu.wiki/w/당근";
-            System.out.println("url2:"+url2);
+//            String url2 = "https://namu.wiki/w/당근";
+//            System.out.println("url2:"+url2);
 
 //            String url2 = "http://www.horangi.kr/foodinfo/?t=고등어";
 
 
-            Document doc = Jsoup.connect("https://namu.wiki/w/당근").userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
-                    .get();
+        Document doc = Jsoup.connect(aurl).get();
+//                    .userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36")
+//                    .get();
 
 
 
@@ -114,33 +115,43 @@ public class NaverService {
 
 //            네이버백과사전
 
-//            Elements titleElements = doc.select("body.end p.txt");
+        Elements titleElements = doc.select("#content > div.section_wrap > div.headword_title > h2");
+
+        Elements locationElements  = doc.select("#naml_contents_container > p:nth-child(1)");
+
+        Elements locationElements2  = doc.select("#SEDOC-1545119220011-517646528 > div.se_component_wrap.sect_dsc.__se_component_area > div:nth-child(5) > div > div > div > div > div > p > span");
+
+
+//            나무위키 ↓
+//            Elements titleElements = doc.select("div#app div.MK2oyQQz");
 //
-//            Elements locationElements  = doc.select("p.txt");
+//            Elements locationElements  = doc.select("div.MK2oyQQz");
 
-            Elements titleElements = doc.select("div#app div.MK2oyQQz");
+        System.out.println("titleElements.size : " + titleElements.size());
+        System.out.println("locationElements.size : " + locationElements.size());
+        System.out.println("locationElements2.size : " + locationElements2.size());
+        if (titleElements.size() != 0) {
 
-            Elements locationElements  = doc.select("div.MK2oyQQz");
+            for (int i = 0; i <= 2; i++) {
 
-            if (locationElements.size() != 0){
+                System.out.println(i);
+                String title = titleElements.get(i).text();
+                // locationElements text 추출
+//                    String location = locationElements.get(i).text();
+                String location2 = locationElements2.get(i).text();
 
-                for(int i = 0; i < locationElements.size(); i++){
-
-                    String title = titleElements.get(i).text();
-                    // locationElements text 추출
-                    String location = locationElements.get(i).text();
-
-
-                    System.out.println("크롤링완료내용 : " + title);
-                    System.out.println("크롤링완료제목 : " + location);
-                }
-
-
-            } else {
-
-                System.out.println("사이즈가 0입니다");
+                System.out.println("크롤링완료제목 : " + title);
+//                    System.out.println("크롤링완료내용 : " + location);
+                System.out.println("크롤링완료내용2 : " + location2);
             }
 
-            return titleElements.get(1).text();
+
+
+        } else {
+
+            System.out.println("사이즈가 0입니다");
+        }
+
+        return titleElements.get(1).text();
     }
 }

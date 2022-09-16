@@ -31,7 +31,7 @@
 
 
 
-<div class="container animation1 mt-5" style="max-width:1300px;">
+<div class="container animation1" style="max-width:1300px;">
 	<div class="d-flex justify-content-between">
 		<a class="" style="color:#151823; font-family: 'Source Code Pro'; margin-right: -35px; font-size:28px;">
 			MENU
@@ -236,23 +236,22 @@
 		let value = window.scrollY
 		console.log("scrollY", value);
 
-		 if (value>450) {
-			 mainText1.style.animation='disappear 1.45s ease-out forwards';
+		 if (value>50) {
 			 mainText6.style.animation='disappear2 1s ease-out forwards';
 		 } else {
 			 mainText6.style.animation='disappear 1s ease-out forwards';
 		 }
-		 if (value>650) {
+		 if (value>450) {
 			mainText2.style.animation='disappear 1.45s ease-out forwards';
 		} else {
 
 		 }
-		 if (value>1150) {
+		 if (value>750) {
 			mainText3.style.animation='disappear 1.45s ease-out forwards';
 		} else {
 
 		 }
-		 if (value>1650) {
+		 if (value>1350) {
 			mainText4.style.animation='disappear 1.45s ease-out forwards';
 		} else {
 
