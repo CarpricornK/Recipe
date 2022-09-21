@@ -778,6 +778,7 @@
 				<li class="nav-item"><a class="nava nav-link ahover1" href="/user/My">내정보</a></li>
 				<li class="nav-item"><a class="nava nav-link ahover1" href="/logout">로그아웃</a></li>
 				<li class="nav-item"><a class="nava nav-link ahover1" href="/board">사용자 게시판</a></li>
+				<li class="nav-item"><a class="nava nav-link ahover1" href="/search/Naver">식재료 검색</a></li>
 				<li class="nav-item dropdown">
 					<a class="nava nav-link dropdown-toggle ahover1" data-toggle="dropdown" href="#">글쓰기</a>
 					<div class="dropdown-menu">

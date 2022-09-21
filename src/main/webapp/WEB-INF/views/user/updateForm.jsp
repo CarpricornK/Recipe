@@ -9,6 +9,7 @@
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.6.5/tailwind.min.css'>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -197,28 +198,6 @@ select::-ms-expand {
 			</div>
 		</a>
 
-		<a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
-			<div class="box border-right-0 border-left-0 border-white">
-				<div class="border-0 text-center">
-					<h4 class="box-title rounded p-4">
-						<i class='fa fa-id-card' style='font-size:24px'></i>
-						<p class="" style="font-size:4px;"><small>Profile</small></p>
-					</h4>
-				</div>
-			</div>
-		</a>
-
-		<a class="" style="color:black; text-decoration: none;" href="/board">
-			<div class="box border-right-0 border-left-0 border-white">
-				<div class="border-0 text-center">
-					<h4 class="box-title rounded p-4">
-						<i class='fa fa-list' style='font-size:24px'></i>
-						<p class="" style="font-size:4px;"><small>Board</small></p>
-					</h4>
-				</div>
-			</div>
-		</a>
-
 		<a class="" style="color:black; text-decoration: none;" href="/user/Admin">
 			<div class="box border-right-0 border-left-0 border-white">
 				<div class="border-0 text-center">
@@ -230,18 +209,49 @@ select::-ms-expand {
 			</div>
 		</a>
 
-		<a class="" style="color:black; text-decoration: none;" href="/user/My">
+		<a class="" style="color:black; text-decoration: none;" href="/board/report">
 			<div class="box border-right-0 border-left-0 border-white">
 				<div class="border-0 text-center">
 					<h4 class="box-title rounded p-4">
-						<i class='fab fa-medium-m' style='font-size:24px'></i>
-						<p style="font-size:4px;"><small>Meal plan</small></p>
+						<i class="material-icons" style="font-size:36px">message</i>
+						<p class="" style="font-size:4px;"><small>Report</small></p>
 					</h4>
 				</div>
 			</div>
 		</a>
 
+		<a class="" style="color:black; text-decoration: none;" href="/search/Naver">
+			<div class="box border-right-0 border-left-0 border-white">
+				<div class="border-0 text-center">
+					<h4 class="box-title rounded p-4">
+						<i class="material-icons" style="font-size:36px">search</i>
+						<p style="font-size:4px;"><small>Search</small></p>
+					</h4>
+				</div>
+			</div>
+		</a>
 
+		<a class="" style="color:black; text-decoration: none;" href="/board/AdminChart">
+			<div class="box border-right-0 border-left-0 border-white">
+				<div class="border-0 text-center">
+					<h4 class="box-title rounded p-4">
+						<i class="material-icons" style="font-size:36px">insert_chart</i>
+						<p style="font-size:4px;"><small>Chart</small></p>
+					</h4>
+				</div>
+			</div>
+		</a>
+
+		<a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
+			<div class="box border-right-0 border-left-0 border-white">
+				<div class="border-0 text-center">
+					<h4 class="box-title rounded p-4">
+						<i class='fa fa-id-card' style='font-size:24px'></i>
+						<p class="" style="font-size:4px;"><small>My page & plan</small></p>
+					</h4>
+				</div>
+			</div>
+		</a>
 
 
 	</div>
@@ -456,7 +466,7 @@ select::-ms-expand {
 					<div class="divTableHead">점심</div>
 					<div class="divTableHead">저녁</div>
 					<div class="divTableHead">영양성분?</div>
-					<div class="divTableHead">Delte</div>
+					<div class="divTableHead text-center">Delete</div>
 				</div>
 			</div>
 			<c:set var="sysDate"><%= datelast %></c:set>
@@ -523,11 +533,10 @@ select::-ms-expand {
 							</c:if>
 						</div>
 
-						<div class="divTableCell">
-
+						<div class="divTableCell d-flex justify-content-center">
 
 							<button onClick="index2.MDelete('${year}', '${month}', '0${i}')">
-								<i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+								<i class="material-icons no-underline text-grey-darker hover:text-red-dark">delete_forever</i>
 							</button>
 
 						</div>
@@ -589,11 +598,11 @@ select::-ms-expand {
 								</c:if>
 							</div>
 
-							<div class="divTableCell">
+							<div class="divTableCell d-flex justify-content-center">
 
 
 								<button onClick="index2.MDelete('${year}', '${month}', '${i}')">
-									<i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+									<i class="material-icons no-underline text-grey-darker hover:text-red-dark">delete_forever</i>
 								</button>
 
 							</div>

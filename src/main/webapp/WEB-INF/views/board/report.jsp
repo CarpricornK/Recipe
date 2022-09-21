@@ -151,7 +151,7 @@
                         </span>
                         <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
                             <span class="hidden">Like</span>
-                            <button onClick="index.reportT(${dlists.ID}, ${2})"
+                            <button onClick="index2.reportT(${dlists.ID}, ${2})"
                                     class="align-middle"
                                     style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
                                 <i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
@@ -221,7 +221,7 @@
                             <span class="hidden">Like</span>
 
 
-                            <button onClick="index.reportT(${dlists.ID}, ${1})"
+                            <button onClick="index2.reportT(${dlists.ID}, ${1})"
                                     class="align-middle"
                                     style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
                                 <i class="fa fa-times no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
@@ -279,7 +279,7 @@
                         </span>
                         <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
                             <span class="hidden">Like</span>
-                            <button onClick="index.reportT(${dlists.ID}, ${1})"
+                            <button onClick="index2.reportT(${dlists.ID}, ${1})"
                                     class="align-middle"
                                     style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
                                 <i class="fa fa-times no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>

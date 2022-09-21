@@ -124,10 +124,8 @@ li{ list-style: none; }
 
 			<c:otherwise>
 				<ul class="navbar-nav">
-
-					<li class="nav-item">
-						<a style="color: blue;" class="nav-link linkc" href="/board/report">Report</a>
-					</li>
+					<li class="nav-item"><a class="nav-link linkc" href="/">Home</a></li>
+					<li class="nav-item"><a class="nav-link linkc" href="/search/Naver">Search</a></li>
 
 					<li class="nav-item">
 						<a style="color: blue;" class="nav-link linkc" href="/board/APIForm?style=2">API</a>

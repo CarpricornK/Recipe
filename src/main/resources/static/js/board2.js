@@ -110,6 +110,9 @@ let index2 = {
 
 
     reportT: function(reportId, reportType) {
+        let data = {
+            TITLE: $("#TITLE2").val(),
+        }
 
         $.ajax({
             type: "PUT",

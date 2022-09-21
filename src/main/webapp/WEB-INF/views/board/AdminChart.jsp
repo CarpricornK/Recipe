@@ -21,8 +21,8 @@
 
    페이징 4개 받은것중 제일큰거
    c:if test = "
-   declaration1.last > declaration2.last && declaration1.last > declaration3.last
-   && declaration1.last > declaration4.last
+   declarations1.last > declarations2.last && declarations1.last > declarations3.last
+   && declarations1.last > declarations4.last
    "
 
 --%>
@@ -34,7 +34,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/0.6.5/tailwind.min.css'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+            crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -224,19 +227,19 @@
 
 <%--신고문의--%>
 <c:set var = "d1count" value = "0" />
-<c:forEach var="dlists1" items="${declaration1}">
+<c:forEach var="dlists1" items="${declarations1}">
             <c:set var="d1count" value="${d1count + 1}" />
 </c:forEach>
 <c:set var = "d2count" value = "0" />
-<c:forEach var="dlists2" items="${declaration2}">
+<c:forEach var="dlists2" items="${declarations2}">
     <c:set var="d2count" value="${d2count + 1}" />
 </c:forEach>
 <c:set var = "d3count" value = "0" />
-<c:forEach var="dlists3" items="${declaration3}">
+<c:forEach var="dlists3" items="${declarations3}">
     <c:set var="d3count" value="${d3count + 1}" />
 </c:forEach>
 <c:set var = "d4count" value = "0" />
-<c:forEach var="dlists4" items="${declaration2}">
+<c:forEach var="dlists4" items="${declarations2}">
     <c:set var="d4count" value="${d4count + 4}" />
 </c:forEach>
 
@@ -351,28 +354,6 @@
         </div>
         </a>
 
-        <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class='fa fa-id-card' style='font-size:24px'></i>
-                        <p class="" style="font-size:4px;"><small>Profile</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/board">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class='fa fa-list' style='font-size:24px'></i>
-                        <p class="" style="font-size:4px;"><small>Board</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
         <a class="" style="color:black; text-decoration: none;" href="/user/Admin">
             <div class="box border-right-0 border-left-0 border-white">
                 <div class="border-0 text-center">
@@ -384,18 +365,49 @@
             </div>
         </a>
 
-        <a class="" style="color:black; text-decoration: none;" href="/user/My">
+        <a class="" style="color:black; text-decoration: none;" href="/board/report">
             <div class="box border-right-0 border-left-0 border-white">
                 <div class="border-0 text-center">
                     <h4 class="box-title rounded p-4">
-                        <i class='fab fa-medium-m' style='font-size:24px'></i>
-                        <p style="font-size:4px;"><small>My Page</small></p>
+                        <i class="material-icons" style="font-size:36px">message</i>
+                        <p class="" style="font-size:4px;"><small>Report</small></p>
                     </h4>
                 </div>
             </div>
         </a>
 
+        <a class="" style="color:black; text-decoration: none;" href="/search/Naver">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class="material-icons" style="font-size:36px">search</i>
+                        <p style="font-size:4px;"><small>Search</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
 
+        <a class="" style="color:black; text-decoration: none;" href="/board/AdminChart">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class="material-icons" style="font-size:36px">insert_chart</i>
+                        <p style="font-size:4px;"><small>Chart</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
+
+        <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
+            <div class="box border-right-0 border-left-0 border-white">
+                <div class="border-0 text-center">
+                    <h4 class="box-title rounded p-4">
+                        <i class='fa fa-id-card' style='font-size:24px'></i>
+                        <p class="" style="font-size:4px;"><small>My page & plan</small></p>
+                    </h4>
+                </div>
+            </div>
+        </a>
 
 
     </div>
@@ -476,22 +488,425 @@
 
             </div>
 
-        </div>
-        신고활성화 : ${d1count}
-        문의활성화 : ${d2count}
-        신고비활성화 : ${d3count}
-        문의비활성화 : ${d4count}
 
-        -${month01}- -${Type1}- <br/>
-        -${month02}- -${Type2}- <br/>
-        -${month03}- -${Type3}- <br/>
-        -${month04}- -${Type4}- <br/>
-        -${month05}- -${Type5}- <br/>
-        -${month06}- -${Type6}- <br/>
-        -${month08}- -${Type7}- <br/>
-        -${month09}- -${Type8}- <br/>
-        -${month10}- -${Type10}-<br/>
-        -${month11}- -${Type11}-<br/>
+
+<%--            문의 구현             --%>
+
+            <span class="d-flex justify-content-center text-3xl mt-5"> 문의중 </span>
+            <!-- 문의중 -->
+            <hr/>
+            <span class="d-flex justify-content-center"> 신고 </span>
+            <div class="container my-12 mx-auto px-4 md:px-12">
+                <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+
+                    <c:forEach var="dlists" items="${declaration1.content}">
+                        <!-- Column -->
+                        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+                            <!-- Article -->
+                            <article class="overflow-hidden rounded-lg shadow-lg">
+
+
+                                <div class="h-48 py-4 px-3 w-full" style="word-break:break-all !important;">
+                                        ${dlists.CONTENT}
+                                </div>
+
+                                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                                    <h1 class="text-lg">
+                                        <p class="no-underline hover:text-blue text-black" href="#">
+                                                ${dlists.TITLE}
+                                        </p>
+                                    </h1>
+                                    <p class="text-grey-darker text-sm">
+                                            ${dlists.DDATE}
+                                    </p>
+                                </header>
+
+                                <footer class="flex items-center justify-between leading-none p-2 md:p-4 ">
+                        <span class="flex items-center no-underline hover:text-blue text-black " href="#">
+                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                            <p class="ml-2 no-underline hover:text-blue text-black">
+                                    ${dlists.NAME}
+                            </p>
+                        </span>
+                                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                                        <span class="hidden">Like</span>
+
+
+                                        <button onClick="index2.reportT(${dlists.ID}, ${2})"
+                                                class="align-middle"
+                                                style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
+                                            <i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                </footer>
+
+                            </article>
+                            <!-- END Article -->
+
+                        </div>
+                        <!-- END Column -->
+                    </c:forEach>
+                </div>
+
+            </div>
+
+            <hr/>
+            <span class="d-flex justify-content-center"> 문의 </span>
+
+            <div class="container my-12 mx-auto px-4 md:px-12">
+                <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+
+                    <c:forEach var="dlists" items="${declaration2.content}">
+                        <!-- Column -->
+                        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+                            <!-- Article -->
+                            <article class="overflow-hidden rounded-lg shadow-lg">
+
+
+                                <div class="h-48 py-4 px-3 w-full" style="word-break:break-all !important;">
+                                        ${dlists.CONTENT}
+                                </div>
+
+                                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                                    <h1 class="text-lg">
+                                        <p class="no-underline hover:text-blue text-black" href="#">
+                                                ${dlists.TITLE}
+                                        </p>
+                                    </h1>
+                                    <p class="text-grey-darker text-sm">
+                                            ${dlists.DDATE}
+                                    </p>
+                                </header>
+
+                                <footer class="flex items-center justify-between leading-none p-2 md:p-4 ">
+                        <span class="flex items-center no-underline hover:text-blue text-black " href="#">
+                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                            <p class="ml-2 no-underline hover:text-blue text-black">
+                                    ${dlists.NAME}
+                            </p>
+                        </span>
+                                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                                        <span class="hidden">Like</span>
+                                        <button onClick="index2.reportT(${dlists.ID}, ${2})"
+                                                class="align-middle"
+                                                style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
+                                            <i class="fa fa-check no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                </footer>
+
+                            </article>
+                            <!-- END Article -->
+
+                        </div>
+                        <!-- END Column -->
+                    </c:forEach>
+                </div>
+
+            </div>
+
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+
+
+            <span class="d-flex justify-content-center text-3xl"> 문의완료 </span>
+            <!--                         문의 완료                             -->
+            <hr/>
+            <span class="d-flex justify-content-center"> 신고 </span>
+            <div class="container my-12 mx-auto px-4 md:px-12">
+                <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+
+                    <c:forEach var="dlists" items="${declaration3.content}">
+                        <!-- Column -->
+                        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+                            <!-- Article -->
+                            <article class="overflow-hidden rounded-lg shadow-lg">
+
+
+                                <div class="h-48 py-4 px-3 w-full" style="word-break:break-all !important;">
+                                        ${dlists.CONTENT}
+                                </div>
+
+                                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                                    <h1 class="text-lg">
+                                        <p class="no-underline hover:text-blue text-black" href="#">
+                                                ${dlists.TITLE}
+                                        </p>
+                                    </h1>
+                                    <p class="text-grey-darker text-sm">
+                                            ${dlists.DDATE}
+                                    </p>
+                                </header>
+
+                                <footer class="flex items-center justify-between leading-none p-2 md:p-4 ">
+                        <span class="flex items-center no-underline hover:text-blue text-black " href="#">
+                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                            <p class="ml-2 no-underline hover:text-blue text-black">
+                                    ${dlists.NAME}
+                            </p>
+                        </span>
+                                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                                        <span class="hidden">Like</span>
+
+
+                                        <button onClick="index2.reportT(${dlists.ID}, ${1})"
+                                                class="align-middle"
+                                                style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
+                                            <i class="fa fa-times no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                </footer>
+
+                            </article>
+                            <!-- END Article -->
+
+                        </div>
+                        <!-- END Column -->
+                    </c:forEach>
+                </div>
+
+            </div>
+
+
+            <hr/>
+            <span class="d-flex justify-content-center"> 문의 </span>
+
+            <div class="container my-12 mx-auto px-4 md:px-12">
+                <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+
+                    <c:forEach var="dlists" items="${declaration4.content}">
+                        <!-- Column -->
+                        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+                            <!-- Article -->
+                            <article class="overflow-hidden rounded-lg shadow-lg">
+
+
+                                <div class="h-48 py-4 px-3 w-full" style="word-break:break-all !important;">
+                                        ${dlists.CONTENT}
+                                </div>
+
+                                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                                    <h1 class="text-lg">
+                                        <p class="no-underline hover:text-blue text-black" href="#">
+                                                ${dlists.TITLE}
+                                        </p>
+                                    </h1>
+                                    <p class="text-grey-darker text-sm">
+                                            ${dlists.DDATE}
+                                    </p>
+                                </header>
+
+                                <footer class="flex items-center justify-between leading-none p-2 md:p-4 ">
+                        <span class="flex items-center no-underline hover:text-blue text-black " href="#">
+                            <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                            <p class="ml-2 no-underline hover:text-blue text-black">
+                                    ${dlists.NAME}
+                            </p>
+                        </span>
+                                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                                        <span class="hidden">Like</span>
+                                        <button onClick="index2.reportT(${dlists.ID}, ${1})"
+                                                class="align-middle"
+                                                style="color:#777575; border:none; width:25px; font-size:15px; margin-top: -2px; margin-left: -5px; hegiht: 50px;">
+                                            <i class="fa fa-times no-underline text-grey-darker hover:text-red-dark" aria-hidden="true"></i>
+                                        </button>
+                                    </a>
+                                </footer>
+
+                            </article>
+                            <!-- END Article -->
+
+                        </div>
+                        <!-- END Column -->
+                    </c:forEach>
+                </div>
+
+            </div>
+
+
+
+
+
+            <!--           페이징           -->
+
+            <c:if test="${null ne param.page}">
+                <div class="container d-flex justify-content-center">
+                    -${param.page+1}-
+                </div>
+            </c:if>
+
+
+            <c:if test="${declaration5.totalPages<=declaration5.number}">
+	<span class="d-flex justify-content-center mt-1"> <a style="color: red; font-size: 14px;" href="?page=${declaration5.totalPages-1}">없는 페이지 입니다(누르면 마지막 페이지로 돌아갑니다)</a>
+	</span>
+            </c:if>
+
+            <ul class="pagination justify-content-center mt-5">
+
+                <c:choose>
+                    <c:when test="${declaration5.first}">
+                        <li class="page-item disabled"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number-1}">Previous</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number-1}">Previous</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+                <c:set var="pageend" value="${declaration5.totalPages}"/>
+                <c:if test="${declaration5.totalPages>10}">
+                    <c:set var="pageend" value="10"/>
+                </c:if>
+
+                <c:if test="${declaration5.number<9}">
+                    <c:forEach var="i" begin="0" end="${pageend-1}">
+
+                        <c:if test="${null ne param.stype }">
+                            <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                        </c:if>
+                        <c:if test="${null eq param.stype }">
+                            <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                        </c:if>
+
+                    </c:forEach>
+                </c:if>
+
+                <c:if test="${declaration5.number>=9}">
+                    <c:if test="${(declaration5.totalPages-1)-param.page>5}">
+                        <c:forEach var="i" begin="${param.page-5}" end="${param.page+5}">
+                            <c:if test="${null ne param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+                            <c:if test="${null eq param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${(declaration5.totalPages-1)-param.page<=5}">
+                        <c:forEach var="i" begin="${param.page-5}" end="${declaration5.totalPages-1}">
+                            <c:if test="${null ne param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+                            <c:if test="${null eq param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                </c:if>
+
+                <c:choose>
+                    <c:when test="${declaration5.last}">
+                        <li class="page-item disabled"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number+1}">Next</a></li>
+                    </c:when>
+
+                    <c:otherwise>
+                        <li class="page-item"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number+1}">Next</a></li>
+                    </c:otherwise>
+                </c:choose>
+
+            </ul>
+
+
+
+            <c:if test="${'searchf' eq param.field && null eq param.NOTICE && '' ne declaration5.totalPages}">
+
+                <c:if test="${declaration5.totalPages<=declaration5.number}">
+	<span class="d-flex justify-content-center mt-1"> <a style="color: red; font-size: 14px;" href="?page=${declaration5.totalPages-1}">없는 페이지 입니다(누르면 마지막 페이지로 돌아갑니다)</a>
+	</span>
+                </c:if>
+
+                <ul class="pagination justify-content-center mt-5">
+
+                    <c:choose>
+                        <c:when test="${declaration5.first}">
+                            <li class="page-item disabled"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number-1}">Previous</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="page-item"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number-1}">Previous</a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <c:set var="pageend" value="${declaration5.totalPages}"/>
+                    <c:if test="${declaration5.totalPages>10}">
+                        <c:set var="pageend" value="10"/>
+                    </c:if>
+
+                    <c:if test="${declaration5.number<9}">
+                        <c:forEach var="i" begin="0" end="${pageend-1}">
+
+                            <c:if test="${null ne param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+                            <c:if test="${null eq param.stype }">
+                                <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                            </c:if>
+
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${declaration5.number>=9}">
+                        <c:if test="${(declaration5.totalPages-1)-param.page>5}">
+                            <c:forEach var="i" begin="${param.page-5}" end="${param.page+5}">
+                                <c:if test="${null ne param.stype }">
+                                    <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                                </c:if>
+                                <c:if test="${null eq param.stype }">
+                                    <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${(declaration5.totalPages-1)-param.page<=5}">
+                            <c:forEach var="i" begin="${param.page-5}" end="${declaration5.totalPages-1}">
+                                <c:if test="${null ne param.stype }">
+                                    <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                                </c:if>
+                                <c:if test="${null eq param.stype }">
+                                    <li class="page-item"><a style="color: #777575; border: 1px #FFFFFF;" id="moveMove" class="page-link" href="?page=${i}"> ${i+1}</a></li>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
+                    </c:if>
+
+                    <c:choose>
+                        <c:when test="${declaration5.last}">
+                            <li class="page-item disabled"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number+1}">Next</a></li>
+                        </c:when>
+
+                        <c:otherwise>
+                            <li class="page-item"><a style="color: #363435; border: 1px #FFFFFF;" class="page-link" href="?page=${declaration5.number+1}">Next</a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                </ul>
+            </c:if>
+        </div>
+<%--        신고활성화 : ${d1count}--%>
+<%--        문의활성화 : ${d2count}--%>
+<%--        신고비활성화 : ${d3count}--%>
+<%--        문의비활성화 : ${d4count}--%>
+
+<%--        -${month01}- -${Type1}- <br/>--%>
+<%--        -${month02}- -${Type2}- <br/>--%>
+<%--        -${month03}- -${Type3}- <br/>--%>
+<%--        -${month04}- -${Type4}- <br/>--%>
+<%--        -${month05}- -${Type5}- <br/>--%>
+<%--        -${month06}- -${Type6}- <br/>--%>
+<%--        -${month08}- -${Type7}- <br/>--%>
+<%--        -${month09}- -${Type8}- <br/>--%>
+<%--        -${month10}- -${Type10}-<br/>--%>
+<%--        -${month11}- -${Type11}-<br/>--%>
 
 
 
@@ -630,7 +1045,8 @@
     });
 
 </script>
-
 </body>
+
+<script src="/js/board2.js"></script>
 </html>
 

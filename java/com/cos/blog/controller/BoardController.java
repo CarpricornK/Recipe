@@ -101,22 +101,40 @@ public class BoardController {
 	}
 
 	@GetMapping("/board/AdminChart")
-	public String AdminChart(Model model) {
-		List<Declaration> declaration5=boardService.declarationlist2();
+	public String AdminChart(Model model,
+							 @PageableDefault(size = 9, sort = "ID", direction = Sort.Direction.DESC) Pageable pageable) {
+		List<Declaration> declarations5=boardService.declarationlist2();
 
 
 //		신고 처리중
-		List<Declaration> declaration1=boardService.dhvalsearch3(1, 1);
+		List<Declaration> declarations1=boardService.dhvalsearch3(1, 1);
 //		문의 처리중
-		List<Declaration> declaration2=boardService.dhvalsearch3(2, 1);
-		List<Declaration> declaration3=boardService.dhvalsearch3(1, 2);
-		List<Declaration> declaration4=boardService.dhvalsearch3(2, 2);
+		List<Declaration> declarations2=boardService.dhvalsearch3(2, 1);
+		List<Declaration> declarations3=boardService.dhvalsearch3(1, 2);
+		List<Declaration> declarations4=boardService.dhvalsearch3(2, 2);
+
+		Page<Declaration> declaration5=boardService.declarationlist(pageable);
+
+//		Page<Declaration> declaration1=boardService.dhvalsearch(1,pageable);
+//
+//		Page<Declaration> declaration2=boardService.dhvalsearch(2,pageable);
+
+		Page<Declaration> declaration1=boardService.dhvalsearch2(1, 1, pageable);
+		Page<Declaration> declaration2=boardService.dhvalsearch2(2, 1, pageable);
+		Page<Declaration> declaration3=boardService.dhvalsearch2(1, 2, pageable);
+		Page<Declaration> declaration4=boardService.dhvalsearch2(2, 2, pageable);
 
 		model.addAttribute("declaration1", declaration1);
 		model.addAttribute("declaration2", declaration2);
 		model.addAttribute("declaration3", declaration3);
 		model.addAttribute("declaration4", declaration4);
 		model.addAttribute("declaration5", declaration5);
+
+		model.addAttribute("declarations1", declarations1);
+		model.addAttribute("declarations2", declarations2);
+		model.addAttribute("declarations3", declarations3);
+		model.addAttribute("declarations4", declarations4);
+		model.addAttribute("declarations5", declarations5);
 
 		model.addAttribute("Users",userService.muserlist());
 		model.addAttribute("boards2", boardService.boardlist2());
