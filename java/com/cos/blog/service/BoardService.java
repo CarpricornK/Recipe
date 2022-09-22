@@ -200,12 +200,14 @@ public class BoardService implements IBoardService {
 
 		return rBoardRepository.findAll(pageable);
 	}
+
 //	레시피목록검색
 	@Transactional(readOnly = true)
 	public Page<RBoard> recipelistsearch(String word, Pageable pageable) {
 
 		return rBoardRepository.findByRBOARDTITLEContains(word, pageable);
 	}
+
 //	레시피목록필터
 	@Transactional(readOnly = true)
 	public Page<RBoard> recipelistfilter(String CF, Pageable pageable) {

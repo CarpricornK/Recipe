@@ -152,16 +152,14 @@ public class BoardController {
 	, @RequestParam(required = false, defaultValue = "") String word
 	, @RequestParam(required = false, defaultValue = "NL") String CF
 	, @RequestParam(required = false, defaultValue = "") Integer count
-	, @RequestParam(required = false, defaultValue = "") String content
-	, @RequestParam(required = false, defaultValue = "") String notice
-	, @RequestParam(required = false, defaultValue = "0") Integer page
 	) throws Exception {
+
 		Page<RBoard> ulist=boardService.recipelist(pageable);
 		Page<Board> ulist2=boardService.boardlist(pageable);
 
 		if(field.equals("searchr")) {
 			ulist = boardService.recipelistsearch(word, pageable);
-//			System.out.println(ulist);
+
 			if (CF.indexOf("NL") == -1) {
 				ulist = boardService.recipelistfilter(CF, pageable);
 				System.out.println("SHIT");
@@ -171,11 +169,6 @@ public class BoardController {
 				ulist = boardService.recipelisthot(count, pageable);
 
 			}
-//			if (title.equals("1")) {
-//				Pageable sortedByName = PageRequest.of(page, 20, Sort.by("RBOARDTITLE"));
-//				ulist = boardService.레시피목록검색(word, sortedByName);
-////				System.out.println("정렬후 : "+boardService.레시피목록검색(word, sortedByName).getContent());
-//			}
 
 		} else if (field.equals("searchf")){
 			ulist2 = boardService.blistsearch(word, pageable);
@@ -184,7 +177,6 @@ public class BoardController {
 				ulist2 = boardService.blisthot(count, pageable);
 			}
 
-//            System.out.println("정렬전 : "+ulist2.getContent());
 		}
 
 		model.addAttribute("rboards3", ulist);

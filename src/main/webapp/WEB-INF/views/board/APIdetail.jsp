@@ -759,7 +759,7 @@
 					<c:set var="teltt" value="${teltt + g.count}"/>
 				</c:forEach>
 			</c:forEach>
-<%--			teltt은 재료 묶음 개수--%>
+            <%--teltt은 재료 묶음 개수--%>
             <%-- 말풍선과 split한 재료창 --%>
 			<c:forEach var="x" begin="0" end="${teltt-1}">
 
@@ -1117,20 +1117,17 @@
 
 <c:set var="text" value="${api3.rcp_PARTS_DTLS}"/>
 
-<c:set var = "testStr" value = "${fn:split(text, ',')[x]}"/>
-
+	<c:set var = "testStr" value = "${fn:split(text, ',')[x]}"/>
 
 			<c:forEach var="F" begin="0" end="20">
 
 		    	<c:forEach var="n" begin="0" end="40">
 	        	<c:if test="${fn:contains(fn:split(text, ',')[F], api5[n].item_name)}">
 
-
 		        var RGB_1 = Math.floor(Math.random() * (255 + 1))
 		        var RGB_2 = Math.floor(Math.random() * (255 + 1))
 		        var RGB_3 = Math.floor(Math.random() * (255 + 1))
 		        var strRGBA = 'rgba(' + RGB_1 + ',' + RGB_2 + ',' + RGB_3 + ',0.8)'
-
 
 				amount1 = "${api5[n].dpr1}".replace(",", "")
 				amount2 = "${api5[n].dpr2}".replace(",", "")
@@ -1139,7 +1136,6 @@
 				amount5 = "${api5[n].dpr5}".replace(",", "")
 
 
-                <%--${F}가 이상하게 10넘어가면 안나옴--%>
 				var ctx = document.getElementById("myChart"+"${F-5}"+"${n}");
 				var myChart = new Chart(ctx, {
 					type: 'line',

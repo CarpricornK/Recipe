@@ -88,11 +88,16 @@
         }
         .nav2{
             width:150px;
-            background-color:none;
-            margin-top:30px;
+            padding-top:30px;
             padding-bottom: 100%;
-            border-right: 1px solid #848484;
+            border-right: 1px solid black;
         }
+
+        .nav3{
+            top:150px;
+            position: sticky;
+        }
+
         .box-title:hover{
             background-color:#EFECEC;
         }
@@ -161,36 +166,19 @@
             }
         }
 
-        @keyframes move1 {
-            from{
-                padding-top: 300px;
-            }
-            to{
-                padding-top: 160px;
-            }
-        }
-
-        @keyframes move2 {
-            from{
-                padding-top: 160px;
-            }
-            to{
-                padding-top: 300px;
-            }
-        }
 
         @keyframes move3 {
             from{
                 margin-top: 0px;
             }
             to{
-                margin-top: -20px;
+                margin-top: -30px;
             }
         }
 
         @keyframes move4 {
             from{
-                margin-top: -20px;
+                margin-top: -30px;
             }
             to{
                 margin-top: 0px;
@@ -217,6 +205,36 @@
             color: #1a1a1a!important;
             transition-duration: 1s;
         }
+
+        body {
+            font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-style: normal;
+            font-weight: 200;
+            letter-spacing: 3px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -moz-font-feature-settings: "liga" on;
+        }
+
+        @font-face {
+            font-family: 'Cafe24Oneprettynight';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .mycard1{
+            background-color: mistyrose;
+            border-radius: 5px;
+            padding: 25px;
+
+        }
+
+        .title2{
+            font-size: 20px;
+        }
+
 
 
     </style>
@@ -312,25 +330,24 @@
         </c:choose>
     </nav>
     <%--검색창--%>
-    <div class="searchbox">
-        <form>
+        <form id="todo-form" class="form">
             <input class="searchbar" name="url" type="text"/>
-            <button style="margin-left: -50px;" type="url">
+            <button type="submit" form="todo-form" style="margin-left: -40px;">
                 <i class="fa fa-search" style="font-size:18px"></i>
             </button>
         </form>
+
+
+
+
+
+    <div class="allDelete off">
+        <span class="btn" style="color: white">모두 지우기&nbsp;<i class="fa fa-times no-underline text-white-darker hover:text-red-dark" aria-hidden="true"></i></span>
     </div>
-
-    <br/>
-
     <div class="slick-sample">
-        <p>Resize this responsive page to see the effect1!</p>
-        <p>Resize this responsive page to see the effect2!</p>
-        <p>Resize this responsive page to see the 3!</p>
-        <p>Resize this responsive page to see the effect4!</p>
-        <p>Resize this responsive page to see the effect5!</p>
-        <p>Resize this responsive page to see the effect6!</p>
     </div>
+
+
 
 
 </div>
@@ -340,13 +357,11 @@
 
 
 
-
 <div class="row">
-
-
 
     <div class="nav2">
 
+        <div class="nav3">
         <a class="" style="color:black; text-decoration: none;" href="/">
             <div class="box border-right-0 border-left-0 border-white">
                 <div class="border-0 text-center">
@@ -412,12 +427,18 @@
                 </div>
             </div>
         </a>
-
+        </div>
 
     </div>
 
+    <c:if test="${param.url ne '' && param.url eq null}">
+    <div class="container d-flex justify-content-center mt-5" style="margin-top:30px; padding-left: 150px;">
+        <p style="color:black; font-size: 3.5ex; font-family: sans-serif;">검색해주세요</p>
+    </div>
+    </c:if>
 
-    <div class="container" style="margin-top:30px; padding-left: 100px;">
+    <c:if test="${param.url ne null}">
+    <div class="container" style="margin-top:30px; padding-left: 150px;">
 
         <br/>
         <hr style="margin-left: -80px;"/>
@@ -449,19 +470,27 @@
             </c:if>
 
             <c:if test="${param.url eq list3[a].FOOD_NM}">
-            <div class="d-flex align-items-center mt-5 row" style="min-height:150px; margin-left: -100px;">
+            <div class="d-flex align-items-center mt-5 row" style="border-left:2px solid mistyrose;  min-height:150px; margin-left: -100px;">
                 <div class="ml-1 d-flex justify-content-center align-middle" style="width: 200px;">
                     ${list3[a].FOOD_NM}
                 </div>
                 <div class="" style="width: 750px;">
-                        <b>-내용-</b><br/>
-                        ${list3[a].FOOD_CONTENT} <br/>
-                        <b>-약성-</b><br/>
-                        ${list3[a].FOOD_DRUG} <br/>
-                        <b>-민간요법-</b><br/>
-                        ${list3[a].FOOD_PT} <br/>
-                        <b>-영양성분-</b><br/>
-                        ${list3[a].FOOD_CONTENT2}
+                    <p class="mycard1" style="font-family: Cafe24Oneprettynight;">
+                        <b class="d-flex justify-content-center title2">-내용-</b>
+                            ${list3[a].FOOD_CONTENT}
+                    </p>
+                    <p class="mycard1" style="font-family: Cafe24Oneprettynight;">
+                        <b class="d-flex justify-content-center title2">-약성-</b>
+                            ${list3[a].FOOD_DRUG}
+                    </p>
+                    <p class="mycard1" style="font-family: Cafe24Oneprettynight;">
+                        <b class="d-flex justify-content-center title2">-민간요법-</b>
+                            ${list3[a].FOOD_PT}
+                    </p>
+                    <p class="mycard1" style="font-family: Cafe24Oneprettynight;">
+                        <b class="d-flex justify-content-center title2">-영양성분-</b>
+                            ${list3[a].FOOD_CONTENT2}
+                    </p>
                 </div>
             </div>
             </c:if>
@@ -495,14 +524,10 @@
         </div>
         <hr style="margin-right: 25%"/>
         </c:forEach>
-
-
-
     </div>
-
-
-
 </div>
+
+</c:if>
 
 
 
@@ -625,28 +650,24 @@
 
 <script>
     let mainText1 = document.querySelector(".jumbotron");
-    let mainText2 = document.querySelector(".nav3");
+    let mainText2 = document.querySelector(".nav4");
     let mainText3 = document.querySelector(".slick-sample");
-    let mainText4 = document.querySelector(".searchbox");
+    let mainText4 = document.querySelector("#todo-form");
+
 
 
     window.addEventListener('scroll',function (){
         let value = window.scrollY
         console.log("scrollY", value);
+
         if (value>30) {
             mainText1.style.animation='animationH1 0.5s forwards';
-            mainText2.style.animation='move1 0.5s forwards';
             mainText3.style.opacity= '0';
             mainText3.style.transitionDuration='1';
-            mainText4.style.animation='move3 0.5s forwards'
-            mainText4.style.transitionDuration= '1';
         } else {
             mainText1.style.animation='animationH2 0.5s forwards';
-            mainText2.style.animation='move2 0.5s forwards';
             mainText3.style.opacity= '1';
             mainText3.style.transitionDuration= '1';
-            mainText4.style.animation='move4 0.5s forwards'
-            mainText4.style.transitionDuration= '1';
         }
     });
 </script>
@@ -655,7 +676,7 @@
     $(document).ready(function(){
         $('.slick-sample').slick({
             infinite: true,
-            speed: 1500,
+            speed: 400,
             fade: true,
             centerMode: true,
             autoplay: true,
@@ -664,6 +685,74 @@
         });
     });
 </script>
+
+<script>
+    const toDoForm = document.querySelector('#todo-form');
+    const toDoInput = toDoForm.querySelector('input');
+    const toDoList = document.querySelector('.slick-sample');
+    const allDelete = document.querySelector('.allDelete');
+    const txt = document.querySelector('.txt');
+    const TODOS_KEY = "todos";
+
+    let toDos = new Array();
+
+    function saveToDos() { //item을 localStorage에 저장합니다.
+        typeof(Storage) !== 'undefined' && localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+    };
+
+    function allDeleteToDo() { //전체 item을 삭제
+        history.go(0);
+        localStorage.clear(toDos);
+        toDoList.innerText = '최근검색어 내역이 없습니다.';
+    };
+
+    function deleteToDo(e) { //각각의 item을 삭제
+        const li = e.target.parentElement;
+        li.remove();
+        toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
+        toDos.length === 0 && (txt.innerText = '최근검색어 내역이 없습니다.')
+        saveToDos();
+    };
+
+    function paintToDo(newTodo) { //화면에 뿌림
+        const {id, text} = newTodo;
+        const item = document.createElement("p");
+        const span = document.createElement("span");
+        const button = document.createElement("button");
+        item.id = id;
+        span.innerText = text;
+        button.innerText = ' ';
+        button.addEventListener("click", deleteToDo);
+        allDelete.addEventListener("click", allDeleteToDo);
+        item.appendChild(span);
+        item.appendChild(button);
+        toDoList.appendChild(item);
+        newTodo !== null && allDelete.classList.remove('off');
+    };
+
+    function handleToDoSubmit(event) { //form 전송
+        location.href = "http://localhost:8000/search/Naver" + "?url=" + toDoInput.value;
+        event.preventDefault();
+        const newTodoItem = toDoInput.value;
+        toDoInput.value = '';
+        const newTodoObj = {
+            id: Date.now(),
+            text: newTodoItem
+        };
+        toDos.push(newTodoObj);
+        paintToDo(newTodoObj);
+        saveToDos();
+    };
+
+    toDoForm.addEventListener('submit', handleToDoSubmit);
+
+    const savedToDos = JSON.parse(localStorage.getItem(TODOS_KEY));
+    if(savedToDos !== null) {
+        toDos = savedToDos //전에 있던 items들을 계속 가지도 있다록 합니다.
+        savedToDos.forEach(paintToDo);
+    }
+</script>
+
 
 
 
