@@ -220,10 +220,8 @@
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0; color:white;">
-    <h1>Admin page</h1>
-    <p>Resize this responsive page to see the effect!</p>
-</div>
+<%@ include file="../layout/AdminChartheader.jsp"%>
+
 
 <%--신고문의--%>
 <c:set var = "d1count" value = "0" />

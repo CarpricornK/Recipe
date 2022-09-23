@@ -12,27 +12,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.cos.blog.config.auth.PrincipalDetail;
 import com.cos.blog.service.BoardService;
 
 import javax.annotation.Resource;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 
 @Slf4j
@@ -140,7 +132,7 @@ public class BoardController {
 		model.addAttribute("boards2", boardService.boardlist2());
 		model.addAttribute("rboards2", boardService.recipelist2());
 		model.addAttribute("favorite", boardService.favoritelist2());
-		return "/board/AdminChart";
+		return "board/AdminChart";
 	}
 
 

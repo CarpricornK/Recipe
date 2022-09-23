@@ -33,9 +33,14 @@
 
 <style>
 
+	body{
+		font-family: 'Play', sans-serif!important;
+		background: #222!important;
+	}
+
 
 	.ahover1:hover {
-		color: #1a1a1a!important;
+		color: #f74e3b!important;
 		transition: all .5s!important;
 		text-decoration:none!important;
 	}
@@ -65,7 +70,6 @@
 
 	.animation1{
 		opacity: 0;
-		animation: disappear 1.45s ease-out forwards
 	}
 	.animation2{
 		opacity: 0;
@@ -104,12 +108,14 @@
 	.tarkikComandSlider {
 		width: 1300px;
 		height: 380px;
-		background-color: #ffffff;
+		background: #222;
 		position: relative;
+		color: white;
 		display: flex;
 		justify-content:center;
-
 	}
+
+
 
 	.comandSlider__item {
 		margin: 0 5px;
@@ -174,42 +180,11 @@
 
 
 
-
-	/*https://codepen.io/search/pens?q=slider&cursor=ZD0xJm89MCZwPTI= 타이머*/
-	.wrap-time {
-		padding-top: 20px;
-		width: 300px;
-		height: 300px;
-		/*background: #BDBDBD;*/
-		/*!* Old browsers *!*/
-		/*background: -moz-linear-gradient(top, #BDBDBD 23%, #979797 100%);*/
-		/*!* FF3.6-15 *!*/
-		/*background: -webkit-linear-gradient(top, #BDBDBD 23%, #979797 100%);*/
-		/*!* Chrome10-25,Safari5.1-6 *!*/
-		/*background: linear-gradient(to bottom, #BDBDBD 23%, #979797 100%);*/
-		border-radius: 5px;
-		/*-webkit-box-shadow: 6px 6px 22px -9px rgba(0, 0, 0, 0.68);*/
-		/*-moz-box-shadow: 6px 6px 22px -9px rgba(0, 0, 0, 0.68);*/
-		/*box-shadow: 6px 6px 22px -9px rgba(0, 0, 0, 0.68);*/
-		text-align: center;
-		color: black;
-	}
-	.wrap-time .row {
-		margin: 0 auto 0;
-		padding: 11px 10px 11px;
-	}
-
 	.col-span {
 		cursor: pointer;
 		heigth: 100%;
 	}
 
-	.timer {
-		margin-top: 35px;
-		font-size: 2.5em;
-		color: black;
-		cursor: pointer;
-	}
 
 	.start-btn,
 	.reset-btn {
@@ -232,13 +207,81 @@
 	}
 	/*	END TIMER STYLE*/
 
+	/*타이머 ↓*/
+	* {
+		box-sizing: border-box;
+	}
+	h1 {
+		color: #ECF0F1;
+		font-size: 16px;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+	}
+	.navbar4 {
+		width: 400px;
+		margin: 0 auto;
+		text-align: center;
+	}
+	.pomoOptions {
+		float: left;
+		width: 200px;
+	}
+	.pomoOptions .btn {
+		float: left;
+	}
+	.pomoText {
+		color: #ECF0F1;
+		font-size: 12px;
+		text-transform: uppercase;
+	}
+	.pomoButtons {
+		width: 100px;
+		margin: 0 auto;
+	}
+	.pomoOpt {
+		float: left;
+		width: 30px;
+		text-align: center;
+		padding-top: .5em;
+		color: #ECF0F1;
+	}
+	.timer {
+		clear: both;
+		width: 100%;
+	}
+	.timerClock {
+		color: #ECF0F1;
+		font-size: 88px;
+		text-align: center;
+	}
+	.timerStatus {
+		width: 400px;
+		height: 20px;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.timerBar {
+		width: 100%;
+		height: 20px;
+		margin: 0 auto;
+		background: #FFFFFF;
+	}
+	.instructions {
+		color: #ECF0F1;
+		width: 400px;
+		margin: 20px auto;
+		text-align: center;
+	}
 
+
+	/*시계 ↓*/
 	#timedate {
 		font: small-caps lighter 38px/120% "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 		text-align:left;
 		width: 70%;
-		color:black;
+		color:white;
 		padding: 25px;
+		border-left: 1px solid white;
 	}
 
 	:root{
@@ -656,8 +699,9 @@
 					 aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content bg-dark">
-							<div class="modal-header text-danger bg-dark">
-								<h5 class="modal-title " id="exampleModalLabel">Report</h5>
+							<div class="modal-header bg-dark">
+								<h5 class="modal-title text-white" style="position:absolute; left:43%;" id="exampleModalLabel">Report</h5>
+
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -665,7 +709,9 @@
 							<div class="modal-body bg-white">
 								<form action="" method="post">
 									<div class="form-group">
+
 										<label class="col-form-label">Recipient:</label>
+										<i class='fas fa-mail-bulk' style="position:absolute; left:20px; top:-25px; color:#EF8719; font-size:36px"></i>
 										<textarea class="form-control" rows="5" id="TITLE"></textarea>
 									</div>
 									<div class="form-group">
@@ -679,7 +725,6 @@
 										<input type="hidden" class="form-control" value="1" id="TYPE">
 									</div>
 									<div class="form-group">
-										<label for="message-text" class="col-form-label">user:</label>
 <%--										신고자 이름--%>
 										<input type="hidden" class="form-control" value="${principal.user.username}" id="username" readonly/>
 									</div>
@@ -698,8 +743,8 @@
 					 aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content bg-warning">
-							<div class="modal-header bg-warning text-light">
-								<h5 class="modal-title" id="exampleModalLabel">Inquiry</h5>
+							<div class="modal-header  text-light" style="background-color: tomato">
+								<h5 class="modal-title" style="position:absolute; left:43%;"  id="exampleModalLabel">Inquiry</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -707,6 +752,7 @@
 							<div class="modal-body bg-white">
 								<form action="" method="post">
 									<div class="form-group">
+										<i class='fas fa-location-arrow' style="position:absolute; left:20px; top:-20px; color:dimgray; font-size:36px"></i>
 										<label class="col-form-label">Recipient:</label>
 										<textarea class="form-control" rows="5" id="TITLE2"></textarea>
 									</div>
@@ -721,8 +767,7 @@
 										<input type="hidden" class="form-control" value="2" id="TYPE2">
 									</div>
 									<div class="form-group">
-										<label class="col-form-label">user:</label>
-										<input type="text" class="form-control" value="${principal.user.username}" id="username2" readonly/>
+										<input type="hidden" class="form-control" value="${principal.user.username}" id="username2" readonly/>
 									</div>
 								</form>
 							</div>
@@ -986,26 +1031,39 @@
 		<a id="mi">000</a>
 	</div>
 
-	<div class="wrap-time text-center" style="margin-left: 100px;">
+	<div class="mt-3" style="margin-left: 100px;">
+		<nav class="navbar4">
+			<div class="pomoOptions">
+				<div class="pomoText">Session Length</div>
+				<div class="pomoButtons">
+					<button class="btn text-white pomoSessionDec">-</button>
+					<div class="pomoOpt pomoSession">25</div>
+					<button class="btn text-white pomoSessionInc">+</button>
+				</div>
+			</div>
+
+			<div class="pomoOptions">
+				<div class="pomoText">Break Length</div>
+				<div class="pomoButtons">
+					<button class="btn text-white pomoBreakDec">-</button>
+					<div class="pomoOpt pomoBreak">5</div>
+					<button class="btn text-white pomoBreakInc">+</button>
+				</div>
+			</div>
+		</nav>
+
 		<div class="timer">
-			<span class="minutes">20</span>:<span class="seconds">00</span>
+			<div class="timerClock">25:00</div>
+			<div class="timerStatus">
+				<div class="timerBar"></div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="col col-xs-4">
-				<span class="col-span">BREAK:</span><br/>
-				<span class="col-span operatorB">+</span><br/>
-				<span class="col-span breakT">5</span><br/>
-				<span class="col-span operatorB">-</span>
-			</div>
-			<div class="col col-xs-4"><div class="start-btn">START</div><div class="reset-btn">RESET</div></div>
-			<div class="col col-xs-4">
-				<span class="col-span">WORK:</span><br/>
-				<span class="col-span operatorW">+</span><br/>
-				<span class="col-span workT">20</span><br/>
-				<span class="col-span operatorW">-</span>
-			</div>
+
+		<div class="instructions">
+			Click the clock to start/stop the pomodoro timer.
 		</div>
 	</div>
+
 </div>
 
 
@@ -1211,10 +1269,10 @@ Reference: http://jsfiddle.net/BB3JK/47/
 
 		function stopTimer(){
 			clearInterval(intervalId);
-			minutes+=$(".minutes").html("25");
+			minutes+=$(".minutes").html("20");
 			seconds+=$(".seconds").html("00");
 			$(".breakT").html("5");
-			$(".workT").html("25");
+			$(".workT").html("20");
 		}
 		$(".start-btn").click(startTimer);
 		$(".reset-btn").click(stopTimer);
@@ -1242,6 +1300,130 @@ Reference: http://jsfiddle.net/BB3JK/47/
 		path.style.setProperty('--duration', length + 'ms')
 		path.style.setProperty('--delay', i * 100 + 'ms')
 	})
+</script>
+
+
+
+<script>
+	// 타이머
+	var sessionTime    = 25,      // the desired Session Length, in minutes
+			breakTime      = 5,       // the desired Break Length, in minutes
+			sessionTimeSecs,          // the desired Session Length, in seconds
+			breakTimeSecs,            // the desired Break Length, in seconds
+			currentTime,              // the current time remaining, in seconds
+			currentState   = "stop",  // the current timer state, "stop", "session" or "break"
+			minTime        = 1,       // the minimum allowed time the user can set, in minutes
+			maxTime        = 60,      // the maximum allowed time the user can set, in minutes
+			sessionDisplay = $('.pomoSession'),
+			breakDisplay   = $('.pomoBreak'),
+			sessionBtnInc  = $('.pomoSessionInc'),
+			sessionBtnDec  = $('.pomoSessionDec'),
+			breakBtnInc    = $('.pomoBreakInc'),
+			breakBtnDec    = $('.pomoBreakDec'),
+			timerClock     = $('.timerClock');
+
+	var updateTimerOptions = function() {
+		sessionTimeSecs = sessionTime * 60;
+		breakTimeSecs = breakTime * 60;
+
+		sessionDisplay.html(sessionTime);
+		breakDisplay.html(breakTime);
+	}
+
+	$(document).ready(function() {
+		updateTimerOptions();
+	});
+
+	/* Event Handlers for Setting Time */
+	sessionBtnInc.click(function() {
+		sessionTime = (++sessionTime > maxTime) ? maxTime : sessionTime;
+		sessionTimeSecs = sessionTime * 60;
+		updateTimerOptions();
+		timerStop();
+	});
+
+	sessionBtnDec.click(function() {
+		sessionTime = (--sessionTime < minTime) ? minTime : sessionTime;
+		sessionTimeSecs = sessionTime * 60;
+		updateTimerOptions();
+		timerStop();
+	});
+
+	breakBtnInc.click(function() {
+		breakTime = (++breakTime > maxTime) ? maxTime : breakTime;
+		breakTimeSecs = breakTime * 60;
+		updateTimerOptions();
+		timerStop();
+	});
+
+	breakBtnDec.click(function() {
+		breakTime = (--breakTime < minTime) ? minTime : breakTime;
+		breakTimeSecs = breakTime * 60;
+		updateTimerOptions();
+		timerStop();
+	});
+
+	/* Event Handling for Start/Stop */
+	// Clicking on Clock Time toggles between stop & session states
+	timerClock.click(function() {
+		currentState = (currentState == "stop") ? "session" : "stop";
+		timerReset();
+	});
+
+	/* Clock Actions */
+	setInterval(function() {
+		if (currentState == "session" || currentState == "break") {
+			currentTime --;
+			updateTimer();
+		}
+	}, 1000);
+
+	var timerStop = function() {
+		currentState = "stop";
+		timerReset();
+	}
+
+	var timerReset = function() {
+		currentTime = sessionTimeSecs;
+		updateTimer();
+	}
+
+	var updateTimer = function() {
+		updateTimerClock();
+		updateTimerBar();
+
+		console.log('currentState', currentState);
+		console.log('currentTime', currentTime);
+
+		if (currentTime <= 0 && currentState == "session") {
+			currentState = "break";
+			currentTime  = breakTimeSecs;
+		} else if (currentTime <= 0 && currentState == "break") {
+			currentState = "session";
+			currentTime  = sessionTimeSecs;
+		}
+	}
+
+	var updateTimerClock = function() {
+		var timeMin = Math.floor(currentTime / 60);
+		var timeSec = currentTime % 60;
+
+		if (timeSec < 10) { timeSec = "0" + timeSec; }
+
+		$('.timerClock').html(timeMin + ":" + timeSec);
+	}
+
+	var updateTimerBar = function() {
+		if (currentState == 'session' || currentState == 'stop') {
+			percentDisplay = Math.floor(currentTime / sessionTimeSecs * 100);
+			$('.timerBar').css('background', '#FFFFFF');
+		} else {
+			percentDisplay = Math.floor(currentTime / breakTimeSecs * 100);
+			$('.timerBar').css('background', '#DB524B');
+		}
+
+		$('.timerBar').css('width', percentDisplay + '%');
+	}
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>

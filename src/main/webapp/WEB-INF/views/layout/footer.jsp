@@ -8,7 +8,7 @@
 </head>
 
 <body>
-	<div class="jumbotron text-center" style="position : relative; bottom: -30px; width:100%; height:185px;">
+	<div class="text-center" style="position : relative; bottom: -30px; width:100%; height:185px;">
 		<p>Copyright © 2022 All rights reserved.</p>
         <address>Contact webmaster for more information. 🛠 kwon991223@gmail.com</address>
 	</div>

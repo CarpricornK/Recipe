@@ -98,6 +98,8 @@
             position: sticky;
         }
 
+
+
         .box-title:hover{
             background-color:#EFECEC;
         }
@@ -342,9 +344,10 @@
 
 
     <div class="allDelete off">
-        <span class="btn" style="color: white">모두 지우기&nbsp;<i class="fa fa-times no-underline text-white-darker hover:text-red-dark" aria-hidden="true"></i></span>
+        <span class="btn" style="color: white">최근 검색어&nbsp;<i class="fas fa-trash no-underline text-white-darker hover:text-red-dark" aria-hidden="true"></i></span>
     </div>
     <div class="slick-sample">
+
     </div>
 
 
@@ -357,87 +360,158 @@
 
 
 
-<div class="row">
 
-    <div class="nav2">
 
-        <div class="nav3">
-        <a class="" style="color:black; text-decoration: none;" href="/">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class='fas fa-door-open' style='font-size:24px'></i>
-                        <p class="" style="font-size:4px;"><small>EXIT</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/user/Admin">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class='fa fa-lock' style='font-size:24px'></i>
-                        <p style="font-size:4px;"><small>Admin</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/board/report">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class="material-icons" style="font-size:36px">message</i>
-                        <p class="" style="font-size:4px;"><small>Report</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/search/Naver">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class="material-icons" style="font-size:36px">search</i>
-                        <p style="font-size:4px;"><small>Search</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/board/AdminChart">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class="material-icons" style="font-size:36px">insert_chart</i>
-                        <p style="font-size:4px;"><small>Chart</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-
-        <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
-            <div class="box border-right-0 border-left-0 border-white">
-                <div class="border-0 text-center">
-                    <h4 class="box-title rounded p-4">
-                        <i class='fa fa-id-card' style='font-size:24px'></i>
-                        <p class="" style="font-size:4px;"><small>My page & plan</small></p>
-                    </h4>
-                </div>
-            </div>
-        </a>
-        </div>
-
-    </div>
 
     <c:if test="${param.url ne '' && param.url eq null}">
-    <div class="container d-flex justify-content-center mt-5" style="margin-top:30px; padding-left: 150px;">
-        <p style="color:black; font-size: 3.5ex; font-family: sans-serif;">검색해주세요</p>
+    <div class="row" style="height: 500px;">
+            <div class="ml-2" style="top:50px; width:140px; border-right: 1px solid black; position: sticky;">
+                <a class="" style="color:black; text-decoration: none;" href="/">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fas fa-door-open' style='font-size:24px'></i>
+                                <p class="" style="font-size:4px;"><small>EXIT</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/user/Admin">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fa fa-lock' style='font-size:24px'></i>
+                                <p style="font-size:4px;"><small>Admin</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/board/report">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">message</i>
+                                <p class="" style="font-size:4px;"><small>Report</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/search/Naver">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">search</i>
+                                <p style="font-size:4px;"><small>Search</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/board/AdminChart">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">insert_chart</i>
+                                <p style="font-size:4px;"><small>Chart</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fa fa-id-card' style='font-size:24px'></i>
+                                <p class="" style="font-size:4px;"><small>My page & plan</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+    <div class="container d-flex justify-content-center mt-5" style="margin-top:30px; height: 300px;">
+        <p style="color:black; font-size: 3.5ex; font-family: sans-serif;">- 검색해주세요 -</p>
+
+    </div>
     </div>
     </c:if>
 
     <c:if test="${param.url ne null}">
+    <div class="row">
+        <div class="nav2">
+            <div class="nav3 ml-2">
+                <a class="" style="color:black; text-decoration: none;" href="/">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fas fa-door-open' style='font-size:24px'></i>
+                                <p class="" style="font-size:4px;"><small>EXIT</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/user/Admin">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fa fa-lock' style='font-size:24px'></i>
+                                <p style="font-size:4px;"><small>Admin</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/board/report">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">message</i>
+                                <p class="" style="font-size:4px;"><small>Report</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/search/Naver">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">search</i>
+                                <p style="font-size:4px;"><small>Search</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/board/AdminChart">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class="material-icons" style="font-size:36px">insert_chart</i>
+                                <p style="font-size:4px;"><small>Chart</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="" style="color:black; text-decoration: none;" href="/user/updateForm">
+                    <div class="box border-right-0 border-left-0 border-white">
+                        <div class="border-0 text-center">
+                            <h4 class="box-title rounded p-4">
+                                <i class='fa fa-id-card' style='font-size:24px'></i>
+                                <p class="" style="font-size:4px;"><small>My page & plan</small></p>
+                            </h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
     <div class="container" style="margin-top:30px; padding-left: 150px;">
 
         <br/>
@@ -525,9 +599,13 @@
         <hr style="margin-right: 25%"/>
         </c:forEach>
     </div>
+    </div>
+    </c:if>
+
+
 </div>
 
-</c:if>
+
 
 
 

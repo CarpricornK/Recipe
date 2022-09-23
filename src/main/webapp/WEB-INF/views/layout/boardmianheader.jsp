@@ -178,8 +178,8 @@ li{ list-style: none; }
 		</c:choose>
 	</nav>
 
-	<h1>Api page</h1>
-	<p>원하는 레시피를 검색해 보세요</p>
+	<h1>Board page</h1>
+	<p>원하는 게시글을 검색해 보세요</p>
 </div>
 
 <br/>

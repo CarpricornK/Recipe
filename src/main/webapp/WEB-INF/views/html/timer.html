@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Pomodoro Timer</title>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Play'><link rel="stylesheet" href="../../../../../../../../Users/Carpricorn/Downloads/pomodoro-timer/pomodoro-timer/dist/style.css">
+<style>
+  /* major elements */
+
+  body {
+    font-family: 'Play', sans-serif;
+    background: #222;
+    color: #999;
+  }
+
+  .container {
+    width: 80%;
+    max-width: 500px;
+    min-width: 250px;
+    margin: 20px auto;
+  }
+
+  h1 {
+    margin-top: 20%;
+    text-align: center;
+    color: #CCC;
+  }
+
+  .row {
+    overflow: hidden;
+  }
+
+  .col-half {
+    width: 50%;
+    float: left;
+  }
+
+  .knob-wrapper {
+    text-align: center;
+  }
+
+
+  /* button styles */
+
+  .buttons {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .buttons-mute {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    display: inline-block;
+    width: 80px;
+    margin: 4px;
+    padding: 6px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn-green {
+    color: #6C6;
+    border: 2px solid #6C6;
+  }
+
+  .btn-green:hover {
+    background-color: #232;
+  }
+
+  .btn-yellow {
+    color: #CC6;
+    border: 2px solid #CC6;
+  }
+
+  .btn-yellow:hover {
+    background-color: #332;
+  }
+
+  .btn-red {
+    color: #C66;
+    border: 2px solid #C66;
+  }
+
+  .btn-red:hover {
+    background-color: #322;
+  }
+
+  .btn-mute {
+</style>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+  <div class="header">
+    <h1>Pomodoro Timer</h1>
+  </div>
+  
+  <div class="row">
+    <div class="col-half knob-wrapper">
+      <h5>Session Length</h5>
+      <input type="text" value="25" size="5" id="session-knob" />
+    </div>
+    <div class="col-half knob-wrapper">
+      <h5>Break Length</h5>
+      <input type="text" value="5" size="5" id="break-knob" />
+    </div>
+  </div>
+  
+  <div class="buttons">
+    <a id="cmd-reset" class="btn btn-red"><i class="fa fa-undo"></i> Reset</a>
+    <a id="cmd-pause" class="btn btn-yellow hidden"><i class="fa fa-pause"></i> Pause</a>
+    <a id="cmd-go" class="btn btn-green"><i class="fa fa-play"></i> Start</a>
+  </div>
+  
+  <div class="buttons-mute">
+    <a id="cmd-mute" class="btn btn-mute"><i class="fa fa-volume-up"></i></a>
+    <a id="cmd-unmute" class="btn btn-mute hidden"><i class="fa fa-volume-off"></i></a>
+  </div>
+  
+  <div class="timer knob-wrapper">
+    <input type="text" value="1500" size="5" id="timer-display" />
+  </div>
+  
+  <audio id="snd-endofbreak" preload="auto">
+    <source src="http://owentosh.com/public/codepen/endofbreak.m4a">
+    <source src="http://owentosh.com/public/codepen/endofbreak.wav">
+  </audio>
+  
+  <audio id="snd-endofsession" preload="auto">
+    <source src="http://owentosh.com/public/codepen/endofsession.m4a">
+    <source src="http://owentosh.com/public/codepen/endofsession.wav">
+  </audio>
+  
+</div>
+<!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jQuery-Knob/1.2.13/jquery.knob.min.js'></script><script  src="../../../../../../../../Users/Carpricorn/Downloads/pomodoro-timer/pomodoro-timer/dist/script.js"></script>
+<script>
+  $(document).ready(function() {
+
+    // initialize static data
+    var targetTime = undefined;
+    var targetDelta = undefined;
+    var intervalId = undefined;
+    var reset = true;
+    var onSession = true;
+    var mute = false;
+    var breakLength;
+
+    // main timer setup function
+    function setupTimerDisplay() {
+      var config = {};
+      var value = 0;
+
+      if (onSession === true) {
+        value = $('#session-knob').val() * 60;
+        $('#timer-display').val(value);
+        config.max = value;
+        config.fgColor = '#6C6';
+        config.inputColor = '#6C6';
+        config.format = function(v) {
+          var sec = parseInt(v);
+          var min = Math.floor(sec / 60);
+          sec -= min * 60;
+          return min + ':' + (sec < 10 ? "0" + sec : sec);
+        };
+      }
+      else {
+        var max = $('#break-knob').val() * 60;
+        config.max = max;
+        config.fgColor = '#C66';
+        config.inputColor = '#C66';
+        config.format = function(v) {
+          var sec = parseInt(v);
+          sec = max - sec;
+          var min = Math.floor(sec / 60);
+          sec -= min * 60;
+          return min + ':' + (sec < 10 ? "0" + sec : sec);
+        };
+      }
+
+      $('#timer-display').trigger('configure', config);
+      $('#timer-display').val(value);
+      $('#timer-display').trigger('change');
+    }
+
+    // if knob failed to load, fall back to regular input display
+    if (jQuery().knob) {
+      $('#session-knob').knob({
+        'min': 0,
+        'max': 120,
+        'step': 1,
+        'width': 100,
+        'height': 100,
+        'fgColor': '#6C6',
+        'bgColor': '#333',
+        'release': function() {
+          if (reset) {
+            targetDelta = $('#session-knob').val() * 60000;
+            setupTimerDisplay();
+          }
+        }
+      });
+
+      $('#break-knob').knob({
+        'min': 0,
+        'max': 30,
+        'step': 1,
+        'width': 100,
+        'height': 100,
+        'fgColor': '#C66',
+        'bgColor': '#333'
+      });
+
+      $('#timer-display').knob({
+        'min': 0,
+        'max': 1500,
+        'width': 200,
+        'height': 200,
+        'rotation': 'anticlockwise',
+        'fgColor': '#57C',
+        'bgColor': '#222',
+        'readOnly': true
+      });
+    }
+
+    // periodic timer function
+    function updateTimer() {
+      var now = new Date();
+      targetDelta = targetTime.getTime() - now.getTime();
+
+      if (targetDelta > 0) {
+        var sec = Math.ceil(targetDelta / 1000);
+        if (!onSession) sec = breakLength - sec;
+        $('#timer-display').val(sec);
+        $('#timer-display').trigger('change');
+      }
+      else {
+        if (onSession) {
+          if (!mute) $('#snd-endofsession')[0].play();
+          onSession = false;
+          breakLength = $('#break-knob').val() * 60;
+          targetDelta = breakLength * 1000;
+        }
+        else {
+          if (!mute) $('#snd-endofbreak')[0].play();
+          onSession = true;
+          targetDelta = $('#session-knob').val() * 60000;
+        }
+        targetTime = new Date(Date.now() + targetDelta);
+        setupTimerDisplay();
+      }
+    }
+
+    // button click events
+    $('#cmd-reset').click(function() {
+      targetDelta = $('#session-knob').val() * 60000;
+      if (intervalId) {
+        window.clearInterval(intervalId);
+        intervalId = undefined;
+      }
+      reset = true;
+      onSession = true;
+      $('#cmd-pause').addClass('hidden');
+      $('#cmd-go').removeClass('hidden');
+      setupTimerDisplay();
+      return false;
+    });
+
+    $('#cmd-go').click(function() {
+      targetTime = new Date(Date.now() + targetDelta);
+      intervalId = window.setInterval(updateTimer, 200);
+      reset = false;
+      breakLength = $('#break-knob').val() * 60;
+      $('#cmd-go').addClass('hidden');
+      $('#cmd-pause').removeClass('hidden');
+      return false;
+    });
+
+    $('#cmd-pause').click(function() {
+      window.clearInterval(intervalId);
+      intervalId = undefined;
+      $('#cmd-pause').addClass('hidden');
+      $('#cmd-go').removeClass('hidden');
+      return false;
+    });
+
+    // mute button click events
+    $('#cmd-mute').click(function() {
+      mute = true;
+      $('#cmd-mute').addClass('hidden');
+      $('#cmd-unmute').removeClass('hidden');
+      return false;
+    });
+
+    $('#cmd-unmute').click(function() {
+      mute = false;
+      $('#cmd-unmute').addClass('hidden');
+      $('#cmd-mute').removeClass('hidden');
+      return false;
+    });
+
+    // initialize timer display
+    targetDelta = $('#session-knob').val() * 60000;
+    setupTimerDisplay();
+
+    // if the audio element is not supported, hide mute button
+    if (!$('#snd-endofbreak')[0].play) {
+      mute = true;
+      $('#cmd-mute').addClass('hidden');
+    }
+  });
+</script>
+</body>
+</html>

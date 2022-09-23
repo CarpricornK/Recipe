@@ -12,20 +12,6 @@
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3/dist/chart.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Armata&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
 </head>
 
@@ -36,30 +22,7 @@ input::placeholder {
   width:100%;
 }
 
-select {
-	width: 200px; /* 원하는 너비설정 */
-	padding: .8em .5em; /* 여백으로 높이 설정 */
-	font-family: inherit; /* 폰트 상속 */
-	background:
-		url(https://farm1.staticflickr.com/379/19928272501_4ef877c265_t.jpg)
-		no-repeat 95% 50%; /* 네이티브 화살표 대체 */
-	border: 1px solid #999;
-	border-radius: 4px;
-	/* iOS 둥근모서리 제거 */
-	-webkit-appearance: none;
-	/* 네이티브 외형 감추기 */
-	-moz-appearance: none;
-	appearance: none;
-}
 
-.backgroundnav{
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-image: url("https://i.ibb.co/1KWmbFy/blur4.png");
-	background-attachment: fixed
-
-}
 /*#2c2d2a*/
 .linkc {
 	color: #FFFFFF!important;
@@ -89,12 +52,11 @@ select {
 }
 
 .jumbotron{
-	background: url("https://picsum.photos/2400/?random") center no-repeat;
+	background: url("https://picsum.photos/2000/?random") center no-repeat;
 	background-color: #0005;
 	background-blend-mode: darken;
 }
 
-li{ list-style: none; }
 </style>
 
 <body>
@@ -178,8 +140,9 @@ li{ list-style: none; }
 		</c:choose>
 	</nav>
 
-	<h1>Api page</h1>
-	<p>원하는 레시피를 검색해 보세요</p>
+	<h1>Admin Chart & Report page</h1>
+	<p>여러 가지 통계와 신고 & 문의 현황 및 처리가 가능한 페이지</p>
+
 </div>
 
 <br/>
