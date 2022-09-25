@@ -122,6 +122,20 @@ public class BoardService implements IBoardService {
 		mealplanRepository.save(mealplan);
 	}
 
+	//	식단짜기등록2 API CAR, PRO, NA, FAT, valueById, title, time, mealplan
+	@Transactional
+	public void MPlan2(String CAR, String PRO, String NA, String Kcal, String valueById, String title, String time, String username, Mealplan mealplan){ // title, content
+		mealplan.setPlanCarb(CAR);
+		mealplan.setPlanPro(PRO);
+		mealplan.setPlanNa(NA);
+		mealplan.setPlanKcal(Kcal);
+		mealplan.setPlanDate(valueById);
+		mealplan.setPlanTITLE(title);
+		mealplan.setPlanTYPE(time);
+		mealplan.setPlanUSERNAME(username);
+		mealplanRepository.save(mealplan);
+	}
+
 //	즐겨찾기등록
 	@Transactional
 	public void favoritesend(Favorites favorites){ // title, content

@@ -42,19 +42,19 @@ public class Mealplan {
 
 	@JsonProperty(value="PlanKcal")
 	@ColumnDefault("0") //default 0
-	private Integer PlanKcal;
+	private String PlanKcal;
 
 	@JsonProperty(value="PlanNa")
 	@ColumnDefault("0") //default 0
-	private Integer PlanNa; //
+	private String PlanNa; //
 
 	@JsonProperty(value="PlanPro")
 	@ColumnDefault("0") //default 0
-	private Integer PlanPro; //
+	private String PlanPro; //
 
 	@JsonProperty(value="PlanCarb")
 	@ColumnDefault("0") //default 0
-	private Integer PlanCarb; //
+	private String PlanCarb; //
 
 	@CreationTimestamp
 	private Timestamp PlanCDATE;

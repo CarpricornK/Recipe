@@ -1,8 +1,9 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="../layout/header2.jsp"%>
+<%@ include file="../layout/updateFormheader.jsp"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -168,7 +169,10 @@ select::-ms-expand {
 	String datelast = sdf2.format(cal2.getTime());
 
 %>
+<c:set var="lasdate" value="<%=cal.getMaximum(Calendar.DAY_OF_MONTH)%>" />
+
 <c:set var="today" value="<%=new java.util.Date()%>" />
+
 <!-- 현재날짜 -->
 <c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd hh:mm:ss" /></c:set>
 <!-- 현재년도 -->
@@ -453,7 +457,7 @@ select::-ms-expand {
 
 
 	<div class="container p-5 wrap-vertical"
-		 style="border-radius: 5px; background-color: #363435; max-width: 1110px;">
+		 style="border-radius: 5px; background-color: #363435; max-width: 1300px; height: 600px;">
 		<a style="color: white">- 회원목록 -</a>
 		<br/>
 
@@ -461,11 +465,11 @@ select::-ms-expand {
 			<div class="divTableHeading">
 				<div class="divTableRow">
 					<div class="divTableHead">Date</div>
-					<div class="divTableHead">아침</div>
+					<div class="divTableHead text-center">아침</div>
 					<%--				<div class="divTableHead">Password</div>--%>
-					<div class="divTableHead">점심</div>
-					<div class="divTableHead">저녁</div>
-					<div class="divTableHead">영양성분?</div>
+					<div class="divTableHead text-center">점심</div>
+					<div class="divTableHead text-center">저녁</div>
+					<div class="divTableHead">영양성분</div>
 					<div class="divTableHead text-center">Delete</div>
 				</div>
 			</div>
@@ -477,33 +481,34 @@ select::-ms-expand {
 <%--			<c:out value="${year}" />--%>
 <%--			<c:out value="${month}" />--%>
 
-			<c:forEach var="i" begin="1" end="${sysDate}">
 
+
+			<c:forEach var="i" begin="1" end="${sysDate}">
 				<c:if test="${i < 10}">
 				<div class="divTableBody">
 					<div class="divTableRow">
 						<div class="divTableCell">${year+='-'+=month+='-'+='0'+=i}</div>
 
-						<div class="divTableCell">
+						<div class="divTableCell text-center">
 				          <c:forEach var="z" begin="1" end="30">
 							<c:if test="${fn:contains(MpList[z].planTYPE, 'breakfast') && MpList[z].planDate eq year+='-'+=month+='-'+='0'+=i}">
-								${MpList[z].planTITLE}
+								${MpList[z].planTITLE}&nbsp;&nbsp;
 							</c:if>
 						  </c:forEach>
 						</div>
 							<%--				<div class="divTableCell"><c:if test="${'cos1234' eq User.USER_PASSWORD2}">연동 로그인</c:if><c:if test="${'cos1234' ne User.USER_PASSWORD2}">${User.USER_PASSWORD2}</c:if></div>--%>
-						<div class="divTableCell">
+						<div class="divTableCell text-center">
 							<c:forEach var="l" begin="1" end="30">
 								<c:if test="${fn:contains(MpList[l].planTYPE, 'lunch') && MpList[l].planDate eq year+='-'+=month+='-'+='0'+=i}">
-									${MpList[l].planTITLE}
+									${MpList[l].planTITLE}&nbsp;&nbsp;
 								</c:if>
 							</c:forEach>
 						</div>
 
-						<div class="divTableCell">
+						<div class="divTableCell text-center">
 							<c:forEach var="d" begin="1" end="30">
 								<c:if test="${fn:contains(MpList[d].planTYPE, 'dinner') && MpList[d].planDate eq year+='-'+=month+='-'+='0'+=i}">
-									${MpList[d].planTITLE}
+									${MpList[d].planTITLE}&nbsp;&nbsp;
 								</c:if>
 							</c:forEach>
 						</div>
@@ -526,10 +531,10 @@ select::-ms-expand {
 				         </c:forEach>
 
 							<c:if test="${planCarb != 0 && planKcal != 0 && planNa != 0 && planPro != 0}">
-							Carb - ${planCarb}
-							Kcal - ${planKcal}
-							Na - ${planNa}
-							Pro - ${planPro}
+							Carb - <fmt:formatNumber value="${planCarb}" pattern=".00"/>&nbsp;
+							Kcal - <fmt:formatNumber value="${planKcal}" pattern=".00"/>&nbsp;
+							Na - <fmt:formatNumber value="${planNa}" pattern=".00"/>&nbsp;
+							Pro - <fmt:formatNumber value="${planPro}" pattern=".00"/>&nbsp;
 							</c:if>
 						</div>
 
@@ -549,26 +554,26 @@ select::-ms-expand {
 						<div class="divTableRow">
 							<div class="divTableCell">${year+='-'+=month+='-'+=i}</div>
 
-							<div class="divTableCell">
+							<div class="divTableCell text-center">
 								<c:forEach var="z" begin="1" end="30">
 									<c:if test="${fn:contains(MpList[z].planTYPE, 'breakfast') && MpList[z].planDate eq year+='-'+=month+='-'+=i}">
-										${MpList[z].planTITLE}
+										${MpList[z].planTITLE}&nbsp;&nbsp;
 									</c:if>
 								</c:forEach>
 							</div>
 								<%--				<div class="divTableCell"><c:if test="${'cos1234' eq User.USER_PASSWORD2}">연동 로그인</c:if><c:if test="${'cos1234' ne User.USER_PASSWORD2}">${User.USER_PASSWORD2}</c:if></div>--%>
-							<div class="divTableCell">
+							<div class="divTableCell text-center">
 								<c:forEach var="l" begin="1" end="30">
 									<c:if test="${fn:contains(MpList[l].planTYPE, 'lunch') && MpList[l].planDate eq year+='-'+=month+='-'+=i}">
-										${MpList[l].planTITLE}
+										${MpList[l].planTITLE}&nbsp;&nbsp;
 									</c:if>
 								</c:forEach>
 							</div>
 
-							<div class="divTableCell">
+							<div class="divTableCell text-center">
 								<c:forEach var="d" begin="1" end="30">
 									<c:if test="${fn:contains(MpList[d].planTYPE, 'dinner') && MpList[d].planDate eq year+='-'+=month+='-'+=i}">
-										${MpList[d].planTITLE}
+										${MpList[d].planTITLE}&nbsp;&nbsp;
 									</c:if>
 								</c:forEach>
 							</div>
@@ -591,10 +596,10 @@ select::-ms-expand {
 								</c:forEach>
 
 								<c:if test="${planCarb != 0 && planKcal != 0 && planNa != 0 && planPro != 0}">
-									Carb - ${planCarb}
-									Kcal - ${planKcal}
-									Na - ${planNa}
-									Pro - ${planPro}
+									Carb - <fmt:formatNumber value="${planCarb}" pattern=".00"/>&nbsp;
+									Kcal - <fmt:formatNumber value="${planKcal}" pattern=".00"/>&nbsp;
+									Na - <fmt:formatNumber value="${planNa}" pattern=".00"/>&nbsp;
+									Pro - <fmt:formatNumber value="${planPro}" pattern=".00"/>&nbsp;
 								</c:if>
 							</div>
 

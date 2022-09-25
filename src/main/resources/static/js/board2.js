@@ -23,9 +23,7 @@ let index2 = {
             PlanPro: $("#Protein").val(),
             PlanCarb: $("#Carbohydrate").val(),
             PlanTYPE: $("#type").val()
-
         };
-
         $.ajax({
             type: "POST",
             url: "/api/MPlan",
@@ -141,6 +139,37 @@ let index2 = {
             alert("식단삭제"+date);
             history.go(0);
         }).fail(function(error){
+            alert(JSON.stringify(error));
+        });
+
+    },
+
+    // API 갤러리 식단짜기
+    // index2.MPlan2(${api.content[i].info_CAR}, ${api.content[i].info_PRO}, ${api.content[i].info_NA}, ${api.content[i].info_FAT}, '${i}', '${api.content[i].rcp_NM}')"
+    MPlan2: function(CAR, PRO, NA, Kcal, listV, title, time ,username) {
+
+        var valueById = $('#pet-select'+listV).val();
+
+        $.ajax({
+            type: "PUT",
+            url: "/api/board/MPlan/"+CAR+"/"+PRO+"/"+NA+"/"+Kcal+"/"+valueById+"/"+title+"/"+time+"/"+username+"/",
+            dataType: "json",
+        }).done(function(resp) {
+            alert(
+                "CAR:"+CAR + " "+
+                "PRO:"+PRO + " "+
+                "NA:"+NA + " "+
+                "Kcal:"+Kcal + " "+
+                "title:"+title + " "+
+                "time:"+time + " "+
+                "username:"+username + " "+
+                "valueById:"+valueById
+            )
+
+            alert("식단짜기완료");
+            // +ID4+"-"+ID5+"USERNAME :"+USERNAME+"TITLE:"+TITLE
+            history.go(0);
+        }).fail(function(error) {
             alert(JSON.stringify(error));
         });
 

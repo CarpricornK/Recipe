@@ -1,3 +1,5 @@
+<%@ page import="java.util.Calendar" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header2.jsp"%>
@@ -179,6 +181,32 @@
 		background-color: rgba(255, 255, 255, 0.21);
 	}
 
+	.Smplan1{
+		border: 0;
+		width: 120px;
+		height: 40px;
+		color: white;
+		text-align-last: center;
+		-webkit-appearance:none; /* 크롬 화살표 없애기 */
+		-moz-appearance:none; /* 파이어폭스 화살표 없애기 */
+		appearance:none; /* 화살표 없애기 */
+		cursor:pointer;
+	}
+	select{
+		appearance:none;
+		background:url('..');
+		outline: 0;
+
+	}
+
+	.noOutline{
+		border: 0;
+		outline: 0;
+	}
+	.noOutline:active, .noOutline:focus {
+		border: none !important; box-shadow: none !important;
+	}
+
 </style>
 
 
@@ -187,7 +215,19 @@
 <%--	=${apis}=--%>
 <%--</c:forEach>--%>
 
+<%
+	Calendar cal = Calendar.getInstance();
+	String format = "dd";
+	SimpleDateFormat sdf = new SimpleDateFormat(format);
+	cal.add(cal.DATE, +1); //날짜를 하루 더한다.
+	String date = sdf.format(cal.getTime());
 
+	Calendar cal2 = Calendar.getInstance();
+	cal2.set(Calendar.DAY_OF_MONTH, cal2.getActualMaximum(Calendar.DAY_OF_MONTH));
+	SimpleDateFormat sdf2 = new SimpleDateFormat("dd");
+	String datelast = sdf2.format(cal2.getTime());
+
+%>
 
 
 
@@ -305,7 +345,7 @@
 		</div>
 	</c:if>
 
-	<%--    style = 2 는 갤러리형--%>
+	<%---------------------------style = 2 는 갤러리형---------------------------%>
 	<c:if test="${param.style == 2}">
 		<div class="d-flex justify-content-center">
 
@@ -325,6 +365,42 @@
 					<c:if test="${null ne api.content[i].rcp_NM}">
 					<div class="card ml-3 mr-3 mt-4 mb-4" style="width:300px; height: 410px; border:none;">
 						<span class="p-1" style="text-align:center !important; color:#FFFFFF; background-color: #252b37; border-radius: 4px 4px 0px 0px; font-size:14px;">${api.content[i].rcp_NM} <c:if test="${0 != totalstar2}"><fmt:formatNumber value="${(totalstar2/totalstar1)}" pattern=".00"/></c:if></span>
+						<span class="p-1" style="text-align:center !important; color:#FFFFFF; background-color: #252b37; font-size:14px;">
+<%--여기 날짜 계산--%>
+<c:set var="lasdate" value="<%=cal.getActualMaximum(Calendar.DAY_OF_MONTH)%>"/>
+
+<c:set var="today" value="<%=new java.util.Date()%>"/>
+							<!-- 현재날짜 -->
+<c:set var="date"><fmt:formatDate value="${today}" pattern="yyyy-MM-dd hh:mm:ss"/></c:set>
+							<!-- 현재년도 -->
+<c:set var="year"><fmt:formatDate value="${today}" pattern="yyyy"/></c:set>
+							<!-- 현재월 -->
+<c:set var="month"><fmt:formatDate value="${today}" pattern="MM"/></c:set>
+
+<c:set var="day"><fmt:formatDate value="${today}" pattern="dd"/></c:set>
+<%--여기 날짜 계산end--%>
+							<select id="pet-select${i}" class="Smplan1">
+								<c:forEach var="z" begin="1" end="9">
+									<option style="color: black" value="${year+='-'+=month+='-'+='0'+=z}">${year+='-'+=month+='-'+='0'+=z}</option>
+								</c:forEach>
+								<c:forEach var="z" begin="10" end="${lasdate}">
+                                 <option style="color: black" value="${year+='-'+=month+='-'+=z}">${year+='-'+=month+='-'+=z}</option>
+								</c:forEach>
+							</select>
+
+							<button onClick="index2.MPlan2('${api.content[i].info_CAR}', '${api.content[i].info_PRO}', '${api.content[i].info_NA}', '${api.content[i].info_ENG}', '${i}', '${api.content[i].rcp_NM}', 'breakfast', '${principal.user.username}')"  class="btn noOutline" style="height: 22px; margin-bottom: 10px; margin-top: -10px; color:white; margin-right: -10px;">
+								<i class='fas fa-bread-slice'></i>
+							</button>
+
+							<button onClick="index2.MPlan2('${api.content[i].info_CAR}', '${api.content[i].info_PRO}', '${api.content[i].info_NA}', '${api.content[i].info_ENG}', '${i}', '${api.content[i].rcp_NM}', 'lunch', '${principal.user.username}')"  class="btn noOutline" style="height: 22px; margin-bottom: 10px; margin-top: -10px; color:white; margin-right: -10px;">
+								<i class='fas fa-sun'></i>
+							</button>
+
+							<button onClick="index2.MPlan2('${api.content[i].info_CAR}', '${api.content[i].info_PRO}', '${api.content[i].info_NA}', '${api.content[i].info_ENG}', '${i}', '${api.content[i].rcp_NM}', 'dinner', '${principal.user.username}')"  class="btn noOutline" style="height: 22px; margin-bottom: 10px; margin-top: -10px; color:white; margin-right: -10px;">
+								<i class='fas fa-moon'></i>
+							</button>
+
+						</span>
 						<div class="gallery">
 							<ul>
 								<li>
@@ -371,6 +447,8 @@
 							    </button>
 
 						</span>
+
+
 
 					</div>
 					</c:if>
@@ -467,6 +545,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
 <script src="/js/board.js"></script>
+<script src="/js/board2.js"></script>
 <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 
 

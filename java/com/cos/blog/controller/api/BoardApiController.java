@@ -151,6 +151,26 @@ public class BoardApiController {
 //		System.out.println("TITLE :"+TITLE);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
+
+//식단추가2 API갤러리에서 "/api/board/MPlan/"+CAR+"/"+PRO+"/"+NA+"/"+Kcal+"/"+valueById+"/"+title+"/"+time+"/"+username+"/"
+	@PutMapping("/api/board/MPlan/{CAR}/{PRO}/{NA}/{Kcal}/{valueById}/{title}/{time}/{username}/")
+	public ResponseDto<Integer> Mplan2(
+			@PathVariable String CAR, @PathVariable String PRO, @PathVariable String NA, @PathVariable String Kcal,
+			@PathVariable String valueById, @PathVariable String title, @PathVariable String time, @PathVariable String username,
+			Mealplan mealplan
+			) {
+		System.out.println("CAR :"+CAR);
+		System.out.println("PRO"+PRO);
+		System.out.println("NA :"+NA);
+		System.out.println("Kcal :"+Kcal);
+
+
+
+		boardService.MPlan2(CAR, PRO, NA, Kcal, valueById, title, time, username, mealplan);
+
+
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
     
     //============================== 제품 =================================
 	
