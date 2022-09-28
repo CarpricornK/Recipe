@@ -1,0 +1,3 @@
+https://www.amcharts.com/docs/v5/getting-started/
+
+npm install @amcharts/amcharts5

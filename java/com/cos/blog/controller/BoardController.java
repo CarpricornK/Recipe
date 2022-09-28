@@ -94,7 +94,7 @@ public class BoardController {
 
 	@GetMapping("/board/AdminChart")
 	public String AdminChart(Model model,
-							 @PageableDefault(size = 9, sort = "ID", direction = Sort.Direction.DESC) Pageable pageable) {
+							 @PageableDefault(size = 5, sort = "ID", direction = Sort.Direction.DESC) Pageable pageable) {
 		List<Declaration> declarations5=boardService.declarationlist2();
 
 

@@ -403,56 +403,62 @@ select::-ms-expand {
 		</div>
 
 	</c:if>
+	<div class="container-fluid">
+	<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Simple collapsible</button>
+		<div id="demo" class="collapse">
+			<form action="" method="post">
+				<div class="row d-flex justify-content-center">
+					<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Calorie</label>
+						<input id="Calorie" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
+					<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Protein</label>
+						<input id="Protein" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
+					<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Carbohydrate</label>
+						<input id="Carbohydrate" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
+					<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Natrium</label>
+						<input id="Nat" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
+					<div class="select">
+						<select name="format" id="type">
+							<option selected disabled>Choose a book format</option>
+							<option value="breakfast">breakfast</option>
+							<option value="lunch">lunch</option>
+							<option value="dinner">dinner</option>
+						</select>
+					</div>
+				</div>
 
-<form action="" method="post">
-<div class="row d-flex justify-content-center">
-	<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-		<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Calorie</label>
-		<input id="Calorie" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
-	</div>
-	<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-		<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Protein</label>
-		<input id="Protein" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
-	</div>
-	<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-		<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Carbohydrate</label>
-		<input id="Carbohydrate" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
-	</div>
-	<div style="width: 200px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-		<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Natrium</label>
-		<input id="Nat" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="value" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
-	</div>
-	<div class="select">
-		<select name="format" id="type">
-			<option selected disabled>Choose a book format</option>
-			<option value="breakfast">breakfast</option>
-			<option value="lunch">lunch</option>
-			<option value="dinner">dinner</option>
-		</select>
-	</div>
-</div>
+				<div class="row d-flex justify-content-center">
+					<div style="width: 750px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">MENU</label>
+						<input id="MENU" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="text" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
 
-	<div class="row d-flex justify-content-center">
-		<div style="width: 750px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-			<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">MENU</label>
-			<input id="MENU" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="text" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					<div style="width: 430px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
+						<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Date</label>
+						<input id="Date" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="date" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
+					</div>
+					<div>
+
+					</div>
+				</div>
+
+				<input id="Pusername" type="hidden" value="${principal.user.username}">
+
+			</form>
+			<div class="d-flex justify-content-end" style="width:100%">
+				<button id="btn-plan1" class="btn btn-outline-danger mr-5 ml-5 mb-3">식단 기록</button>
+			</div>
 		</div>
-
-		<div style="width: 430px;" class="m-3 px-4 py-2 border-2 border-grey rounded">
-			<label class="absolute -my-4 -mx-2 bg-white px-2 text-grey-darker">Date</label>
-			<input id="Date" style= "background-color: #ffFFFF!important; color: #1a1a1a!important;" type="date" class="appearance-none border-2 border-white rounded w-full py-2 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-white">
-		</div>
-		<div>
-
-		</div>
 	</div>
 
-	<input id="Pusername" type="hidden" value="${principal.user.username}">
 
-</form>
-<div class="d-flex justify-content-end" style="width:100%">
-	<button id="btn-plan1" class="btn btn-outline-danger mr-5 ml-5 mb-3">식단 기록</button>
-</div>
 
 
 

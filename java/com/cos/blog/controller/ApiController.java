@@ -1,5 +1,7 @@
 package com.cos.blog.controller;
 
+import com.cos.blog.model.KamisDTO;
+import com.cos.blog.model.MongoDTO;
 import com.cos.blog.service.BoardService;
 import com.cos.blog.service.NaverService;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +9,10 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +39,13 @@ public class ApiController {
     private NaverService naverService;
 
     @GetMapping("/search/Naver")
-    public String naver(Model model,
-                        @RequestParam(required = false, defaultValue = "") String url
+    public String naver(Model model
+            ,@RequestParam(required = false, defaultValue = "") String url
+            ,@PageableDefault(size = 12, sort = "ID", direction = Sort.Direction.ASC) Pageable pageable
     ) {
+
+        if (!url.equals("")) {
+            System.out.println(!url.equals(""));
 
         String id = "gG_NXP00WmRXtPH1iWmi";
         String secret = "qBY1udelG2";
@@ -86,18 +96,78 @@ public class ApiController {
                 model.addAttribute("list3", boardService.foodlist());
 
 
+                Integer category_code = 100;
+                JSONArray apilist = new JSONArray();
+
+                for (int z = 0; z <= 5; ++z) {
+
+                    try {
+                        URL url5 = new URL("https://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList&p_product_cls_code=01&p_country_code=1101&p_regday=2022-04-15&p_convert_kg_yn=N&p_item_category_code="+ category_code +"&p_cert_key=eca596ef-9bd2-4987-9ac1-15e85ae1fe3e&p_cert_id=222&p_returntype=json");
+
+                        BufferedReader bf;
+
+                        bf = new BufferedReader(new InputStreamReader(url5.openStream(), "UTF-8"));
+
+                        result = bf.readLine();
+
+                        JSONParser jsonParser2 = new JSONParser();
+                        JSONObject jsonObject2 = (JSONObject) jsonParser2.parse(result);
+                        JSONObject COOKRCP01Result = (JSONObject) jsonObject2.get("data");
+                        JSONArray dataInfo = (JSONArray) COOKRCP01Result.get("item");
+
+                        for (int i = 0; i < dataInfo.size(); ++i) {
+
+                            JSONObject astro1 = (JSONObject) dataInfo.get(i);
+
+                            String item_name = (String) ((JSONObject) dataInfo.get(i)).get("item_name");
+                            String item_code = String.valueOf(((JSONObject) dataInfo.get(i)).get("item_code"));
+                            String kind_name = (String) ((JSONObject) dataInfo.get(i)).get("kind_name");
+                            String kind_code = (String) ((JSONObject) dataInfo.get(i)).get("kind_code");
+                            String rank = (String) ((JSONObject) dataInfo.get(i)).get("rank");
+
+//					System.out.println("CATEGORI : " + category_code);
+//					System.out.println("1 : " + item_name);
+//					System.out.println("2 : " + astro1);
+//					System.out.println("size : " + dataInfo.size());
+//					System.out.println("list : " + dataInfo);
+
+                            apilist.add(astro1);
+                            model.addAttribute("api4", dataInfo);
+                            model.addAttribute("api5", apilist);
+
+                            KamisDTO pDTO = new KamisDTO();
+
+                            pDTO.setItem_name(item_name);
+                            pDTO.setItem_code(item_code);
+                            pDTO.setKind_name(kind_name);
+                            pDTO.setKind_code(kind_code);
+                            pDTO.setRank(rank);
+
+                        }
+
+                        // 로그 찍기(추후 찍은 로그를 통해 이 함수에 접근했는지 파악하기 용이하다.)
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        category_code += 100;
+                    }
+
+                }
             } finally {
                 con.disconnect();
             }
 
-
-
-
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        Page<MongoDTO> ulist = boardService.APIlist(pageable);
+        ulist = boardService.APIlistsearch(url, pageable);
+        model.addAttribute("api", ulist);
+
+        }
+
 
         return "board/search";
     }

@@ -1,5 +1,4 @@
 
-
 server:
   port: 8000
   servlet:
@@ -82,7 +81,7 @@ spring:
             scope:
               - email
               - profile
-            redirect-uri: http://a.recipekyj.link:8000/login/oauth2/code/google
+            redirect-uri: http://localhost:8000/login/oauth2/code/google
           #            http://a.recipekyj.link:8000/login/oauth2/code/google
 
 
@@ -94,7 +93,7 @@ spring:
               - email
             client-name: Naver
             authorization-grant-type: authorization_code
-            redirect-uri: http://a.recipekyj.link:8000/login/oauth2/code/naver
+            redirect-uri: http://localhost:8000/login/oauth2/code/naver
 
         provider:
           naver:

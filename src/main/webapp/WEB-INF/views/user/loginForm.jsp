@@ -123,7 +123,8 @@
 
 			<div class="d-flex justify-content-center mt-3 ml-2">
 				<a class="mr-3" href="/oauth2/authorization/google"><img height="38px" src="/image/btn_google.png"/></a>
-				<a style="margin-right: 12px;" href="https://kauth.kakao.com/oauth/authorize?client_id=80132b34d6a4672223b8ee7f2be81ba7&redirect_uri=http://a.recipekyj.link:8000/auth/kakao/callback&response_type=code"><img height="38px" class="mr-2 mb-1" src="/image/kakao_login_button.png"/></a>
+				<%--UserController도 수정해야함 callback--%>
+				<a style="margin-right: 12px;" href="https://kauth.kakao.com/oauth/authorize?client_id=80132b34d6a4672223b8ee7f2be81ba7&redirect_uri=http://localhost:8000/auth/kakao/callback&response_type=code"><img height="38px" class="mr-2 mb-1" src="/image/kakao_login_button.png"/></a>
 				<a class="mr-2" href="/oauth2/authorization/naver"><img height="38px" src="/image/btnD_naver.png"/></a>
 			</div>
 		</div>

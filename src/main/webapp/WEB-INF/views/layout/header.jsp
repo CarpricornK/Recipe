@@ -32,6 +32,21 @@
 </head>
 
 <style>
+	::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	/* 스크롤바 막대 설정*/
+	::-webkit-scrollbar-thumb {
+		height: 4px;
+		background-color: rgba(255, 141, 50, 1);
+		border-radius: 10px;
+	}
+
+	/* 스크롤바 뒷 배경 설정*/
+	::-webkit-scrollbar-track {
+		background-color: rgba(33, 133, 133, 0.33);
+	}
 
 	body{
 		font-family: 'Play', sans-serif!important;
@@ -262,7 +277,7 @@
 	}
 	.timerBar {
 		width: 100%;
-		height: 20px;
+		height: 15px;
 		margin: 0 auto;
 		background: #FFFFFF;
 	}
@@ -703,15 +718,15 @@
 								<h5 class="modal-title text-white" style="position:absolute; left:43%;" id="exampleModalLabel">Report</h5>
 
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
+									<span class="text-white" aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body bg-white">
 								<form action="" method="post">
 									<div class="form-group">
 
-										<label class="col-form-label">Recipient:</label>
-										<i class='fas fa-mail-bulk' style="position:absolute; left:20px; top:-25px; color:#EF8719; font-size:36px"></i>
+										<label class="col-form-label">Title:</label>
+										<i class='fas fa-mail-bulk' style="position:absolute; left:20px; top:-25px; color:#f74e3b;  font-size:36px"></i>
 										<textarea class="form-control" rows="5" id="TITLE"></textarea>
 									</div>
 									<div class="form-group">
@@ -746,14 +761,14 @@
 							<div class="modal-header  text-light" style="background-color: tomato">
 								<h5 class="modal-title" style="position:absolute; left:43%;"  id="exampleModalLabel">Inquiry</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
+									<span class="text-white" aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body bg-white">
 								<form action="" method="post">
 									<div class="form-group">
-										<i class='fas fa-location-arrow' style="position:absolute; left:20px; top:-20px; color:dimgray; font-size:36px"></i>
-										<label class="col-form-label">Recipient:</label>
+										<i class='fas fa-location-arrow' style="position:absolute; left:20px; top:-20px; color:#222222;  font-size:36px"></i>
+										<label class="col-form-label">Title:</label>
 										<textarea class="form-control" rows="5" id="TITLE2"></textarea>
 									</div>
 									<div class="form-group">
@@ -991,28 +1006,28 @@
 				<div class="card__background"></div>
 				<div class="card__content">
 					<p class="card__category ahover1">My Page</p>
-					<h3 class="card__heading ahover1">MyPage!</h3>
+					<h3 class="card__heading ahover1"><i class='fas fa-child' style='font-size:48px;'></i></h3>
 				</div>
 			</a>
 			<a class="card" href="/board">
 				<div class="card__background" ></div>
 				<div class="card__content">
 					<p class="card__category ahover1">Gallery</p>
-					<h3 class="card__heading ahover1">Gallery!</h3>
+					<h3 class="card__heading ahover1"><i class='fas fa-list' style='font-size:48px'></i></h3>
 				</div>
 			</a>
 			<a class="card" href="/board/APIForm?style=2">
 				<div class="card__background" ></div>
 				<div class="card__content">
 					<p class="card__category ahover1">Recipe</p>
-					<h3 class="card__heading ahover1">Recipe!</h3>
+					<h3 class="card__heading ahover1"><i class='fas fa-cocktail' style='font-size:48px'></i></h3>
 				</div>
 			</a>
 			<a class="card" href="/user/updateForm">
 				<div class="card__background" ></div>
 				<div class="card__content">
 					<p class="card__category ahover1">Profile</p>
-					<h3 class="card__heading ahover1">Profile!</h3>
+					<h3 class="card__heading ahover1"><i class='far fa-address-card' style='font-size:48px;'></i></h3>
 				</div>
 			</a>
 			<div>
@@ -1031,7 +1046,7 @@
 		<a id="mi">000</a>
 	</div>
 
-	<div class="mt-3" style="margin-left: 100px;">
+	<div class="mt-5" style="margin-left: 100px;">
 		<nav class="navbar4">
 			<div class="pomoOptions">
 				<div class="pomoText">Session Length</div>
@@ -1059,8 +1074,8 @@
 			</div>
 		</div>
 
-		<div class="instructions">
-			Click the clock to start/stop the pomodoro timer.
+		<div class="instructions" style='font-size:18px'>
+			<i class='fas fa-long-arrow-alt-up'></i>&nbsp;Click!
 		</div>
 	</div>
 

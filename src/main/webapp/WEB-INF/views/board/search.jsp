@@ -39,6 +39,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3/dist/chart.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
     <style>
@@ -57,7 +59,7 @@
             border-radius: 50%;
             width: 60px;
             height: 60px;
-            animation: spin 1s linear infinite;
+            animation: spin .5s linear infinite;
             position: fixed;
             top:50%;
             left:50%;
@@ -94,7 +96,7 @@
         }
 
         .nav3{
-            top:150px;
+            top:160px;
             position: sticky;
         }
 
@@ -107,36 +109,40 @@
             padding-left:25px;
             padding-right:10px;
         }
+
         .jumbotron{
-            background: url("https://picsum.photos/2000/?random") center no-repeat;
+            /*background: url("https://picsum.photos/2400/?random") center no-repeat;*/
             background-color: #0005;
             background-blend-mode: darken;
-            height: 280px;
+            height: 200px;
         }
+
+        .jumbotron2{
+            background-blend-mode: darken;
+            background-color: #0005;
+            height: 60px;
+            padding-bottom: 50px;
+        }
+
         .searchbar{
             padding: 20px;
-            width: 500px;
+            width: 700px;
             height: 40px;
-            border-radius: 30px;
+            border: 1px solid #0005;
+            border-radius: 35px;
+            /*box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;*/
         }
         input {
             /*background-image: url(https://cdn1.iconfinder.com/data/icons/hawcons/32/698627-icon-111-search-256.png);*/
             background-position: 450px center;
             background-size: contain;
             background-repeat: no-repeat;
-            border: 1px solid #ffffff;
+            border: 1px solid white;
             padding: 5px 5px;
             text-indent: 25px;
             width: 120px;
         }
-        input:focus {
-            background-image: none;
-            background-position: -10px center;
-            text-indent: 0;
-            width: 500px;
-            outline: 0;
-            transition-duration: .1s;
-        }
+
         @keyframes animationH1 {
             from{
                 height: 280px;
@@ -204,20 +210,21 @@
             text-underline: none;
         }
         .linkc:hover{
-            color: #1a1a1a!important;
+            color: #9C9C9C!important;
             transition-duration: 1s;
         }
 
-        body {
+        p {
             font-family: 'Roboto','Helvetica Neue', Helvetica, Arial, sans-serif;
             font-style: normal;
-            font-weight: 200;
-            letter-spacing: 3px;
+            font-weight: 300;
+            letter-spacing: 1px;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             -moz-font-feature-settings: "liga" on;
         }
+
 
         @font-face {
             font-family: 'Cafe24Oneprettynight';
@@ -226,8 +233,11 @@
             font-style: normal;
         }
 
+
+
         .mycard1{
-            background-color: mistyrose;
+            background-color: white;
+            box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
             border-radius: 5px;
             padding: 25px;
 
@@ -235,6 +245,37 @@
 
         .title2{
             font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        #imgbox5 > img {
+            height: 170px!important;
+            width: 170px!important;
+            padding: 10px;
+            border-radius: 15px;
+            margin-top: -30px;
+        }
+
+        #imgbox5{
+            height: 170px!important;
+            width: 170px!important;
+        }
+
+        #imgbox5 > a > small {
+            font-size: 5px;
+            letter-spacing: 0px!important;
+            padding: 3px;
+            margin-left: 15px;
+            background-color: rgb(255,64,96);
+            color: white;
+            font-weight: 30!important;
+            border-radius: 3px;
+            position: relative;
+            z-index: 2;
+        }
+
+        #imgbox5 > a {
+            text-decoration: none;
         }
 
 
@@ -248,7 +289,8 @@
 <div class="loader">
 
 </div>
-<div class="jumbotron text-center" style="margin-bottom:0; color:white;">
+
+<div class="container-fluid jumbotron text-center" style="margin-bottom:0; color:white; border-radius: 0!important;">
     <nav style="margin-top: -58px;" class="navbar navbar-expand-sm navbar-dark d-flex justify-content-between mb-4">
 
         <a class="navbar-brand linkc" href="/">
@@ -331,25 +373,31 @@
             </c:otherwise>
         </c:choose>
     </nav>
+
+    <div style="margin-top: -25px; margin-bottom: 25px;">
+        <div class="allDelete off">
+            <span class="btn" style="color: white">최근 검색어&nbsp;<i
+                    class="fas fa-trash no-underline text-white-darker hover:text-red-dark"
+                    aria-hidden="true"></i></span>
+        </div>
+        <div class="slick-sample" style="">
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+<div class="jumbotron2 row navbar navbar-expand-sm sticky-top d-flex justify-content-center">
     <%--검색창--%>
-        <form id="todo-form" class="form">
-            <input class="searchbar" name="url" type="text"/>
-            <button type="submit" form="todo-form" style="margin-left: -40px;">
-                <i class="fa fa-search" style="font-size:18px"></i>
-            </button>
-        </form>
-
-
-
-
-
-    <div class="allDelete off">
-        <span class="btn" style="color: white">최근 검색어&nbsp;<i class="fas fa-trash no-underline text-white-darker hover:text-red-dark" aria-hidden="true"></i></span>
-    </div>
-    <div class="slick-sample">
-
-    </div>
-
+    <form id="todo-form" class="form">
+        <input class="searchbar mt-3" name="url" type="text"/>
+        <button type="submit" form="todo-form" style="margin-left: -40px;">
+            <i class="fa fa-search" style="font-size:20px; color: #9C9C9C"></i>
+        </button>
+    </form>
 
 
 
@@ -362,12 +410,12 @@
 
 
 
-
     <c:if test="${param.url ne '' && param.url eq null}">
-    <div class="row" style="height: 500px;">
-            <div class="ml-2" style="top:50px; width:140px; border-right: 1px solid black; position: sticky;">
+        <div class="row" style="height: 500px;">
+
+            <div class="" style="top:50px; width:140px; border-right: 1px solid black; position: sticky;">
                 <a class="" style="color:black; text-decoration: none;" href="/">
-                    <div class="box border-right-0 border-left-0 border-white">
+                    <div class="box border-right-0 border-left-0 border-white" style="margin-top: 30px;">
                         <div class="border-0 text-center">
                             <h4 class="box-title rounded p-4">
                                 <i class='fas fa-door-open' style='font-size:24px'></i>
@@ -434,7 +482,7 @@
             </div>
 
     <div class="container d-flex justify-content-center mt-5" style="margin-top:30px; height: 300px;">
-        <p style="color:black; font-size: 3.5ex; font-family: sans-serif;">- 검색해주세요 -</p>
+        <p style="color:black; font-size: 3.5ex; font-family: sans-serif; margin-left: -80px;">- 검색해주세요 -</p>
 
     </div>
     </div>
@@ -443,7 +491,7 @@
     <c:if test="${param.url ne null}">
     <div class="row">
         <div class="nav2">
-            <div class="nav3 ml-2">
+            <div class="nav3">
                 <a class="" style="color:black; text-decoration: none;" href="/">
                     <div class="box border-right-0 border-left-0 border-white">
                         <div class="border-0 text-center">
@@ -512,21 +560,43 @@
             </div>
         </div>
 
-    <div class="container" style="margin-top:30px; padding-left: 150px;">
+
+    <div class="container" style="margin-top:30px; padding-left: 60px;">
+
+        <p class="d-flex justify-content-center" style="font-size: 18px; margin-left: -100px;">추천메뉴</p>
+        <div class="container" style="overflow-x: auto; overflow-y: hidden; margin-left: -50px;">
+            <div class="d-flex justify-content-center px-2"
+                 style="height: 180px; display: flex; width: ${(fn:length(api.content)-1)*170}px; align-items: center; margin-bottom: -20px;">
+                <c:if test="${fn:length(api.content) ne 0}">
+                <c:forEach var="y" begin="1" end="${fn:length(api.content)-1}">
+                    <div id="imgbox5">
+                        <a href="/board/APIForm/${api.content[y].ID}"><small
+                                class="imgbox5small">${api.content[y].rcpNM}</small></a>
+                        <img src="${api.content[y].att_FILE_NO_MAIN}" height="300">
+                    </div>
+                </c:forEach>
+                </c:if>
+            </div>
+        </div>
 
         <br/>
-        <hr style="margin-left: -80px;"/>
         <br/>
 
         <%--검색 정보--%>
-        <p style="color:chocolate; font-size: 3.5ex; font-family: sans-serif; margin-left: -80px;">검색 정보</p>
-        <div class="mt-5" style="margin-left: -60px">
+        <p class="d-flex justify-content-center" style="color:black; font-size: 3.5ex; font-family: sans-serif; margin-left: -80px; font-weight: 500!important;">검색 정보</p>
+        <div class="mt-3" style="margin-left: -60px">
             <div class="row">
-            <img src="${list1[1].thumbnail}" width="150" height="150"/>
-                <div class="container row text-center mt-2"><h2>-</h2>${list2[0]}<h2>-</h2></div>
-                <c:forEach var="i" begin="1" end="20">
-                    ${list2[i]}
-                </c:forEach>
+
+            <div class="container row text-center mt-2"><h2>${list2[0]}</h2></div>
+
+                    <div class="mycard1 row d-flex justify-content-center">
+                        <div class="mb-4" style=""><img src="${list1[1].thumbnail}" width="300" height="300"/></div>
+                        <div class="">
+                            <c:forEach var="i" begin="1" end="20">
+                            ${list2[i]}
+                            </c:forEach>
+                        </div>
+                    </div>
             </div>
         </div>
 
@@ -536,7 +606,7 @@
 
         <%--음식 보감 정보--%>
 
-        <p style="color:#4e54c8; font-size: 3ex; font-family: sans-serif; margin-left: -70px;">음식 보감 정보</p>
+        <p class="d-flex justify-content-center" style="color:black; font-size: 3ex; font-family: sans-serif; margin-left: -80px; font-weight: 500!important;">음식 보감 정보</p>
 
         <c:forEach var="a" begin="0" end="${fn:length(list3)}">
             <c:if test="${fn:contains(list3[a].FOOD_NM, param.url) eq true}">
@@ -544,8 +614,8 @@
             </c:if>
 
             <c:if test="${param.url eq list3[a].FOOD_NM}">
-            <div class="d-flex align-items-center mt-5 row" style="border-left:2px solid mistyrose;  min-height:150px; margin-left: -100px;">
-                <div class="ml-1 d-flex justify-content-center align-middle" style="width: 200px;">
+            <div class="d-flex align-items-center mt-5 row" style="border-left:2px solid #CCCCCC;  min-height:150px; margin-left: 0px;">
+                <div class="ml-1 d-flex justify-content-center align-middle" style="width: 200px; font-size: 22px">
                     ${list3[a].FOOD_NM}
                 </div>
                 <div class="" style="width: 750px;">
@@ -579,10 +649,37 @@
         <hr style="margin-left: -80px;"/>
         <br/>
 
+            <%--가격정보--%>
+        <p class="d-flex justify-content-center" style="color:#1a1a1a; font-size: 3ex; font-family: sans-serif; margin-left: -80px; font-weight: 500!important;">가격정보</p>
+            <div class="mt-5 row" style="margin-left: -0px;">
+                <div class="ml-1 row" style="height: 100%;">
+                    <c:forEach var="i" begin="0" end="280">
+                        <c:if test="${fn:contains(api5[i].item_name, param.url)}">
+                            <%--									${x}+${i} id비교--%>
+                            <%--									${fn:split(text, ',')[x]} == ${api5[i].item_name} : ${fn:contains(fn:split(text, ',')[x], api5[i].item_name)}--%>
+                            <canvas style="width: 500px" id="myChart${i}"></canvas>
+<%--                            ${api5[i].day1}', '${api5[i].day2}', '${api5[i].day3}', '${api5[i].day4}<br/>--%>
+<%--                            ${api5[i].item_name}-${api5[i].kind_name}-${api5[i].unit}--%>
+                        </c:if>
+                    </c:forEach>
+                </div>
+                <div class="" style="width: 750px;">
+<%--                    <c:forEach var="i" begin="0" end="280">--%>
+<%--                        ${api5[i].item_name} == ${param.url} <br/>--%>
+<%--                        ${fn:contains(api5[i].item_name, param.url)}--%>
+<%--                    </c:forEach>--%>
+                </div>
+            </div>
+
+
+        <br/>
+        <hr style="margin-left: -80px;"/>
+        <br/>
+
         <%--네이버 백과사전--%>
-        <p style="color:#2ecc71; font-size: 3ex; font-family: sans-serif; margin-left: -70px;">네이버 백과사전</p>
+        <p class="d-flex justify-content-center" style="color:rgb(3,175,77); font-size: 3ex; font-family: sans-serif; margin-left: -80px; font-weight: 500!important;">네이버 백과사전</p>
         <c:forEach var="z" begin="0" end="${fn:length(list1)}">
-        <div class="mt-5 row" style="height: 150px; margin-left: -100px;">
+        <div class="mt-5 row" style="height: 150px; margin-left: 0px;">
             <div class="ml-1 d-flex justify-content-center" style="width: 200px; height: 100%; overflow: clip;">
                 <a href="${list1[z].link}">
                   <c:if test="${list1[z].thumbnail ne ''}">
@@ -609,143 +706,94 @@
 
 
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
 
-<%--chart1--%>
+
+<%--가격정보 차트--%>
 <script>
-    let ctx = document.getElementById("chart").getContext('2d');
-    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, "#ff6c00");
-    gradientStroke.addColorStop(1, "#ff3b74");
-    var gradientBkgrd = ctx.createLinearGradient(0, 100, 0, 400);
-    gradientBkgrd.addColorStop(0, "rgba(244,94,132,0.2)");
-    gradientBkgrd.addColorStop(1, "rgba(249,135,94,0)");
-    let draw = Chart.controllers.line.prototype.draw;
-    Chart.controllers.line = Chart.controllers.line.extend({
-        draw: function() {
-            draw.apply(this, arguments);
-            let ctx = this.chart.chart.ctx;
-            let _stroke = ctx.stroke;
-            ctx.stroke = function() {
-                ctx.save();
-                //ctx.shadowColor = 'rgba(244,94,132,0.8)';
-                ctx.shadowBlur = 8;
-                ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 6;
-                _stroke.apply(this, arguments)
-                ctx.restore();
-            }
-        }
-    });
-    var chart = new Chart(ctx, {
-        // The type of chart we want to create
+    <c:forEach var="n" begin="0" end="280">
+    <c:if test="${fn:contains(api5[n].item_name, param.url)}">
+    var RGB_1 = Math.floor(Math.random() * (255 + 1))
+    var RGB_2 = Math.floor(Math.random() * (255 + 1))
+    var RGB_3 = Math.floor(Math.random() * (255 + 1))
+    var strRGBA = 'rgba(' + RGB_1 + ',' + RGB_2 + ',' + RGB_3 + ',0.8)'
+
+    amount1 = "${api5[n].dpr1}".replace(",", "")
+    amount2 = "${api5[n].dpr2}".replace(",", "")
+    amount3 = "${api5[n].dpr3}".replace(",", "")
+    amount4 = "${api5[n].dpr4}".replace(",", "")
+    amount5 = "${api5[n].dpr5}".replace(",", "")
+
+
+    var ctx = document.getElementById("myChart"+"${n}");
+
+
+    var myChart = new Chart(ctx, {
         type: 'line',
-        // The data for our dataset
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ['${api5[n].day1}', '${api5[n].day2}', '${api5[n].day3}', '${api5[n].day4}'],
             datasets: [{
-                label: "Income",
-                backgroundColor: gradientBkgrd,
-                borderColor: gradientStroke,
-                data: [${month01}, ${month02}, ${month03}, ${month04}, ${month05}, ${month06}, ${month07},${month08} ,${month09} ,${month10} ,${month11} ,${month12}],
-                pointBorderColor: "rgba(255,255,255,0)",
-                pointBackgroundColor: "rgba(255,255,255,0)",
-                pointBorderWidth: 0,
-                pointHoverRadius: 8,
-                pointHoverBackgroundColor: gradientStroke,
-                pointHoverBorderColor: "rgba(220,220,220,1)",
-                pointHoverBorderWidth: 4,
-                pointRadius: 1,
-                borderWidth: 5,
-                pointHitRadius: 16,
+                label: '${api5[n].item_name}-${api5[n].kind_name}-${api5[n].unit}',
+                data: [amount1, amount2, amount3, amount4, amount5],
+                backgroundColor: [
+                    strRGBA,
+                ],
+                borderColor : [
+                    strRGBA,
+                ],
+                borderWidth: 3,
+
             }]
         },
-        // Configuration options go here
         options: {
-            tooltips: {
-                backgroundColor:'#fff',
-                displayColors:false,
-                titleFontColor: '#000',
-                bodyFontColor: '#000'
-            },
-            legend: {
-                display: false
-            },
-            scales: {
-                xAxes: [{
-                    gridLines: {
-                        display:false
-                    }
-                }],
-                yAxes: [{
-                    ticks: {
-                        // Include a dollar sign in the ticks
-                        callback: function(value, index, values) {
-                            return (value / 1000) + 'K';
-                        }
-                    }
-                }],
-            }
-        }
-    });
-</script>
-
-<%--chart2--%>
-<script>
-    var data = {
-        labels: ["밥", "후식", "국", "과일", "빵", "과자", "조림", "찜", "무침", "해물", "볶음"],
-        datasets: [{
-            label: "Dataset #1",
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
-            borderWidth: 2,
-            hoverBackgroundColor: "rgba(255,99,132,0.4)",
-            hoverBorderColor: "rgba(255,99,132,1)",
-            data: [${Type1}, ${Type2}, ${Type3}, ${Type4}, ${Type5}, ${Type6}, ${Type7}, ${Type8}, ${Type9}, ${Type10}, ${Type11}],
-        }]
-    };
-    var option = {
-        scales: {
-            yAxes: [{
-                stacked: true,
-                gridLines: {
+            plugins: {
+                title: {
                     display: true,
-                    color: "rgba(255,99,132,0.2)"
+                    text: "",
+                    <%--text: "${F}+${n}id비교",--%>
                 }
-            }],
-            xAxes: [{
-                gridLines: {
-                    display: false
-                }
-            }]
-        }
-    };
-    Chart.Bar('chart_0', {
-        options: option,
-        data: data
+            },
+
+
+            //cutoutPercentage: 40,
+            responsive: false,
+        },
+
+
     });
+    </c:if>
+    </c:forEach>
 </script>
 
+
+
 <script>
-    let mainText1 = document.querySelector(".jumbotron");
+    let mainText1 = document.querySelector(".jumbotron2");
     let mainText2 = document.querySelector(".nav4");
     let mainText3 = document.querySelector(".slick-sample");
     let mainText4 = document.querySelector("#todo-form");
-
+    let mainText5 = document.querySelector(".searchbar");
 
 
     window.addEventListener('scroll',function (){
         let value = window.scrollY
         console.log("scrollY", value);
 
-        if (value>30) {
-            mainText1.style.animation='animationH1 0.5s forwards';
+        if (value>20) {
+            mainText1.style.paddingBottom = "10";
+            mainText1.style.transitionDuration='.5s';
+            mainText5.style.border = "1px solid white";
+            mainText5.style.transitionDuration='.5s';
             mainText3.style.opacity= '0';
             mainText3.style.transitionDuration='1';
+            mainText4.style.transitionDuration='1';
         } else {
-            mainText1.style.animation='animationH2 0.5s forwards';
+            mainText1.style.paddingBottom = "50";
+            mainText1.style.transitionDuration='.5s';
+            mainText5.style.border = "1px solid #0005";
+            mainText5.style.transitionDuration='.1s';
             mainText3.style.opacity= '1';
             mainText3.style.transitionDuration= '1';
+            mainText4.style.transitionDuration='1';
         }
     });
 </script>
@@ -794,16 +842,15 @@
 
     function paintToDo(newTodo) { //화면에 뿌림
         const {id, text} = newTodo;
-        const item = document.createElement("p");
-        const span = document.createElement("span");
+        const item = document.createElement("div");
+        const span = document.createElement("a");
         const button = document.createElement("button");
         item.id = id;
-        span.innerText = text;
+        item.innerText = text;
         button.innerText = ' ';
         button.addEventListener("click", deleteToDo);
         allDelete.addEventListener("click", allDeleteToDo);
         item.appendChild(span);
-        item.appendChild(button);
         toDoList.appendChild(item);
         newTodo !== null && allDelete.classList.remove('off');
     };
@@ -830,6 +877,17 @@
         savedToDos.forEach(paintToDo);
     }
 </script>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

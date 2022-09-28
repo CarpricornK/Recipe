@@ -14,16 +14,13 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
-//
-//@Slf4j
-//@Service("MongoService2")
-//public class KamisService implements IMongoService {
-//
-//    @Resource(name = "MongoMapper")
-//    private IMongoMapper mongoMapper; // MongoDB에 저장할 Mapper
-//
-//
-//
-//
-//}
+
+@Slf4j
+@Service("MongoService2")
+public class KamisService {
+
+
+
+
+}
 

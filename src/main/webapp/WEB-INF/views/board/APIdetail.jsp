@@ -772,6 +772,7 @@
 					</c:if>
 
 				  <span class="tt-text">
+
 	                	<div>
 							<c:forEach var="i" begin="0" end="100">
 								<c:if test="${fn:contains(fn:split(text, ',')[x], api5[i].item_name)}">
