@@ -42,17 +42,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		System.out.println("getClientRegistration==" + userRequest.getClientRegistration());
-		System.out.println("getAccessToken==" + userRequest.getAccessToken().getTokenValue());
-
 		OAuth2User oauth2User = super.loadUser(userRequest);
-		
 
-		System.out.println("getAttributes==" + oauth2User.getAttributes());
-		System.out.println("responsesid==" + oauth2User.getAttributes().get("id"));
-		System.out.println("responses==" + oauth2User.getAttributes().get("response"));
-
-		
 		 OAuth2UserInfo oAuth2UserInfo = null;
 		if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
 			System.out.println("구글 로그인 요청입니다");
@@ -63,7 +54,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		} else {
 			System.out.println("구글,카카오톡,네이버만 지원합니다.");
 		}
-		
+
 		
         String username1 = oAuth2UserInfo.getName();
         String email1 = oAuth2UserInfo.getEmail();
@@ -77,16 +68,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 				.USER_OAUTH(oauthType)
 				.build();
 
-		System.out.println(username1);
-		System.out.println(cosKey);
-		System.out.println(email1);
-		System.out.println(role);
-		/*
-		 * System.out.println(ids); 
-		 * System.out.println(Iids);
-		 * System.out.println(IDtoInt);
-		 */
-
+        // 가입자 혹은 비가입자 체크 해서 처리
 		User originUser = userService.회원찾기(loadUser.getUsername());
 		if (originUser.getUsername() == null) {
 			System.out.println("기존 회원이 아닙니다 자동 회원가입을 진행합니다.");
@@ -96,6 +78,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		}
 
 		System.out.println("자동 로그인을 진행합니다");
+
 		// 로그인 처리
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(loadUser.getUsername(), cosKey));
@@ -103,7 +86,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		return new PrincipalDetail(loadUser, oauth2User.getAttributes());
 	}
 
-	// 가입자 혹은 비가입자 체크 해서 처리
+
 
 	/*
 	 * @GetMapping("/test/oauth/login") public @ResponseBody String testOAuthLogin(
